@@ -55,7 +55,6 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>Pokemon.ttf</string>
 		<string>Pokemon Solid.ttf</string>
 	</array>
 </dict>

@@ -5,6 +5,7 @@
 	};
 	objectVersion = 46;
 	objects = {
+
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* PokedexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PokedexTests.m */; };
 		088EF96D3855F34901EE03F0 /* libPods-Pokedex-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C636D4C7417BE375430F0FED /* libPods-Pokedex-tvOSTests.a */; };
@@ -18,9 +19,8 @@
 		2D02E4BF1E0B4AB3006451C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		2DCD954D1E0B4F2C00145EB5 /* PokedexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PokedexTests.m */; };
 		6098C1A7C6E9F6E3A834A843 /* libPods-Pokedex-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 965F26C7C0DAAB55D1DE6E4C /* libPods-Pokedex-tvOS.a */; };
-		708631236372D8A51155332D /* libPods-Pokedex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFF44DFD04D88999FC6D9F9 /* libPods-Pokedex.a */; };
-		587C04AC9F6E466BA0656D58 /* Pokemon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 6526F5118FBC4489A26D704B /* Pokemon.ttf */; };
 		642073AD82964126A7675DD1 /* Pokemon Solid.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 7A3A41D3EC7649A18AE6A13A /* Pokemon Solid.ttf */; };
+		708631236372D8A51155332D /* libPods-Pokedex.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CBFF44DFD04D88999FC6D9F9 /* libPods-Pokedex.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -59,7 +59,9 @@
 		34058A6D38FABA2DD220BB43 /* Pods-Pokedex.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex.release.xcconfig"; path = "Target Support Files/Pods-Pokedex/Pods-Pokedex.release.xcconfig"; sourceTree = "<group>"; };
 		3DFF220DCC380C7FEDDF84D6 /* Pods-Pokedex.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex.debug.xcconfig"; path = "Target Support Files/Pods-Pokedex/Pods-Pokedex.debug.xcconfig"; sourceTree = "<group>"; };
 		44CC6F96AC8DCDB41E9CF4EF /* Pods-PokedexTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokedexTests.debug.xcconfig"; path = "Target Support Files/Pods-PokedexTests/Pods-PokedexTests.debug.xcconfig"; sourceTree = "<group>"; };
+		6526F5118FBC4489A26D704B /* Pokemon.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Pokemon.ttf; path = ../src/assets/fonts/Pokemon.ttf; sourceTree = "<group>"; };
 		6708344F15B031CA27E0416D /* Pods-PokedexTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PokedexTests.release.xcconfig"; path = "Target Support Files/Pods-PokedexTests/Pods-PokedexTests.release.xcconfig"; sourceTree = "<group>"; };
+		7A3A41D3EC7649A18AE6A13A /* Pokemon Solid.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Pokemon Solid.ttf"; path = "../src/assets/fonts/Pokemon Solid.ttf"; sourceTree = "<group>"; };
 		84348BCAE9A15169B2778704 /* Pods-Pokedex-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex-tvOS.release.xcconfig"; path = "Target Support Files/Pods-Pokedex-tvOS/Pods-Pokedex-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		965F26C7C0DAAB55D1DE6E4C /* libPods-Pokedex-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Pokedex-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9B7EE269E4E8FBF096EBFDB2 /* Pods-Pokedex-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex-tvOSTests.release.xcconfig"; path = "Target Support Files/Pods-Pokedex-tvOSTests/Pods-Pokedex-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -68,8 +70,6 @@
 		D8ABAD2F5FE55E053F734A08 /* Pods-Pokedex-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Pokedex-tvOSTests.debug.xcconfig"; path = "Target Support Files/Pods-Pokedex-tvOSTests/Pods-Pokedex-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		ED2971642150620600B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = Platforms/AppleTVOS.platform/Developer/SDKs/AppleTVOS12.0.sdk/System/Library/Frameworks/JavaScriptCore.framework; sourceTree = DEVELOPER_DIR; };
-		6526F5118FBC4489A26D704B /* Pokemon.ttf */ = {isa = PBXFileReference; name = "Pokemon.ttf"; path = "../src/assets/fonts/Pokemon.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
-		7A3A41D3EC7649A18AE6A13A /* Pokemon Solid.ttf */ = {isa = PBXFileReference; name = "Pokemon Solid.ttf"; path = "../src/assets/fonts/Pokemon Solid.ttf"; sourceTree = "<group>"; fileEncoding = undefined; lastKnownFileType = unknown; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,7 +151,6 @@
 				44CC6F96AC8DCDB41E9CF4EF /* Pods-PokedexTests.debug.xcconfig */,
 				6708344F15B031CA27E0416D /* Pods-PokedexTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -203,14 +202,13 @@
 			sourceTree = "<group>";
 		};
 		9A66ADAD61D141D49DD51AC5 /* Resources */ = {
-			isa = "PBXGroup";
+			isa = PBXGroup;
 			children = (
 				6526F5118FBC4489A26D704B /* Pokemon.ttf */,
 				7A3A41D3EC7649A18AE6A13A /* Pokemon Solid.ttf */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
-			path = "";
 		};
 /* End PBXGroup section */
 
@@ -322,6 +320,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -352,7 +351,6 @@
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
-				587C04AC9F6E466BA0656D58 /* Pokemon.ttf in Resources */,
 				642073AD82964126A7675DD1 /* Pokemon Solid.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
