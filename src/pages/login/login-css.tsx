@@ -18,8 +18,9 @@ export const LoginCSS = StyleSheet.create({
     color: "#ffcb05",
     textShadowColor: "#2a75bb",
     textShadowOffset: {width: 3, height: 2},
-    textShadowRadius: 0,
+    textShadowRadius: 1,
     letterSpacing: 2.5,
-    padding: 5
+    padding: 5,
+
   }
 });
