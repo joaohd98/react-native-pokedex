@@ -1,7 +1,8 @@
 import React, {Component} from "react";
-import {View, Image, Text} from "react-native";
+import {View, Image, Text, Button, TextInput} from "react-native";
 import {images} from "../../assets";
 import {LoginCSS} from "./login-css";
+import {CustomInput} from "../../components/Input/input";
 
 export class Login extends Component {
 
@@ -9,10 +10,16 @@ export class Login extends Component {
 
     return (
       <View style={LoginCSS.view}>
-        <Image source={images.pokeball} style={LoginCSS.logo}/>
-        <Text style={LoginCSS.titulo}>PokeDex</Text>
+        <View style={LoginCSS.tituloLogo}>
+          <Image source={images.pokeball} style={LoginCSS.logo} />
+          <Text style={LoginCSS.titulo}>PokeDex</Text>
+        </View>
+        <CustomInput/>
+        <CustomInput/>
+        <Button title={"Entrar"} onPress={() => {}} />
       </View>
     )
+
 
   }
 

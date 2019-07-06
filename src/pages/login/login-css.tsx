@@ -1,16 +1,18 @@
-import { StyleSheet } from "react-native";
+import {Dimensions, StyleSheet} from "react-native";
+
+let size = Dimensions.get('window').height * 0.20;
 
 export const LoginCSS = StyleSheet.create({
   view: {
-    flex: 2,
-    justifyContent: "center",
-    alignItems: "center",
-    flexDirection: "column"
+    flex: 1,
+    justifyContent: 'center',
+  },
+  tituloLogo: {
+    alignItems: 'center'
   },
   logo: {
-    height: 225,
-    width: 225,
-    marginBottom: 10
+    height: size,
+    width: size,
   },
   titulo: {
     fontFamily: 'Pokemon Solid',
@@ -21,6 +23,8 @@ export const LoginCSS = StyleSheet.create({
     textShadowRadius: 1,
     letterSpacing: 2.5,
     padding: 5,
+  },
+  button: {
 
   }
 });
