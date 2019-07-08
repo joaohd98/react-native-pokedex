@@ -1,4 +1,17 @@
-export const PokedexCardCSS = {
+import {TextStyle, ViewStyle} from "react-native";
+
+interface Helper {
+  card: ViewStyle,
+  imagem: ViewStyle,
+  cardContent: ViewStyle,
+  numero: TextStyle,
+  nomeContent: ViewStyle,
+  nome: TextStyle,
+  habilidadesContent: ViewStyle,
+  habilidade: TextStyle,
+}
+
+export const PokedexCardCSS: Helper = {
   card: {
     flex: 1,
     margin: 20
