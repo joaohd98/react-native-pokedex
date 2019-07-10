@@ -14,7 +14,7 @@ export class Layout extends Component {
     initialRouteName: 'pokedex',
     headerLayoutPreset: "center",
     defaultNavigationOptions: {
-      headerStyle:{
+      headerStyle: {
         elevation: 0,
         shadowOpacity: 0,
         borderBottomColor: "#919191",
@@ -24,9 +24,12 @@ export class Layout extends Component {
         fontWeight: "400",
         fontSize: 20,
         lineHeight: 50,
-        letterSpacing: 0.5,
+        letterSpacing: 0.25,
         textTransform: "uppercase",
         color: '#919191'
+      },
+      headerRightContainerStyle: {
+        right: 5
       }
     }
   });

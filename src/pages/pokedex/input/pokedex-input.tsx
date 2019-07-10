@@ -1,14 +1,12 @@
 import React, {Component} from "react";
-import {TextInput, View} from "react-native";
+import { TextInput } from "react-native";
 
 export class PokedexInput extends Component{
 
   render() {
 
     return (
-      <View>
-        <TextInput placeholder={"teste editado"} style={{backgroundColor: "#AAA"}}/>
-      </View>
+      <TextInput placeholder={"teste editado"} style={{backgroundColor: "#A1A", lineHeight: 30}}/>
     );
 
   }
