@@ -5,7 +5,6 @@
 	};
 	objectVersion = 46;
 	objects = {
-
 /* Begin PBXBuildFile section */
 		00E356F31AD99517003FC87E /* PokedexTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* PokedexTests.m */; };
 		088EF96D3855F34901EE03F0 /* libPods-Pokedex-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C636D4C7417BE375430F0FED /* libPods-Pokedex-tvOSTests.a */; };

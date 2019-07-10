@@ -30,6 +30,8 @@ target 'Pokedex' do
 
 
 
+  pod 'RNGestureHandler', :path => '../node_modules/react-native-gesture-handler'
+
   target 'PokedexTests' do
     inherit! :search_paths
     # Pods for testing
