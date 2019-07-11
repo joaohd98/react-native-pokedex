@@ -25,11 +25,11 @@ export class Layout extends Component {
         fontSize: 20,
         lineHeight: 50,
         letterSpacing: 0.25,
-        textTransform: "uppercase",
+        textTransform: "capitalize",
         color: '#919191'
       },
       headerRightContainerStyle: {
-        right: 5
+        right: 20
       }
     }
   });
