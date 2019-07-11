@@ -10,8 +10,8 @@ export class PokedexInput extends Component{
       flexDirection: "row"
     },
     icon: {
-      top: 15,
-      left: 25,
+      top: 17,
+      left: 20,
       color: Colors.gray
     },
     textInput: {
@@ -19,7 +19,7 @@ export class PokedexInput extends Component{
       marginTop: 10,
       borderWidth: 1,
       padding: 5,
-      paddingLeft: 30,
+      paddingLeft: 25,
       height: 30,
       fontSize: 16,
       color: Colors.gray,
@@ -31,7 +31,7 @@ export class PokedexInput extends Component{
 
     return (
       <View style={this.style.view}>
-        <Icon name="search" size={20} style={this.style.icon}/>
+        <Icon name="search" size={15} style={this.style.icon}/>
         <TextInput placeholder={"Nome ou número"} style={this.style.textInput}/>
       </View>
     );
