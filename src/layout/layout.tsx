@@ -3,6 +3,7 @@ import {Component} from "react";
 import {Pokedex} from "../pages/pokedex/pokedex";
 import {createAppContainer, createStackNavigator} from "react-navigation";
 import {Detalhes} from "../pages/detalhes/detalhes";
+import {Colors} from "../helpers/colors/colors";
 
 export class Layout extends Component {
 
@@ -17,7 +18,7 @@ export class Layout extends Component {
       headerStyle: {
         elevation: 0,
         shadowOpacity: 0,
-        borderBottomColor: "#919191",
+        borderBottomColor: Colors.gray,
         borderBottomWidth: 0.19
       },
       headerTitleStyle: {
@@ -26,7 +27,7 @@ export class Layout extends Component {
         lineHeight: 50,
         letterSpacing: 0.25,
         textTransform: "capitalize",
-        color: '#919191'
+        color: Colors.gray
       },
       headerRightContainerStyle: {
         right: 20

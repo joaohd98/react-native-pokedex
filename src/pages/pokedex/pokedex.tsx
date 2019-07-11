@@ -1,8 +1,10 @@
 import React from "react";
 import {Component} from "react";
-import {ScrollView, TouchableHighlight, StyleSheet, Text, View, TouchableOpacity} from "react-native";
+import {ScrollView, View, TouchableOpacity} from "react-native";
 import {PokedexCard} from "./card/pokedex-card";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {PokedexInput} from "./input/pokedex-input";
+import {PokedexCSS} from "./pokedex-css";
 
 interface Props {
   navigation: any
@@ -28,7 +30,8 @@ export class Pokedex extends Component<Props> {
 
     return (
       <View>
-        <ScrollView>
+        <PokedexInput />
+        <ScrollView style={PokedexCSS.scrollView}>
           <PokedexCard />
           <PokedexCard />
           <PokedexCard />

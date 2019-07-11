@@ -7,7 +7,7 @@ export class PokedexCard extends Component{
   render() {
 
     let teste: ImageSourcePropType = {
-      uri: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/065.png",
+      uri: "https://assets.pokemon.com/assets/cms2/img/pokedex/detail/001.png",
       width: 200,
       height: 200,
     };
