@@ -7,14 +7,16 @@ import {PokedexCSS} from "./pokedex-css";
 import {PokedexInteractor} from "./service/PokedexInteractor";
 import {PokedexModel} from "./service/PokedexModel";
 import {ApiRetornos} from "../../services";
+import {PokedexProps} from "./redux/pokedexReducer";
+import { connect } from 'react-redux';
+import {bindActionCreators} from "redux";
+import {PokedexAction} from "./redux/pokedexAction";
 
-interface Props {
-  navigation: any,
-  carregando: boolean,
-  erro: boolean
+interface Props extends PokedexProps{
+  carregarPokemons: () => {}
 }
 
-export class Pokedex extends Component<Props> {
+class PokedexPage extends Component<Props> {
 
   static navigationOptions = PokedexCSS.Header;
 
@@ -22,7 +24,7 @@ export class Pokedex extends Component<Props> {
 
   componentDidMount() {
 
-    this.interector.pegarPokemons(this);
+   // this.props.carregarPokemons()
 
   }
 
@@ -39,6 +41,7 @@ export class Pokedex extends Component<Props> {
   render() {
 
     let css = PokedexCSS.CSS;
+    console.log(this.props);
 
     return (
       <View>
@@ -65,3 +68,16 @@ export class Pokedex extends Component<Props> {
   }
 
 }
+
+const mapStateToProps = (state) => {
+  return state.pokedexReducer
+};
+
+const mapDispatchToProps = dispatch => (
+  bindActionCreators({
+    carregarPokemons: PokedexAction.carregarPokemons
+  }, dispatch)
+);
+
+export const Pokedex = connect(mapStateToProps, mapDispatchToProps)(PokedexPage);
+

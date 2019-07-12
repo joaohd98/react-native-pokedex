@@ -1,7 +1,6 @@
 import {PokedexService} from "../../../services/pokedex/PokedexService";
 import {PokedexModel} from "./PokedexModel";
 import {Pokedex} from "../pokedex";
-import ViewModel = PokedexModel.ViewModel;
 
 export class PokedexInteractor {
 
@@ -12,9 +11,9 @@ export class PokedexInteractor {
       if(!fetch.retorno)
         return;
 
-      let pokemons: ViewModel[] = [];
+      let pokemons: PokedexModel.ViewModel[] = [];
 
-      for(let pokemon of fetch.retorno){
+      for(let pokemon of fetch.retorno) {
 
         let view: PokedexModel.ViewModel = {
           foto: pokemon.ThumbnailImage,
