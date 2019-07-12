@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import {StyleSheet, TextInput, View} from "react-native";
-import {Colors} from "../../../helpers/colors/colors";
+import {Colors} from "../../../../helpers/colors/colors";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class PokedexInput extends Component{

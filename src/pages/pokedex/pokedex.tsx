@@ -1,37 +1,49 @@
 import React from "react";
 import {Component} from "react";
-import {ScrollView, View, TouchableOpacity} from "react-native";
-import {PokedexCard} from "./card/pokedex-card";
-import Icon from 'react-native-vector-icons/FontAwesome';
-import {PokedexInput} from "./input/pokedex-input";
+import {ScrollView, View} from "react-native";
+import {PokedexCard} from "./components/card/pokedex-card";
+import {PokedexInput} from "./components/input/pokedex-input";
 import {PokedexCSS} from "./pokedex-css";
+import {PokedexInteractor} from "./service/PokedexInteractor";
+import {PokedexModel} from "./service/PokedexModel";
+import {ApiRetornos} from "../../services";
 
 interface Props {
-  navigation: any
+  navigation: any,
+  carregando: boolean,
+  erro: boolean
 }
 
 export class Pokedex extends Component<Props> {
 
-  static navigationOptions = {
-    headerTitle: 'Pokédex',
-    headerTitleContainerStyle: {
-      justifyContent: "flex-start",
-      left: 5,
+  static navigationOptions = PokedexCSS.Header;
 
-    },
-    headerRight: (
-      <TouchableOpacity onPress={() => {}}>
-        <Icon name="bars" size={30} color="#000" />
-      </TouchableOpacity>
-    ),
-   };
+  interector = new PokedexInteractor();
+
+  componentDidMount() {
+
+    this.interector.pegarPokemons(this);
+
+  }
+
+  renderPokecard(pokemons: PokedexModel.ViewModel[]) {
+
+
+  }
+
+  erroPokecard(erro: ApiRetornos) {
+
+
+  }
 
   render() {
+
+    let css = PokedexCSS.CSS;
 
     return (
       <View>
         <PokedexInput />
-        <ScrollView style={PokedexCSS.scrollView}>
+        <ScrollView style={css.scrollView}>
           <PokedexCard />
           <PokedexCard />
           <PokedexCard />
