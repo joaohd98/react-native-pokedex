@@ -15,8 +15,6 @@ const INITIAL_STATE: PokedexProps = {
 
 const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payload: any}) => {
 
-  console.log(action.payload);
-
   switch (action.type) {
 
     case PokedexConst.CARREGADO_POKEMONS:

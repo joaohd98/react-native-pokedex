@@ -11,6 +11,8 @@ import {PokedexProps} from "./redux/pokedexReducer";
 import { connect } from 'react-redux';
 import {bindActionCreators} from "redux";
 import {PokedexAction} from "./redux/pokedexAction";
+import {PokedexHeader} from "./components/header/header";
+import {PokedexList} from "./components/list/pokedex-list";
 
 interface Props extends PokedexProps{
   carregarPokemons: () => {}
@@ -18,7 +20,7 @@ interface Props extends PokedexProps{
 
 class PokedexPage extends Component<Props> {
 
-  static navigationOptions = PokedexCSS.Header;
+  static navigationOptions = PokedexHeader.Header;
 
   componentDidMount() {
 
@@ -28,28 +30,12 @@ class PokedexPage extends Component<Props> {
 
   render() {
 
-    let css = PokedexCSS.CSS;
-    console.log(this.props);
+    let props = this.props;
 
     return (
       <View>
         <PokedexInput />
-        <ScrollView style={css.scrollView}>
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-          <PokedexCard />
-        </ScrollView>
+        <PokedexList pokemons={props.pokemons} carregando={props.carregando} erro={props.erro}/>
       </View>
     )
 
