@@ -15,15 +15,28 @@ const INITIAL_STATE: PokedexProps = {
 
 const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payload: any}) => {
 
+  console.log(action.payload);
+
   switch (action.type) {
 
-    // case PokedexConst.CARREGARPOKEMONS:
-    //
-    //   console.log("aqui dentro");
-    //
-    //   break;
+    case PokedexConst.CARREGADO_POKEMONS:
+      return {
+        ...state,
+        pokemons: action.payload,
+        erro: false,
+        carregando: false
+      };
+
+    case PokedexConst.ERRO_CARREGAR_POKEMONS:
+      return {
+        ...state,
+        erro: true,
+        carregando: false
+      };
+
     default:
       return state
+
   }
 
 };

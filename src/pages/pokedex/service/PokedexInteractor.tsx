@@ -1,44 +1,33 @@
-import {PokedexService} from "../../../services/pokedex/PokedexService";
 import {PokedexModel} from "./PokedexModel";
-import {Pokedex} from "../pokedex";
 
 export class PokedexInteractor {
 
-  pegarPokemons(pokedex: Pokedex) {
+  static pegarPokemons(fetch: PokedexModel.Response) {
 
-    PokedexService.pegarTodosPokemons((fetch: PokedexModel.Response) => {
+    if(!fetch.retorno)
+      return;
 
-      if(!fetch.retorno)
-        return;
+    let pokemons: PokedexModel.ViewModel[] = [];
 
-      let pokemons: PokedexModel.ViewModel[] = [];
+    for(let pokemon of fetch.retorno) {
 
-      for(let pokemon of fetch.retorno) {
+      let view: PokedexModel.ViewModel = {
+        foto: pokemon.ThumbnailImage,
+        numero: pokemon.number,
+        nome: pokemon.name,
+        altura: pokemon.height,
+        peso: pokemon.weight,
+        tipos: pokemon.type,
+        fraquezas: pokemon.weakness,
+        habilidades: pokemon.abilities,
+        visivel: true
+      };
 
-        let view: PokedexModel.ViewModel = {
-          foto: pokemon.ThumbnailImage,
-          numero: pokemon.number,
-          nome: pokemon.name,
-          altura: pokemon.height,
-          peso: pokemon.weight,
-          tipos: pokemon.type,
-          fraquezas: pokemon.weakness,
-          habilidades: pokemon.abilities,
-          visivel: true
-        };
+      pokemons.push(view);
 
-        pokemons.push(view);
+    }
 
-      }
-
-      pokedex.renderPokecard(pokemons);
-
-
-    }, (fetch: PokedexModel.Response) => {
-
-      pokedex.erroPokecard(fetch.cod);
-
-    })
+    return pokemons;
 
   }
 

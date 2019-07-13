@@ -3,7 +3,7 @@ import {ApiRetornos} from "../index";
 
 export class PokedexService {
 
-  static async pegarTodosPokemons(sucesso: Function, falha: Function) {
+  static async pegarTodosPokemons(sucesso: (request: PokedexModel.Response) => void, falha: (request: PokedexModel.Response) => void) {
 
     try {
 

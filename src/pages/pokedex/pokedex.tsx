@@ -20,21 +20,9 @@ class PokedexPage extends Component<Props> {
 
   static navigationOptions = PokedexCSS.Header;
 
-  interector = new PokedexInteractor();
-
   componentDidMount() {
 
-   // this.props.carregarPokemons()
-
-  }
-
-  renderPokecard(pokemons: PokedexModel.ViewModel[]) {
-
-
-  }
-
-  erroPokecard(erro: ApiRetornos) {
-
+    this.props.carregarPokemons()
 
   }
 
