@@ -1,12 +1,7 @@
 import React from "react";
 import {Component} from "react";
-import {ScrollView, View} from "react-native";
-import {PokedexCard} from "./components/card/pokedex-card";
+import { View} from "react-native";
 import {PokedexInput} from "./components/input/pokedex-input";
-import {PokedexCSS} from "./pokedex-css";
-import {PokedexInteractor} from "./service/PokedexInteractor";
-import {PokedexModel} from "./service/PokedexModel";
-import {ApiRetornos} from "../../services";
 import {PokedexProps} from "./redux/pokedexReducer";
 import { connect } from 'react-redux';
 import {bindActionCreators} from "redux";
