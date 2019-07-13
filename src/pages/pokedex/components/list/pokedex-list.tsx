@@ -15,9 +15,9 @@ export class PokedexList extends Component<Props>{
   mostrarCards() {
 
     let elementos: Element[] = [];
-    let tamanho = this.props.pokemons.length
+    let tamanho = this.props.pokemons.length;
 
-    for(let i = 0; tamanho > 0 && i < 10; i++ )
+    for(let i = 0; i < tamanho; i++ )
       elementos.push(<PokedexCard key={i} pokemon={this.props.pokemons[i]}/>);
 
     return elementos

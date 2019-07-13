@@ -8,8 +8,20 @@ export class PokedexInteractor {
       return;
 
     let pokemons: PokedexModel.ViewModel[] = [];
+    let tamanho = fetch.retorno.length;
 
-    for(let pokemon of fetch.retorno) {
+    for(let i = 0; i < tamanho; i++) {
+
+      let pokemon = fetch.retorno[i];
+
+      if(i > 0) {
+
+        let pokemonAnterior = fetch.retorno[i - 1];
+
+        if(pokemonAnterior.id == pokemon.id)
+          continue;
+
+      }
 
       let view: PokedexModel.ViewModel = {
         foto: pokemon.ThumbnailImage,
