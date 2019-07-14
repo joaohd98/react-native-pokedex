@@ -4,7 +4,6 @@ import {PokedexModel} from "../../service/PokedexModel";
 import {PokedexCard} from "../card/pokedex-card";
 import {PokedexListCss} from "./pokedex-list-css";
 import {Icones} from "../../../../helpers/icones/icones";
-import {PokedexInput} from "../input/pokedex-input";
 
 interface Props {
   pokemons: PokedexModel.ViewModel[],
@@ -19,10 +18,10 @@ export class PokedexList extends Component<Props>{
     return (
       <FlatList
         data={this.props.pokemons}
-        keyExtractor={(item: PokedexModel.ViewModel) => item.numero}
+        keyExtractor={item => item.numero}
         renderItem={PokedexCard.renderItem}
         ListEmptyComponent={this.mostrarSemCards()}
-        ListHeaderComponent={<PokedexInput />}
+        initialNumToRender={1}
       />
     )
 
