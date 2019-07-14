@@ -29,7 +29,6 @@ class PokedexPage extends Component<Props> {
 
     return (
       <View>
-        <PokedexInput />
         <PokedexList pokemons={props.pokemons} carregando={props.carregando} erro={props.erro}/>
       </View>
     )

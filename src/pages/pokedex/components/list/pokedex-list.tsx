@@ -1,9 +1,10 @@
 import React, {Component} from "react";
-import {ScrollView, View, Text} from "react-native";
+import {ScrollView, View, Text, ImageSourcePropType, Image, FlatList} from "react-native";
 import {PokedexModel} from "../../service/PokedexModel";
 import {PokedexCard} from "../card/pokedex-card";
 import {PokedexListCss} from "./pokedex-list-css";
 import {Icones} from "../../../../helpers/icones/icones";
+import {PokedexInput} from "../input/pokedex-input";
 
 interface Props {
   pokemons: PokedexModel.ViewModel[],
@@ -13,28 +14,29 @@ interface Props {
 
 export class PokedexList extends Component<Props>{
 
-  mostrarCards() {
-
-    let css = PokedexListCss.MOSTRAR_CARDS;
-
-    let elementos: Element[] = [];
-    let tamanho = this.props.pokemons.length;
-
-    for(let i = 0; i < tamanho; i++ )
-      elementos.push(<PokedexCard key={i} pokemon={this.props.pokemons[i]}/>);
-
+  mostrarCards = () => {
 
     return (
-      <ScrollView style={css.scrollView}>
-        { elementos }
-      </ScrollView>
+      <FlatList
+        data={this.props.pokemons}
+        keyExtractor={(item: PokedexModel.ViewModel) => item.numero}
+        renderItem={PokedexCard.renderItem}
+        ListEmptyComponent={this.mostrarSemCards()}
+        ListHeaderComponent={<PokedexInput />}
+      />
     )
 
-  }
+  };
 
-  mostrarSemCards() {
+  mostrarSkeleton = () => {
 
-    let css = PokedexListCss.MOSTRAR_SEM_CARDS;
+    return <View/>;
+
+  };
+
+  mostrarSemCards = () => {
+
+    let css = PokedexListCss.MOSTRAR_MENSAGEM;
 
     return (
       <View style={css.view}>
@@ -55,27 +57,26 @@ export class PokedexList extends Component<Props>{
       </View>
     );
 
-  }
+  };
 
-  mostrarSkeleton() {
+  mostrarErro = () =>{
 
-    return <View/>;
+    let css = PokedexListCss.MOSTRAR_MENSAGEM;
 
-  }
+    return (
+      <View style={css.view}>
+        <Text style={css.titulo}>Ooops! Aconteceu algo</Text>
+      </View>
+    )
 
-  mostrarErro() {
+  };
 
-    return <View/>;
-
-  }
-
-  render() {
+  render = () => {
 
     let props = this.props;
 
-     return props.carregando ? this.mostrarSkeleton() : props.erro ? this.mostrarErro() :
-      props.pokemons.length == 0 ? this.mostrarSemCards() : this.mostrarCards()
+    return props.carregando ? this.mostrarSkeleton() : props.erro ? this.mostrarErro() : this.mostrarCards();
 
-  }
+  };
 
 }

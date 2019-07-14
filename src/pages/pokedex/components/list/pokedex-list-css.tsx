@@ -9,8 +9,7 @@ export class PokedexListCss {
     }
   });
 
-
-  static MOSTRAR_SEM_CARDS = StyleSheet.create({
+  static MOSTRAR_MENSAGEM = StyleSheet.create({
     view: {
       borderColor: Colors.red,
       borderWidth: 2,
@@ -47,14 +46,9 @@ export class PokedexListCss {
     }
   });
 
-
   static MOSTRAR_SKELETON = StyleSheet.create({
 
   });
 
-
-  static MOSTRAR_ERRO = StyleSheet.create({
-
-  });
 
 }
