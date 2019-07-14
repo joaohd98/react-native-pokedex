@@ -50,6 +50,7 @@ export class PokedexCard extends Component<Props>{
       </View>
     );
 
+
   }
 
 }

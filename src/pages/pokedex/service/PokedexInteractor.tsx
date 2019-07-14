@@ -32,7 +32,8 @@ export class PokedexInteractor {
         tipos: pokemon.type,
         fraquezas: pokemon.weakness,
         habilidades: pokemon.abilities,
-        visivel: true
+        visivel: true,
+        filtrado: true,
       };
 
       pokemons.push(view);

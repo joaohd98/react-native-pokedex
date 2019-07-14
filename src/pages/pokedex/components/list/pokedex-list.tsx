@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {ScrollView, View, Text, ImageSourcePropType, Image, FlatList} from "react-native";
+import { View, Text, FlatList} from "react-native";
 import {PokedexModel} from "../../service/PokedexModel";
 import {PokedexCard} from "../card/pokedex-card";
 import {PokedexListCss} from "./pokedex-list-css";
@@ -8,24 +8,9 @@ import {Icones} from "../../../../helpers/icones/icones";
 interface Props {
   pokemons: PokedexModel.ViewModel[],
   carregando: boolean,
-  erro: boolean
 }
 
 export class PokedexList extends Component<Props>{
-
-  mostrarCards = () => {
-
-    return (
-      <FlatList
-        data={this.props.pokemons}
-        keyExtractor={item => item.numero}
-        renderItem={PokedexCard.renderItem}
-        ListEmptyComponent={this.mostrarSemCards()}
-        initialNumToRender={1}
-      />
-    )
-
-  };
 
   mostrarSkeleton = () => {
 
@@ -58,23 +43,20 @@ export class PokedexList extends Component<Props>{
 
   };
 
-  mostrarErro = () =>{
-
-    let css = PokedexListCss.MOSTRAR_MENSAGEM;
+  render() {
 
     return (
-      <View style={css.view}>
-        <Text style={css.titulo}>Ooops! Aconteceu algo</Text>
-      </View>
+      <FlatList
+        data={this.props.pokemons}
+        keyExtractor={item => item.numero}
+        renderItem={PokedexCard.renderItem}
+        ListEmptyComponent={this.mostrarSemCards()}
+      />
     )
 
-  };
-
-  render = () => {
-
-    let props = this.props;
-
-    return props.carregando ? this.mostrarSkeleton() : props.erro ? this.mostrarErro() : this.mostrarCards();
+    // onEndReached={this.loadRepositories}
+    // onEndReachedThreshold={0.1}
+    // ListFooterComponent={this.renderFooter}
 
   };
 

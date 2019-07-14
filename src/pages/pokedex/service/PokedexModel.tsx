@@ -33,7 +33,8 @@ export namespace PokedexModel {
     tipos: string[],
     fraquezas: string[],
     habilidades: string[],
-    visivel: boolean
+    visivel: boolean,
+    filtrado: boolean
   }
 
 }
