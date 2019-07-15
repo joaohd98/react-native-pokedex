@@ -7,7 +7,6 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from "redux";
 import {PokedexAction} from "./redux/pokedexAction";
 import {PokedexHeader} from "./components/header/header";
-import {PokedexCard} from "./components/card/pokedex-card";
 import {PokedexCSS} from "./pokedex-css";
 import {PokedexList} from "./components/list/pokedex-list";
 
@@ -21,7 +20,7 @@ class PokedexPage extends Component<Props> {
 
   componentDidMount() {
 
-    this.props.carregarPokemons()
+    //this.props.carregarPokemons()
 
   }
 

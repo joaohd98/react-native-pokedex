@@ -1,4 +1,4 @@
-import {ImageSourcePropType, Text, View, Image, Animated} from "react-native";
+import {ImageSourcePropType, Text, View, Image, Animated, Easing} from "react-native";
 import React, {Component} from "react";
 import {Icones} from "../../../../helpers/icones/icones";
 import {PokedexCSS} from "../../pokedex-css";
@@ -78,7 +78,6 @@ export class PokedexCard extends Component<Props>{
     );
 
   };
-
 
   private gerarCardSkeleton = () => {
 
