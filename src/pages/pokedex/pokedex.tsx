@@ -9,6 +9,7 @@ import {PokedexAction} from "./redux/pokedexAction";
 import {PokedexHeader} from "./components/header/header";
 import {PokedexCSS} from "./pokedex-css";
 import {PokedexList} from "./components/list/pokedex-list";
+import ShimmerPlaceHolder from "react-native-shimmer-placeholder";
 
 interface Props extends PokedexProps{
   carregarPokemons: () => {}

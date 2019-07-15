@@ -92,26 +92,22 @@ export class PokedexCSS {
       width: 200,
       height: 160,
       margin: 20,
-      backgroundColor: Colors.skeleton,
     },
     numero: {
       ...PokedexCSS.PokedexCard.numero,
       width: 80,
       height: 20,
-      backgroundColor: Colors.skeleton,
       marginTop: 5
     },
     nome: {
       ...PokedexCSS.PokedexCard.nome,
       width: 140,
       height: 20,
-      backgroundColor: Colors.skeleton,
       marginTop: 5
     },
     habilidades: {
       width: 230,
-      height: 15,
-      backgroundColor: Colors.skeleton,
+      height: 18,
     }
   });
 

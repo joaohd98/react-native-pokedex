@@ -3,6 +3,8 @@ import React, {Component} from "react";
 import {Icones} from "../../../../helpers/icones/icones";
 import {PokedexCSS} from "../../pokedex-css";
 import {PokedexModel} from "../../service/PokedexModel";
+import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
+
 
 interface Props {
   pokemon?: PokedexModel.ViewModel,
@@ -87,17 +89,21 @@ export class PokedexCard extends Component<Props>{
     return (
       <View style={css.card}>
         <View style={css.imagem}>
-          <Animated.View style={cssSkeleton.imagem} />
+          <ShimmerPlaceHolder style={cssSkeleton.imagem} autoRun={true}/>
+          {/*<Animated.View style={} />*/}
         </View>
         <View style={css.cardContent}>
           <View>
-            <Animated.Text style={cssSkeleton.numero}/>
+            {/*<Animated.Text style={cssSkeleton.numero}/>*/}
+            <ShimmerPlaceHolder style={cssSkeleton.numero} autoRun={true}/>
           </View>
           <View style={css.nomeContent}>
-            <Animated.Text style={cssSkeleton.nome}/>
+            {/*<Animated.Text style={cssSkeleton.nome}/>*/}
+            <ShimmerPlaceHolder style={cssSkeleton.nome} autoRun={true}/>
           </View>
           <View style={css.habilidadesContent}>
-            <Animated.Text style={cssSkeleton.habilidades}/>
+            {/*<Animated.Text style={cssSkeleton.habilidades}/>*/}
+            <ShimmerPlaceHolder style={cssSkeleton.habilidades} autoRun={true}/>
           </View>
         </View>
       </View>
