@@ -1,11 +1,17 @@
 import {ImageSourcePropType, Text, View, Image, Animated} from "react-native";
-import React from "react";
+import React, {Component} from "react";
 import {Icones} from "../../../../helpers/icones/icones";
 import {PokedexCSS} from "../../pokedex-css";
+import {PokedexModel} from "../../service/PokedexModel";
 
-export class PokedexCard{
+interface Props {
+  pokemon?: PokedexModel.ViewModel,
+  skeleton?: boolean
+}
 
-  private static pegarTipos = (pokemon) => {
+export class PokedexCard extends Component<Props>{
+
+  private pegarTipos = (pokemon) => {
 
     let css = PokedexCSS.PokedexCard;
     let elementos: Element[] = [];
@@ -17,65 +23,7 @@ export class PokedexCard{
 
   };
 
-  static gerarCard = (iterator) => {
-
-    let css = PokedexCSS.PokedexCard;
-    let pokemon = iterator.item;
-
-    let imagem: ImageSourcePropType = {
-      uri: pokemon.foto,
-      width: 200,
-      height: 200,
-    };
-
-    return (
-      <View style={css.card}>
-        <View style={css.imagem}>
-          <Image source={imagem} />
-        </View>
-        <View style={css.cardContent}>
-          <View>
-            <Text style={css.numero}>N˚ {pokemon.numero}</Text>
-          </View>
-          <View style={css.nomeContent}>
-            <Text style={css.nome}>{pokemon.nome}</Text>
-          </View>
-          <View style={css.habilidadesContent}>
-            { PokedexCard.pegarTipos(pokemon) }
-          </View>
-        </View>
-      </View>
-    );
-
-  };
-  
-  static gerarCardSkeleton = (index: number) => {
-
-    let css = PokedexCSS.PokedexCard;
-    let cssSkeleton = PokedexCSS.PokedexCardSkeleton;
-
-    return (
-      <View key={index} style={css.card}>
-        <View style={css.imagem}>
-          <Animated.View style={cssSkeleton.imagem} />
-        </View>
-        <View style={css.cardContent}>
-          <View>
-            <Animated.Text style={cssSkeleton.numero}/>
-          </View>
-          <View style={css.nomeContent}>
-            <Animated.Text style={cssSkeleton.nome}/>
-          </View>
-          <View style={css.habilidadesContent}>
-            <Animated.Text style={cssSkeleton.habilidades}/>
-          </View>
-        </View>
-      </View>
-    )
-
-  };
-
-  static mostrarSemCards = () => {
+  private mostrarSemCards = () => {
 
     let css = PokedexCSS.MOSTRAR_MENSAGEM;
 
@@ -99,5 +47,74 @@ export class PokedexCard{
     );
 
   };
+
+  private gerarCard = (pokemon: PokedexModel.ViewModel) => {
+
+    let css = PokedexCSS.PokedexCard;
+
+    let imagem: ImageSourcePropType = {
+      uri: pokemon.foto,
+      width: 200,
+      height: 200,
+    };
+
+    return (
+      <View style={css.card}>
+        <View style={css.imagem}>
+          <Image source={imagem} />
+        </View>
+        <View style={css.cardContent}>
+          <View>
+            <Text style={css.numero}>N˚ {pokemon.numero}</Text>
+          </View>
+          <View style={css.nomeContent}>
+            <Text style={css.nome}>{pokemon.nome}</Text>
+          </View>
+          <View style={css.habilidadesContent}>
+            { this.pegarTipos(pokemon) }
+          </View>
+        </View>
+      </View>
+    );
+
+  };
+
+
+  private gerarCardSkeleton = () => {
+
+    let css = PokedexCSS.PokedexCard;
+    let cssSkeleton = PokedexCSS.PokedexCardSkeleton;
+
+    return (
+      <View style={css.card}>
+        <View style={css.imagem}>
+          <Animated.View style={cssSkeleton.imagem} />
+        </View>
+        <View style={css.cardContent}>
+          <View>
+            <Animated.Text style={cssSkeleton.numero}/>
+          </View>
+          <View style={css.nomeContent}>
+            <Animated.Text style={cssSkeleton.nome}/>
+          </View>
+          <View style={css.habilidadesContent}>
+            <Animated.Text style={cssSkeleton.habilidades}/>
+          </View>
+        </View>
+      </View>
+    )
+
+  };
+
+
+
+  render() {
+
+    let props = this.props;
+
+    return props.pokemon ? this.gerarCard(props.pokemon) : props.skeleton ? this.gerarCardSkeleton() : this.mostrarSemCards();
+
+  }
+
 
 }

@@ -18,8 +18,8 @@ export class PokedexList extends Component<Props>{
       <FlatList
         data={this.props.pokemons}
         keyExtractor={item => item.numero}
-        renderItem={PokedexCard.gerarCard}
-        ListEmptyComponent={PokedexCard.mostrarSemCards()}
+        renderItem={iterator  => <PokedexCard pokemon={iterator.item} />}
+        ListEmptyComponent={<PokedexCard/>}
       />
     )
 
@@ -29,8 +29,8 @@ export class PokedexList extends Component<Props>{
 
     let cards: Element[] = [];
 
-    for(let i = 0; i < 5; i++)
-      cards.push(PokedexCard.gerarCardSkeleton(i));
+    for(let i = 0; i <= 5; i++)
+        cards.push(<PokedexCard key={i} skeleton={true}/>);
 
     return (
       <ScrollView scrollEnabled={false}>
