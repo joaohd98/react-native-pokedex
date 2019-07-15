@@ -7,8 +7,9 @@ import { connect } from 'react-redux';
 import {bindActionCreators} from "redux";
 import {PokedexAction} from "./redux/pokedexAction";
 import {PokedexHeader} from "./components/header/header";
+import {PokedexCard} from "./components/card/pokedex-card";
+import {PokedexCSS} from "./pokedex-css";
 import {PokedexList} from "./components/list/pokedex-list";
-import {PokedexListCss} from "./components/list/pokedex-list-css";
 
 interface Props extends PokedexProps{
   carregarPokemons: () => {}
@@ -26,7 +27,7 @@ class PokedexPage extends Component<Props> {
 
   mostrarErro() {
 
-    let css = PokedexListCss.MOSTRAR_MENSAGEM;
+    let css = PokedexCSS.MOSTRAR_MENSAGEM;
 
     return (
       <View style={css.view}>
@@ -43,7 +44,7 @@ class PokedexPage extends Component<Props> {
     return (
       <View>
         <PokedexInput />
-        <PokedexList carregando={props.carregando} pokemons={props.pokemons}/>
+        <PokedexList pokemons={props.pokemons} carregando={props.carregando} />
       </View>
     )
 
@@ -74,4 +75,3 @@ const mapDispatchToProps = dispatch => (
 );
 
 export const Pokedex = connect(mapStateToProps, mapDispatchToProps)(PokedexPage);
-
