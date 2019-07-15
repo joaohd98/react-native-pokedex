@@ -20,7 +20,7 @@ class PokedexPage extends Component<Props> {
 
   componentDidMount() {
 
-    //this.props.carregarPokemons()
+    this.props.carregarPokemons()
 
   }
 
