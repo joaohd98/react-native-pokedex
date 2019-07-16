@@ -41,6 +41,9 @@ export class PokedexCSS {
   });
 
   static PokedexCard = StyleSheet.create({
+    view: {
+      marginBottom: 100
+    },
     card: {
       flex: 1,
       margin: 20

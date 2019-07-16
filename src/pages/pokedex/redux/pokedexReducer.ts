@@ -2,13 +2,15 @@ import {PokedexModel} from "../service/PokedexModel";
 import {PokedexConst} from "./pokedexAction";
 
 export interface PokedexProps {
-  pokemons: PokedexModel.ViewModel[]
+  pokemons: PokedexModel.ViewModel[],
+  limite: number
   carregando: boolean,
   erro: boolean
 }
 
 const INITIAL_STATE: PokedexProps = {
   pokemons: [],
+  limite: 10,
   carregando: true,
   erro: false
 };
@@ -31,6 +33,13 @@ const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payl
         erro: true,
         carregando: false
       };
+
+    case PokedexConst.ADICIONAR_LIMITE: {
+      return {
+        ...state,
+        limite: state.limite + 10,
+      }
+    }
 
     default:
       return state

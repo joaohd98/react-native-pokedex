@@ -4,21 +4,21 @@ export class PokedexInteractor {
 
   static pegarPokemons(fetch: PokedexModel.Response) {
 
-    if(!fetch.retorno)
+    if (!fetch.retorno)
       return;
 
     let pokemons: PokedexModel.ViewModel[] = [];
     let tamanho = fetch.retorno.length;
 
-    for(let i = 0; i < tamanho; i++) {
+    for (let i = 0; i < tamanho; i++) {
 
       let pokemon = fetch.retorno[i];
 
-      if(i > 0) {
+      if (i > 0) {
 
         let pokemonAnterior = fetch.retorno[i - 1];
 
-        if(pokemonAnterior.id == pokemon.id)
+        if (pokemonAnterior.id == pokemon.id)
           continue;
 
       }
@@ -43,5 +43,17 @@ export class PokedexInteractor {
     return pokemons;
 
   }
+
+  static scrollPokemons(pokemons: PokedexModel.ViewModel[], limite: number) {
+
+    let pokemonScroll: PokedexModel.ViewModel[] = [];
+
+    for(let i = 0; i < limite; i++)
+      pokemonScroll.push(pokemons[i]);
+
+    return pokemonScroll
+
+  }
+
 
 }

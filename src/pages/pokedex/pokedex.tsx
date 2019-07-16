@@ -9,10 +9,10 @@ import {PokedexAction} from "./redux/pokedexAction";
 import {PokedexHeader} from "./components/header/header";
 import {PokedexCSS} from "./pokedex-css";
 import {PokedexList} from "./components/list/pokedex-list";
-import ShimmerPlaceHolder from "react-native-shimmer-placeholder";
 
 interface Props extends PokedexProps{
-  carregarPokemons: () => {}
+  carregarPokemons: () => {},
+  adicionarLimite: () => {}
 }
 
 class PokedexPage extends Component<Props> {
@@ -44,7 +44,7 @@ class PokedexPage extends Component<Props> {
     return (
       <View>
         <PokedexInput />
-        <PokedexList pokemons={props.pokemons} carregando={props.carregando} />
+        <PokedexList pokemons={props.pokemons} adicionarLimite={props.adicionarLimite} limite={props.limite} carregando={props.carregando} />
       </View>
     )
 
@@ -70,7 +70,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    carregarPokemons: PokedexAction.carregarPokemons
+    carregarPokemons: PokedexAction.carregarPokemons,
+    adicionarLimite: PokedexAction.adicionarLimite,
   }, dispatch)
 );
 

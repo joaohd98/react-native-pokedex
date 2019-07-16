@@ -6,6 +6,8 @@ export enum PokedexConst {
   CARREGADO_POKEMONS,
   ERRO_CARREGAR_POKEMONS,
 
+  ADICIONAR_LIMITE
+
 }
 
 export class PokedexAction {
@@ -28,6 +30,16 @@ export class PokedexAction {
         })
 
       });
+
+    }
+
+  };
+
+  static adicionarLimite = () => {
+
+    return dispatch => {
+
+      dispatch({type: PokedexConst.ADICIONAR_LIMITE})
 
     }
 
