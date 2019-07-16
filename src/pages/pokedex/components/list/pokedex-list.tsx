@@ -2,9 +2,10 @@ import React, {Component} from "react";
 import {PokedexModel} from "../../service/PokedexModel";
 import {PokedexCard} from "../card/pokedex-card";
 import {PokedexCSS} from "../../pokedex-css";
-import {ActivityIndicator, FlatList, ScrollView, StyleSheet, Text, View} from "react-native";
+import {Animated, Easing, FlatList, ScrollView, StyleSheet, Text, View} from "react-native";
 import {PokedexInteractor} from "../../service/PokedexInteractor";
 import {Colors} from "../../../../helpers/colors/colors";
+import {images} from "../../../../assets";
 
 interface Props {
   pokemons: PokedexModel.ViewModel[],
@@ -16,6 +17,13 @@ interface Props {
 export class PokedexList extends Component<Props>{
 
   private carrregarPokemons = false;
+  private RotateValueHolder = new Animated.Value(0);
+
+  componentDidMount = () => {
+
+    this.StartImageRotateFunction();
+
+  };
 
   renderListSkeleton = () => {
 
@@ -53,6 +61,18 @@ export class PokedexList extends Component<Props>{
 
   };
 
+  StartImageRotateFunction = () => {
+
+    this.RotateValueHolder.setValue(0);
+
+    Animated.timing(this.RotateValueHolder, {
+      toValue: 1,
+      duration: 250,
+      easing: Easing.linear,
+    }).start(this.StartImageRotateFunction);
+
+  };
+
   infiniteScroll = () => {
 
     let css = StyleSheet.create({
@@ -67,12 +87,22 @@ export class PokedexList extends Component<Props>{
         lineHeight: 50,
         letterSpacing: 0.25,
         color: Colors.gray
+      },
+      image: {
+        width: 40,
+        height: 40,
+
       }
+    });
+
+    const rotate = this.RotateValueHolder.interpolate({
+      inputRange: [0, 1],
+      outputRange: ['0deg', '360deg'],
     });
 
     return (
       <View style={css.view}>
-        <ActivityIndicator size={"large"} />
+        <Animated.Image source={images.pokeball} style={{...css.image, transform: [{rotate}]}} />
         <Text style={css.text}>Carregando Pokémons...</Text>
       </View>
     )
@@ -84,7 +114,7 @@ export class PokedexList extends Component<Props>{
     if(!this.carrregarPokemons)
       return;
 
-    setTimeout(() => {this.carrregarPokemons = false; this.props.adicionarLimite(); }, 300);
+    setTimeout(() => {this.carrregarPokemons = false; this.props.adicionarLimite(); }, 500);
 
   };
 
