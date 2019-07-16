@@ -75,19 +75,27 @@ export class PokedexCSS {
     },
     habilidadesContent: {
       flexDirection: "row",
-      marginTop: 10
+      marginTop: 10,
     },
-    habilidade: {
+    habilidadeLabel: {
       width: 110,
-      borderRadius: 3,
-      fontSize: 11,
-      lineHeight: 18,
-      letterSpacing: 1.5,
       marginRight: 10,
-      backgroundColor: 'yellow',
+      borderRadius: 3,
+      borderTopColor: "red",
+      borderTopWidth: 8,
+      borderBottomColor: "green",
+      borderBottomWidth: 8,
+    },
+    habilidadeText: {
+      fontSize: 12,
+      lineHeight: 20,
+      letterSpacing: 2,
+      marginTop: -10,
+      marginBottom: -10,
       textAlign: "center",
+      textTransform: "capitalize",
+      color: "blue"
     }
-
   });
 
   static PokedexCardSkeleton = StyleSheet.create({

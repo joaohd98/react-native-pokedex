@@ -4,6 +4,7 @@ import {Icones} from "../../../../helpers/icones/icones";
 import {PokedexCSS} from "../../pokedex-css";
 import {PokedexModel} from "../../service/PokedexModel";
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
+import {PokedexInteractor} from "../../service/PokedexInteractor";
 
 interface Props {
   pokemon?: PokedexModel.ViewModel,
@@ -17,8 +18,17 @@ export class PokedexCard extends Component<Props>{
     let css = PokedexCSS.PokedexCard;
     let elementos: Element[] = [];
 
-    for(let tipo of pokemon.tipos)
-      elementos.push(<Text key={tipo} style={css.habilidade}>{tipo}</Text>);
+    for(let tipo of pokemon.tipos) {
+
+      let { borderTopColor, borderBottomColor, color } =  PokedexInteractor.pegarCorFundoHabilidade(tipo);
+
+      elementos.push(
+        <View key={tipo} style={{ ...css.habilidadeLabel, borderTopColor, borderBottomColor }}>
+          <Text style={{...css.habilidadeText, color}}>{tipo}</Text>
+        </View>
+      );
+
+    }
 
     return elementos
 
