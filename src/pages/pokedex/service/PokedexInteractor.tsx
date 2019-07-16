@@ -27,20 +27,6 @@ export class PokedexInteractor {
       steel: {borderTopColor: "#9eb7b8", borderBottomColor: "#9eb7b8", color: preto},
     };
 
-    let mapeado = false;
-
-    for (let teste in cores) {
-
-      if (teste == tipo) {
-        mapeado = true;
-        break;
-      }
-
-    }
-
-    if (!mapeado)
-      console.log("Não mapeado", tipo);
-
     return cores[tipo];
 
   };
