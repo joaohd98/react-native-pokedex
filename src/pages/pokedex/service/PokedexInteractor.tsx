@@ -7,13 +7,13 @@ export class PokedexInteractor {
     let [preto, branco] = ['#212121', '#fff'];
 
     let cores = {
-      grass: {borderTopColor: "#9bcc50", borderBottomColor: "#9bcc50", color: preto},
+      grass: {borderTopColor: "#9bcc50", borderBottomColor: "#9bcc50", color: branco},
       poison: {borderTopColor: "#b97fc9", borderBottomColor: "#b97fc9", color: branco},
       fire: {borderTopColor: "#fd7d24", borderBottomColor: "#fd7d24", color: branco},
       flying: {borderTopColor: "#3dc7ef", borderBottomColor: "#bdb9b8", color: preto},
       water: {borderTopColor: "#4592c4", borderBottomColor: "#4592c4", color: branco},
       bug: {borderTopColor: "#729f3f", borderBottomColor: "#729f3f", color: branco},
-      normal: {borderTopColor: "#a4acaf", borderBottomColor: "#a4acaf", color: preto},
+      normal: {borderTopColor: "#a4acaf", borderBottomColor: "#a4acaf", color: branco},
       electric: {borderTopColor: "#eed535", borderBottomColor: "#eed535", color: preto},
       ground: {borderTopColor: "#f7de3f", borderBottomColor: "#ab9842", color: preto},
       fairy: {borderTopColor: "#fdb9e9", borderBottomColor: "#fdb9e9", color: preto},

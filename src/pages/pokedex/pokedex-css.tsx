@@ -1,5 +1,6 @@
 import {StyleSheet} from "react-native";
 import {Colors} from "../../helpers/colors/colors";
+import {Helpers} from "../../helpers/helpers";
 
 export class PokedexCSS {
 
@@ -42,7 +43,7 @@ export class PokedexCSS {
 
   static PokedexCard = StyleSheet.create({
     view: {
-      marginBottom: 100
+      paddingTop: 40,
     },
     card: {
       flex: 1,
@@ -122,6 +123,56 @@ export class PokedexCSS {
     }
   });
 
+  static InputAutoComplete = StyleSheet.create({
+    view: {
+      width: Helpers.pegarPorcentagem(100),
+      position: 'absolute',
+      zIndex: 999,
+      elevation: 999,
+    },
+    autoCompleteView: {
+      width: Helpers.pegarPorcentagem(100) - Helpers.pegarPorcentagem(6) * 2,
+      marginHorizontal:  Helpers.pegarPorcentagem(6),
+      marginVertical: 10,
+      backgroundColor: "white",
+    },
+    inputView: {
+      flex: 1,
+      flexDirection: "row",
+    },
+    icon: {
+      top: 7,
+      left: 6,
+      color: Colors.gray,
+      position: "absolute"
+    },
+    textInput: {
+      flex: 1,
+      borderWidth: 1,
+      padding: 5,
+      paddingLeft: 25,
+      height: 30,
+      fontSize: 16,
+      color: Colors.gray,
+      borderColor: Colors.gray,
+    },
+    list: {
+      borderColor: Colors.gray,
+      borderWidth: 1,
+      borderTopWidth: 0,
+    },
+    column: {
+      paddingLeft: 25,
+      paddingVertical: 10,
+      backgroundColor: "white"
+    },
+    columnText: {
+      fontSize: 14,
+      color: Colors.black,
+      fontWeight: "600"
+    }
+  });
 
 }
+
 

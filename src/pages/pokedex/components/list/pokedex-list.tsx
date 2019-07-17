@@ -6,6 +6,7 @@ import {Animated, Easing, FlatList, ScrollView, StyleSheet, Text, View} from "re
 import {PokedexInteractor} from "../../service/PokedexInteractor";
 import {Colors} from "../../../../helpers/colors/colors";
 import {images} from "../../../../assets";
+import {PokedexInput} from "../input/pokedex-input";
 
 interface Props {
   pokemons: PokedexModel.ViewModel[],
@@ -84,6 +85,7 @@ export class PokedexList extends Component<Props>{
     let css = StyleSheet.create({
       view: {
         flex: 1,
+        paddingBottom: 55,
         justifyContent: 'center',
         alignItems: 'center',
       },
@@ -97,7 +99,6 @@ export class PokedexList extends Component<Props>{
       image: {
         width: 40,
         height: 40,
-
       }
     });
 
