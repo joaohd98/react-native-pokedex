@@ -18,6 +18,8 @@ export class PokedexService {
 
     } catch (error) {
 
+      console.log(error);
+
       let erro: ApiRetornos = (error.toString() === "TypeError: Network request failed") ? ApiRetornos.semInternet : ApiRetornos.erroInterno;
 
       let request: PokedexModel.Response = {

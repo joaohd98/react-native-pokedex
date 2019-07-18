@@ -8,4 +8,12 @@ export class Helpers {
 
   }
 
+  static removerDuplicados(array: any[]){
+
+    let set = new Set(array);
+
+    return Array.from(set);
+
+  }
+
 }

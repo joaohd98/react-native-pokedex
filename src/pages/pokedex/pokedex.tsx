@@ -10,12 +10,7 @@ import {PokedexHeader} from "./components/header/header";
 import {PokedexCSS} from "./pokedex-css";
 import {PokedexList} from "./components/list/pokedex-list";
 
-interface Props extends PokedexProps{
-  carregarPokemons: () => {},
-  adicionarLimite: () => {}
-}
-
-class PokedexPage extends Component<Props> {
+class PokedexPage extends Component<PokedexProps> {
 
   static navigationOptions = PokedexHeader.Header;
 
@@ -53,6 +48,8 @@ class PokedexPage extends Component<Props> {
   render() {
 
     let props = this.props;
+
+    console.log(props);
 
     return (
       <View>

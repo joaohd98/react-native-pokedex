@@ -6,13 +6,12 @@ import {Animated, Easing, FlatList, ScrollView, StyleSheet, Text, View} from "re
 import {PokedexInteractor} from "../../service/PokedexInteractor";
 import {Colors} from "../../../../helpers/colors/colors";
 import {images} from "../../../../assets";
-import {PokedexInput} from "../input/pokedex-input";
 
 interface Props {
   pokemons: PokedexModel.ViewModel[],
   carregando: boolean,
   limite: number,
-  adicionarLimite: () => {}
+  adicionarLimite: () => void
 }
 
 export class PokedexList extends Component<Props>{

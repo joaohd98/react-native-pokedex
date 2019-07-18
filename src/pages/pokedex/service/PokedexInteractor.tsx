@@ -1,35 +1,28 @@
 import {PokedexModel} from "./PokedexModel";
+import {Helpers} from "../../../helpers/helpers";
 
 export class PokedexInteractor {
 
-  static pegarCorFundoHabilidade(tipo: string): { borderTopColor: string, borderBottomColor: string, color: string } {
+  private static pegarFiltroPokemon(filtro, pokemon: PokedexModel.ViewModel) {
 
-    let [preto, branco] = ['#212121', '#fff'];
+    filtro.nomes.push(pokemon.nome);
 
-    let cores = {
-      grass: {borderTopColor: "#9bcc50", borderBottomColor: "#9bcc50", color: branco},
-      poison: {borderTopColor: "#b97fc9", borderBottomColor: "#b97fc9", color: branco},
-      fire: {borderTopColor: "#fd7d24", borderBottomColor: "#fd7d24", color: branco},
-      flying: {borderTopColor: "#3dc7ef", borderBottomColor: "#bdb9b8", color: preto},
-      water: {borderTopColor: "#4592c4", borderBottomColor: "#4592c4", color: branco},
-      bug: {borderTopColor: "#729f3f", borderBottomColor: "#729f3f", color: branco},
-      normal: {borderTopColor: "#a4acaf", borderBottomColor: "#a4acaf", color: branco},
-      electric: {borderTopColor: "#eed535", borderBottomColor: "#eed535", color: preto},
-      ground: {borderTopColor: "#f7de3f", borderBottomColor: "#ab9842", color: preto},
-      fairy: {borderTopColor: "#fdb9e9", borderBottomColor: "#fdb9e9", color: preto},
-      fighting: {borderTopColor: "#d56723", borderBottomColor: "#d56723", color: branco},
-      psychic: {borderTopColor: "#f366b9", borderBottomColor: "#f366b9", color: branco},
-      rock: {borderTopColor: "#a38c21", borderBottomColor: "#a38c21", color: branco},
-      ice: {borderTopColor: "#51c4e7", borderBottomColor: "#51c4e7", color: preto},
-      ghost: {borderTopColor: "#7b62a3", borderBottomColor: "#7b62a3", color: branco},
-      dragon: {borderTopColor: "#53a4cf", borderBottomColor: "#f16e57", color: branco},
-      dark: {borderTopColor: "#707070", borderBottomColor: "#707070", color: branco},
-      steel: {borderTopColor: "#9eb7b8", borderBottomColor: "#9eb7b8", color: preto},
-    };
+    for(let tipo of pokemon.tipos)
+      filtro.tipos.push(tipo);
 
-    return cores[tipo];
+    for(let habilidade of pokemon.habilidades)
+      filtro.habilidades.push(habilidade);
 
-  };
+    let minimo = filtro.numeros.minimo;
+    filtro.numeros.minimo = minimo === -1 || minimo > parseInt(pokemon.numero) ? parseInt(pokemon.numero) : minimo;
+
+    let maximo = filtro.numeros.maximo;
+    filtro.numeros.maximo = maximo === -1 || maximo < parseInt(pokemon.numero) ? parseInt(pokemon.numero) : maximo;
+
+    filtro.tipos = Helpers.removerDuplicados(filtro.tipos);
+    filtro.habilidades = Helpers.removerDuplicados(filtro.habilidades);
+
+  }
 
   static pegarPokemons(fetch: PokedexModel.Response) {
 
@@ -37,6 +30,14 @@ export class PokedexInteractor {
       return;
 
     let pokemons: PokedexModel.ViewModel[] = [];
+
+    let filtro = {
+      nomes: [],
+      tipos: [],
+      habilidades: [],
+      numeros: {minimo: -1, maximo: -1},
+    };
+
     let tamanho = fetch.retorno.length;
 
     for (let i = 0; i < tamanho; i++) {
@@ -67,11 +68,42 @@ export class PokedexInteractor {
 
       pokemons.push(view);
 
+      PokedexInteractor.pegarFiltroPokemon(filtro, view);
+
     }
 
-    return pokemons;
+    return { pokemons: pokemons, filtro: filtro };
 
   }
+
+  static pegarCorFundoHabilidade(tipo: string): { borderTopColor: string, borderBottomColor: string, color: string } {
+
+    let [preto, branco] = ['#212121', '#fff'];
+
+    let cores = {
+      grass: {borderTopColor: "#9bcc50", borderBottomColor: "#9bcc50", color: branco},
+      poison: {borderTopColor: "#b97fc9", borderBottomColor: "#b97fc9", color: branco},
+      fire: {borderTopColor: "#fd7d24", borderBottomColor: "#fd7d24", color: branco},
+      flying: {borderTopColor: "#3dc7ef", borderBottomColor: "#bdb9b8", color: preto},
+      water: {borderTopColor: "#4592c4", borderBottomColor: "#4592c4", color: branco},
+      bug: {borderTopColor: "#729f3f", borderBottomColor: "#729f3f", color: branco},
+      normal: {borderTopColor: "#a4acaf", borderBottomColor: "#a4acaf", color: branco},
+      electric: {borderTopColor: "#eed535", borderBottomColor: "#eed535", color: preto},
+      ground: {borderTopColor: "#f7de3f", borderBottomColor: "#ab9842", color: preto},
+      fairy: {borderTopColor: "#fdb9e9", borderBottomColor: "#fdb9e9", color: preto},
+      fighting: {borderTopColor: "#d56723", borderBottomColor: "#d56723", color: branco},
+      psychic: {borderTopColor: "#f366b9", borderBottomColor: "#f366b9", color: branco},
+      rock: {borderTopColor: "#a38c21", borderBottomColor: "#a38c21", color: branco},
+      ice: {borderTopColor: "#51c4e7", borderBottomColor: "#51c4e7", color: preto},
+      ghost: {borderTopColor: "#7b62a3", borderBottomColor: "#7b62a3", color: branco},
+      dragon: {borderTopColor: "#53a4cf", borderBottomColor: "#f16e57", color: branco},
+      dark: {borderTopColor: "#707070", borderBottomColor: "#707070", color: branco},
+      steel: {borderTopColor: "#9eb7b8", borderBottomColor: "#9eb7b8", color: preto},
+    };
+
+    return cores[tipo];
+
+  };
 
   static scrollPokemons(pokemons: PokedexModel.ViewModel[], limite: number) {
 
