@@ -37,4 +37,9 @@ export class Helpers {
 
   }
 
+  static compararStrings(t1: string, t2: string) {
+
+    return Helpers.removerAcentosMinusculo(t1).includes(Helpers.removerAcentosMinusculo(t2))
+  }
+
 }

@@ -85,7 +85,7 @@ export class PokedexInteractor {
 
     for(let pokemon of pokemons) {
 
-      if(!Helpers.removerAcentosMinusculo(pokemon.nome).includes(Helpers.removerAcentosMinusculo(filtro.valores.nome)))
+      if(!Helpers.compararStrings(pokemon.nome, filtro.valores.nome))
         pokemon.visivel = false;
 
       else
@@ -96,7 +96,24 @@ export class PokedexInteractor {
 
   }
 
-  static autoCompletePokemons(pokemons: PokedexModel.ViewModel[], texto: string) {
+  static autoCompletePokemons(pokemonsNomes: string[], texto: string) {
+
+    let autoComplete: string[] = [];
+
+    if(texto.length == 0 || !isNaN(parseInt(texto.charAt(0))))
+      return [];
+
+    for(let nome of pokemonsNomes) {
+
+      if(Helpers.compararStrings(nome, texto))
+        autoComplete.push(nome);
+
+      if(autoComplete.length == 3)
+        break;
+
+    }
+
+    return autoComplete;
 
   }
 
@@ -132,8 +149,9 @@ export class PokedexInteractor {
   static scrollPokemons(pokemons: PokedexModel.ViewModel[], limite: number) {
 
     let pokemonScroll: PokedexModel.ViewModel[] = [];
+    let tamanho = pokemons.length;
 
-    for (let i = 0; i < limite; i++)
+    for (let i = 0; i < limite && i < tamanho; i++)
       pokemonScroll.push(pokemons[i]);
 
     return pokemonScroll

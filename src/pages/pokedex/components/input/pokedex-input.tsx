@@ -5,6 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {PokedexCSS} from "../../pokedex-css";
 import {PokedexProps} from "../../service/PokedexProps";
 import {PokedexModel} from "../../service/PokedexModel";
+import {PokedexInteractor} from "../../service/PokedexInteractor";
 
 interface States {
   color: string,
@@ -37,8 +38,9 @@ export class PokedexInput extends Component<PokedexProps.Props, States>{
 
       this.mostrarAutoComplete(false);
 
-      console.log(pokemon);
+      this.props.pesquisa.valores.nome = pokemon;
 
+      this.filtrarPokemons();
 
     }, 50);
 
@@ -46,15 +48,19 @@ export class PokedexInput extends Component<PokedexProps.Props, States>{
 
   mudarTextoInput = (texto: string) => {
 
-    let filtro = this.props.pesquisa;
+    this.props.pesquisa.valores.nome = texto;
 
-    filtro.valores.nome = texto;
+    this.filtrarPokemons();
 
-    this.props.filtrarPokemons(this.props.pokemons, filtro);
+  };
+
+  filtrarPokemons = () => {
+
+    this.props.filtrarPokemons(this.props.pokemons, this.props.pesquisa);
 
     if(this.props.flatList.current)
       this.props.flatList.current.scrollToOffset({animated: false, offset: 0});
-    
+
   };
 
   renderInput = () => {
@@ -62,9 +68,10 @@ export class PokedexInput extends Component<PokedexProps.Props, States>{
     return (
       <View style={this.css.inputView}>
         <Icon name="search" size={15} style={this.css.icon}/>
-        <TextInput autoCorrect={false} placeholder={"Nome ou número"} value={this.props.pesquisa.valores.nome} onChangeText={text => this.mudarTextoInput(text)}
+        <TextInput autoCorrect={false} placeholder={"Nome ou número"} value={this.props.pesquisa.valores.nome}
+                   onChangeText={text => this.mudarTextoInput(text)} style={this.css.textInput}
                    onFocus={() => this.mostrarAutoComplete(true)} onBlur={() => this.mostrarAutoComplete(false)}
-                   style={this.css.textInput}/>
+                   />
       </View>
     );
 
@@ -72,17 +79,18 @@ export class PokedexInput extends Component<PokedexProps.Props, States>{
 
   renderAutoComplete = () => {
 
-    let pokemons = ['Pokemon1', 'Pokemon2', 'Pokemon3', 'Pokemon4'];
+    let pokemonsNomes = PokedexInteractor.autoCompletePokemons(this.props.pesquisa.filtro.nomes, this.props.pesquisa.valores.nome);
+
     let itens: Element[] = [];
 
-    for(let index in pokemons) {
+    for(let index in pokemonsNomes) {
 
-      let pokemon = pokemons[index];
+      let nome = pokemonsNomes[index];
 
       itens.push(
-        <TouchableHighlight key={index} onPress={() => this.selecionarPokemonAutoComplete(pokemon)}  underlayColor={Colors.blue}>
+        <TouchableHighlight key={index} onPress={() => this.selecionarPokemonAutoComplete(nome)}  underlayColor={Colors.blue}>
           <View style={this.css.column} >
-            <Text style={this.css.columnText}>{ pokemon }</Text>
+            <Text style={this.css.columnText}>{ nome }</Text>
           </View>
         </TouchableHighlight>
       )
