@@ -1,40 +1,7 @@
-import {PokedexModel} from "../service/PokedexModel";
 import {PokedexConst} from "./pokedexAction";
-import {act} from "react-test-renderer";
+import {PokedexProps} from "../service/PokedexProps";
 
-interface PokedexPropsPesquisa {
-
-  filtro: {
-    nomes: string[],
-    habilidades: string[],
-    tipos: string[],
-    numeros: { minimo: number, maximo: number }
-  },
-  valores: {
-    nome: string,
-    habilidadesEscolhida: string[],
-    tiposEscolhidos: string[],
-    fraquezasEscolhidas: string[],
-    alturas: string[],
-    pesos: string[],
-    numeros: { minimo: number, maximo: number }
-  }
-
-}
-
-export interface PokedexProps {
-
-  pokemons: PokedexModel.ViewModel[]
-  limite: number,
-  pesquisa: PokedexPropsPesquisa
-  carregando: boolean,
-  erro: boolean,
-  carregarPokemons: () => void,
-  adicionarLimite: () => void,
-
-}
-
-const INITIAL_STATE: PokedexProps = {
+const INITIAL_STATE: PokedexProps.Props = {
   pokemons: [],
   pesquisa: {
     filtro: {

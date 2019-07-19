@@ -2,15 +2,15 @@ import React from "react";
 import {Component} from "react";
 import {Text, View} from "react-native";
 import {PokedexInput} from "./components/input/pokedex-input";
-import {PokedexProps} from "./redux/pokedexReducer";
 import { connect } from 'react-redux';
 import {bindActionCreators} from "redux";
 import {PokedexAction} from "./redux/pokedexAction";
 import {PokedexHeader} from "./components/header/header";
 import {PokedexCSS} from "./pokedex-css";
 import {PokedexList} from "./components/list/pokedex-list";
+import {PokedexProps} from "./service/PokedexProps";
 
-class PokedexPage extends Component<PokedexProps> {
+class PokedexPage extends Component<PokedexProps.Props> {
 
   static navigationOptions = PokedexHeader.Header;
 

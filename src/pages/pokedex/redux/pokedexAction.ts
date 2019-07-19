@@ -1,12 +1,15 @@
 import {PokedexService} from "../../../services/pokedex/PokedexService";
 import {PokedexInteractor} from "../service/PokedexInteractor";
+import {PokedexModel} from "../service/PokedexModel";
 
 export enum PokedexConst {
 
   CARREGADO_POKEMONS,
   ERRO_CARREGAR_POKEMONS,
 
-  ADICIONAR_LIMITE
+  ADICIONAR_LIMITE,
+
+  FILTRAR_POKEMON,
 
 }
 
@@ -37,12 +40,22 @@ export class PokedexAction {
 
   static adicionarLimite = () => {
 
-    return dispatch => {
+    return dispatch => dispatch({type: PokedexConst.ADICIONAR_LIMITE})
 
-      dispatch({type: PokedexConst.ADICIONAR_LIMITE})
+  };
 
-    }
+  static filtrarPokemon = (pokemons: PokedexModel.ViewModel, filtro: object) => {
 
-  }
+    return dispatch => dispatch({
+      type: PokedexConst.ADICIONAR_LIMITE,
+      payload: {
+        pokemons: pokemons,
+        pesquisa: filtro,
+      }
+    })
+
+  };
+
+
 
 }

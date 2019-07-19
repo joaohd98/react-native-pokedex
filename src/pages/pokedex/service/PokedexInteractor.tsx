@@ -1,5 +1,6 @@
 import {PokedexModel} from "./PokedexModel";
 import {Helpers} from "../../../helpers/helpers";
+import {PokedexProps} from "../redux/pokedexReducer";
 
 export class PokedexInteractor {
 
@@ -73,6 +74,14 @@ export class PokedexInteractor {
     }
 
     return { pokemons: pokemons, filtro: filtro };
+
+  }
+
+  static filtrarPokemons(pokemons: PokedexModel.ViewModel[], filtro: PokedexProps.Filtro) {
+
+  }
+
+  static autoCompletePokemons(pokemons: PokedexModel.ViewModel[], texto: string) {
 
   }
 
