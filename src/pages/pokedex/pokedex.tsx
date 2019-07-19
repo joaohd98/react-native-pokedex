@@ -38,8 +38,8 @@ class PokedexPage extends Component<PokedexProps.Props> {
 
     return (
       <View>
-        { !props.carregando ? <PokedexInput /> : <View/> }
-        <PokedexList pokemons={props.pokemons} adicionarLimite={props.adicionarLimite} limite={props.limite} carregando={props.carregando} />
+        { !props.carregando ? <PokedexInput {...props}/> : <View/> }
+        <PokedexList {...props} />
       </View>
     )
 
@@ -48,8 +48,6 @@ class PokedexPage extends Component<PokedexProps.Props> {
   render() {
 
     let props = this.props;
-
-    console.log(props);
 
     return (
       <View>
@@ -69,6 +67,7 @@ const mapDispatchToProps = dispatch => (
   bindActionCreators({
     carregarPokemons: PokedexAction.carregarPokemons,
     adicionarLimite: PokedexAction.adicionarLimite,
+    filtrarPokemons: (pokemons, filtro) => PokedexAction.filtrarPokemons(pokemons, filtro),
   }, dispatch)
 );
 

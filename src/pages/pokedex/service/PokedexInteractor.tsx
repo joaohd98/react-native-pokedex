@@ -1,6 +1,6 @@
 import {PokedexModel} from "./PokedexModel";
 import {Helpers} from "../../../helpers/helpers";
-import {PokedexProps} from "../redux/pokedexReducer";
+import {PokedexProps} from "./PokedexProps";
 
 export class PokedexInteractor {
 
@@ -78,6 +78,21 @@ export class PokedexInteractor {
   }
 
   static filtrarPokemons(pokemons: PokedexModel.ViewModel[], filtro: PokedexProps.Filtro) {
+
+    /*
+     * Nome
+     */
+
+    for(let pokemon of pokemons) {
+
+      if(!Helpers.removerAcentosMinusculo(pokemon.nome).includes(Helpers.removerAcentosMinusculo(filtro.valores.nome)))
+        pokemon.visivel = false;
+
+      else
+        pokemon.visivel = true;
+    }
+
+    return pokemons;
 
   }
 

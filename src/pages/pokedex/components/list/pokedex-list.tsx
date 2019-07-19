@@ -1,20 +1,13 @@
 import React, {Component} from "react";
-import {PokedexModel} from "../../service/PokedexModel";
 import {PokedexCard} from "../card/pokedex-card";
 import {PokedexCSS} from "../../pokedex-css";
-import {Animated, Easing, FlatList, ScrollView, StyleSheet, Text, View} from "react-native";
 import {PokedexInteractor} from "../../service/PokedexInteractor";
 import {Colors} from "../../../../helpers/colors/colors";
 import {images} from "../../../../assets";
+import {PokedexProps} from "../../service/PokedexProps";
+import {Animated, Easing, FlatList, ScrollView, StyleSheet, View, Text} from "react-native";
 
-interface Props {
-  pokemons: PokedexModel.ViewModel[],
-  carregando: boolean,
-  limite: number,
-  adicionarLimite: () => void
-}
-
-export class PokedexList extends Component<Props>{
+export class PokedexList extends Component<PokedexProps.Props>{
 
   private carrregarPokemons = false;
   private RotateValueHolder = new Animated.Value(0);
@@ -48,11 +41,14 @@ export class PokedexList extends Component<Props>{
    */
   renderList = () => {
 
-    let tamanho = this.props.pokemons.length;
-    let pokemons = PokedexInteractor.scrollPokemons(this.props.pokemons, this.props.limite);
+    let pokemonsFiltrados = this.props.pokemons.filter(pokemon => pokemon.visivel);
+
+    let tamanho = pokemonsFiltrados.length;
+    let pokemons = PokedexInteractor.scrollPokemons(pokemonsFiltrados, this.props.limite);
 
     return (
       <FlatList
+        ref={this.props.flatList}
         data={pokemons}
         style={PokedexCSS.PokedexCard.view}
         keyExtractor={item => item.numero}

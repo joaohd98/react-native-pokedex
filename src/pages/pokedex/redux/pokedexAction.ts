@@ -1,6 +1,7 @@
 import {PokedexService} from "../../../services/pokedex/PokedexService";
 import {PokedexInteractor} from "../service/PokedexInteractor";
 import {PokedexModel} from "../service/PokedexModel";
+import {PokedexProps} from "../service/PokedexProps";
 
 export enum PokedexConst {
 
@@ -8,6 +9,7 @@ export enum PokedexConst {
   ERRO_CARREGAR_POKEMONS,
 
   ADICIONAR_LIMITE,
+  CARREGANDO,
 
   FILTRAR_POKEMON,
 
@@ -44,15 +46,19 @@ export class PokedexAction {
 
   };
 
-  static filtrarPokemon = (pokemons: PokedexModel.ViewModel, filtro: object) => {
+  static filtrarPokemons = (pokemons: PokedexModel.ViewModel[], filtro: PokedexProps.Filtro) => {
 
-    return dispatch => dispatch({
-      type: PokedexConst.ADICIONAR_LIMITE,
-      payload: {
-        pokemons: pokemons,
-        pesquisa: filtro,
-      }
-    })
+    return dispatch => {
+
+      dispatch({
+        type: PokedexConst.ADICIONAR_LIMITE,
+        payload: {
+          pokemons: PokedexInteractor.filtrarPokemons(pokemons, filtro),
+          pesquisa: filtro,
+        }
+      })
+
+    }
 
   };
 

@@ -1,5 +1,8 @@
 import {PokedexConst} from "./pokedexAction";
 import {PokedexProps} from "../service/PokedexProps";
+import React from "react";
+import {FlatList} from "react-native";
+import {PokedexModel} from "../service/PokedexModel";
 
 const INITIAL_STATE: PokedexProps.Props = {
   pokemons: [],
@@ -20,18 +23,24 @@ const INITIAL_STATE: PokedexProps.Props = {
       numeros: { minimo: -1, maximo: -1 }
     }
   },
+  flatList: React.createRef<FlatList<PokedexModel.ViewModel>>(),
   limite: 10,
   carregando: true,
   erro: false,
   carregarPokemons: () => {},
   adicionarLimite: () => {},
+  filtrarPokemons: (pokemons, filtro) => {}
 };
 
 const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payload: any}) => {
 
-  console.log(action.payload);
-
   switch (action.type) {
+
+    case PokedexConst.CARREGANDO:
+      return {
+        ...state,
+        carregando: true,
+      };
 
     case PokedexConst.CARREGADO_POKEMONS:
       return {
@@ -60,6 +69,15 @@ const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payl
       return {
         ...state,
         limite: state.limite + 10,
+      }
+    }
+
+    case PokedexConst.FILTRAR_POKEMON: {
+      return {
+        ...state,
+        pokemons: action.payload.pokemons,
+        pesquisa: action.payload.filtro,
+        limite: 10,
       }
     }
 
