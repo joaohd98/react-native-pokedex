@@ -85,7 +85,7 @@ export class PokedexInteractor {
 
     for(let pokemon of pokemons) {
 
-      if(!Helpers.compararStrings(pokemon.nome, filtro.valores.nome))
+      if(!Helpers.compararStrings(Helpers.eNumero(filtro.valores.nome.charAt(0)) ? pokemon.numero : pokemon.nome, filtro.valores.nome))
         pokemon.visivel = false;
 
       else
@@ -100,7 +100,7 @@ export class PokedexInteractor {
 
     let autoComplete: string[] = [];
 
-    if(texto.length == 0 || !isNaN(parseInt(texto.charAt(0))))
+    if(texto.length == 0 || Helpers.eNumero(texto.charAt(0)))
       return [];
 
     for(let nome of pokemonsNomes) {

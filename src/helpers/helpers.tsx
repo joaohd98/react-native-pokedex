@@ -8,6 +8,12 @@ export class Helpers {
 
   }
 
+  static eNumero(texto: string) {
+
+    return !isNaN(parseInt(texto));
+
+  }
+
   static removerDuplicados(array: any[]) {
 
     let set = new Set(array);
