@@ -40,6 +40,7 @@ const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payl
       return {
         ...state,
         carregando: true,
+        erro: false
       };
 
     case PokedexConst.CARREGADO_POKEMONS:

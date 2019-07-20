@@ -1,6 +1,6 @@
 import React from "react";
 import {Component} from "react";
-import {Text, View} from "react-native";
+import {Button, Text, View} from "react-native";
 import {PokedexInput} from "./components/input/pokedex-input";
 import { connect } from 'react-redux';
 import {bindActionCreators} from "redux";
@@ -26,7 +26,9 @@ class PokedexPage extends Component<PokedexProps.Props> {
 
     return (
       <View style={css.view}>
-        <Text style={css.titulo}>Ooops! Aconteceu algo</Text>
+        <Text style={css.titulo}>Ooops!</Text>
+        <Text style={css.subTitulo}>Não foi possível buscar Pokemons.</Text> 
+        <Button onPress={this.props.carregarPokemons} title={"Tentar Novamente"} />
       </View>
     )
 

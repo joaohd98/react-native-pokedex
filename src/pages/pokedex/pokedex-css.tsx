@@ -38,6 +38,12 @@ export class PokedexCSS {
       color: Colors.gray,
       fontSize: 15,
       marginRight: 10
+    },
+    button: {
+      justifyContent: "center",
+      alignItems: "center",
+      alignContent: "center",
+      width: Helpers.pegarPorcentagem(80)
     }
   });
 

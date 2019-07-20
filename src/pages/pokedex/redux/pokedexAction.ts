@@ -21,6 +21,8 @@ export class PokedexAction {
 
     return dispatch => {
 
+      dispatch({ type: PokedexConst.CARREGANDO });
+
       PokedexService.pegarTodosPokemons(request => {
 
         dispatch({
