@@ -32,12 +32,7 @@ export class PokedexInteractor {
 
     let pokemons: PokedexModel.ViewModel[] = [];
 
-    let filtro = {
-      nomes: [],
-      tipos: [],
-      habilidades: [],
-      numeros: {minimo: -1, maximo: -1},
-    };
+    let filtro = PokedexInteractor.filtroValoresIniciais().filtro;
 
     let tamanho = fetch.retorno.length;
 
@@ -158,5 +153,25 @@ export class PokedexInteractor {
 
   }
 
+  static filtroValoresIniciais() : PokedexProps.Filtro{
+
+    return {
+      filtro: {
+        nomes: [],
+        habilidades: [],
+        tipos: [],
+        numeros: { minimo: -1, maximo: -1 }
+      },
+      valores: {
+        nome: "",
+        habilidadesEscolhida: [],
+        tiposEscolhidos: [],
+        fraquezasEscolhidas: [],
+        alturas: [],
+        pesos: [],
+        numeros: { minimo: -1, maximo: -1 }
+      }
+    }
+  }
 
 }

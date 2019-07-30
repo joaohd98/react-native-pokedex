@@ -116,8 +116,6 @@ export class PokedexCard extends Component<Props>{
 
   };
 
-
-
   render() {
 
     let props = this.props;

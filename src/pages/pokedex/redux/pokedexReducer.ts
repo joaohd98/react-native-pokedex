@@ -3,26 +3,11 @@ import {PokedexProps} from "../service/PokedexProps";
 import React from "react";
 import {FlatList} from "react-native";
 import {PokedexModel} from "../service/PokedexModel";
+import {PokedexInteractor} from "../service/PokedexInteractor";
 
 const INITIAL_STATE: PokedexProps.Props = {
   pokemons: [],
-  pesquisa: {
-    filtro: {
-      nomes: [],
-      habilidades: [],
-      tipos: [],
-      numeros: { minimo: -1, maximo: -1 }
-    },
-    valores: {
-      nome: "",
-      habilidadesEscolhida: [],
-      tiposEscolhidos: [],
-      fraquezasEscolhidas: [],
-      alturas: [],
-      pesos: [],
-      numeros: { minimo: -1, maximo: -1 }
-    }
-  },
+  pesquisa: PokedexInteractor.filtroValoresIniciais(),
   flatList: React.createRef<FlatList<PokedexModel.ViewModel>>(),
   limite: 10,
   carregando: true,

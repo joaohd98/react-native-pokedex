@@ -22,7 +22,6 @@ export class PokedexCSS {
       color: Colors.gray,
       fontWeight: 'bold',
       fontSize: 15,
-      marginBottom: 15
     },
     itemView: {
       flexDirection: "row",

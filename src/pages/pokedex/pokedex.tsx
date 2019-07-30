@@ -27,7 +27,7 @@ class PokedexPage extends Component<PokedexProps.Props> {
     return (
       <View style={css.view}>
         <Text style={css.titulo}>Ooops!</Text>
-        <Text style={css.subTitulo}>Não foi possível buscar Pokemons.</Text> 
+        <Text style={css.subTitulo}>Não foi possível buscar Pokemons.</Text>
         <Button onPress={this.props.carregarPokemons} title={"Tentar Novamente"} />
       </View>
     )
