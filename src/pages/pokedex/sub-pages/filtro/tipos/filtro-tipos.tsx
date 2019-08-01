@@ -1,10 +1,14 @@
 import React, {Component} from "react";
-import {FlatList, Text, TouchableHighlight, View} from "react-native";
+import {FlatList, Text, TouchableHighlight, TouchableWithoutFeedback, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
 import {PokedexProps} from "../../../service/PokedexProps";
 import {PokedexInteractor} from "../../../service/PokedexInteractor";
 
-export class FiltroTipos extends Component<PokedexProps.FiltroForm> {
+interface Props extends PokedexProps.FiltroForm{
+  setState: Function
+}
+
+export class FiltroTipos extends Component<Props> {
 
   header() {
 
@@ -43,16 +47,28 @@ export class FiltroTipos extends Component<PokedexProps.FiltroForm> {
       <View style={css.rowTipos}>
         { this.pegarTipos(item.nome) }
         <View style={css.fraquezaForca}>
-          <TouchableHighlight style={css.fraquezaForcaBalao}>
-            <Text style={css.centralizar}>T</Text>
-          </TouchableHighlight>
-          <TouchableHighlight style={css.fraquezaForcaBalao}>
-            <Text style={css.centralizar}>F</Text>
-          </TouchableHighlight>
+          <TouchableWithoutFeedback onPress={() => this.atualizar(item, 'tipo')} >
+            <View style={{...css.fraquezaForcaBalao, backgroundColor: (item.tipo ? "#30a7d7" : "#F2F2F2")}}>
+              <Text style={css.centralizar}>T</Text>
+            </View>
+          </TouchableWithoutFeedback>
+          <TouchableWithoutFeedback onPress={() => this.atualizar(item, 'fraqueza')} >
+            <View style={{...css.fraquezaForcaBalao, backgroundColor: (item.fraqueza ? "#30a7d7" : "#F2F2F2")}}>
+              <Text style={css.centralizar}>F</Text>
+            </View>
+          </TouchableWithoutFeedback>
         </View>
       </View>
     )
-    
+
+  }
+
+  atualizar(item, campo) {
+
+    item[campo] = !item[campo];
+
+    this.setState(this.props);
+
   }
 
   render() {

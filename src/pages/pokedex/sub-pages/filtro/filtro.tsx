@@ -20,8 +20,9 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
 
     return (
       <ScrollView style={FiltroCSS.VIEW.scrollView}>
-        <FiltroTipos {...this.state} />
+        <FiltroTipos setState={this.setState.bind(this)} {...this.state} />
       </ScrollView>
+
     )
 
   }
