@@ -4,7 +4,7 @@ import {FiltroCSS} from "../filtro-css";
 import {PokedexProps} from "../../../service/PokedexProps";
 import {PokedexInteractor} from "../../../service/PokedexInteractor";
 
-export class FiltroTipos extends Component<PokedexProps.Filtro> {
+export class FiltroTipos extends Component<PokedexProps.FiltroForm> {
 
   header() {
 
@@ -41,7 +41,7 @@ export class FiltroTipos extends Component<PokedexProps.Filtro> {
 
     return (
       <View style={css.rowTipos}>
-        { this.pegarTipos(item) }
+        { this.pegarTipos(item.nome) }
         <View style={css.fraquezaForca}>
           <TouchableHighlight style={css.fraquezaForcaBalao}>
             <Text style={css.centralizar}>T</Text>
@@ -52,6 +52,7 @@ export class FiltroTipos extends Component<PokedexProps.Filtro> {
         </View>
       </View>
     )
+    
   }
 
   render() {
@@ -61,12 +62,14 @@ export class FiltroTipos extends Component<PokedexProps.Filtro> {
       <View>
         <FlatList
           ListHeaderComponent={this.header()}
-          keyExtractor={item => item}
-          data={this.props.filtro.tipos}
+          keyExtractor={item => item.nome}
+          data={this.props.tipos}
           numColumns={2}
           renderItem={({item}) => this.tipos(item)}/>
       </View>
+
     )
+
   }
 
 
