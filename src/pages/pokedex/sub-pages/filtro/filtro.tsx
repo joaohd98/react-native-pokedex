@@ -6,8 +6,15 @@ import {PokedexProps} from "../../service/PokedexProps";
 import {bindActionCreators} from "redux";
 import { connect } from 'react-redux';
 import {FiltroTipos} from "./tipos/filtro-tipos";
+import {PokedexInteractor} from "../../service/PokedexInteractor";
 
-class FiltroPage extends Component<PokedexProps.Filtro> {
+class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm> {
+
+  componentDidMount() {
+
+    this.setState(PokedexInteractor.propsToForm(this.props));
+
+  }
 
   render() {
 

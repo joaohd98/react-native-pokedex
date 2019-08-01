@@ -8,10 +8,10 @@ export class PokedexInteractor {
 
     filtro.nomes.push(pokemon.nome);
 
-    for(let tipo of pokemon.tipos)
+    for (let tipo of pokemon.tipos)
       filtro.tipos.push(tipo);
 
-    for(let habilidade of pokemon.habilidades)
+    for (let habilidade of pokemon.habilidades)
       filtro.habilidades.push(habilidade);
 
     let minimo = filtro.numeros.minimo;
@@ -68,7 +68,7 @@ export class PokedexInteractor {
 
     }
 
-    return { pokemons: pokemons, filtro: filtro };
+    return {pokemons: pokemons, filtro: filtro};
 
   }
 
@@ -78,9 +78,9 @@ export class PokedexInteractor {
      * Nome
      */
 
-    for(let pokemon of pokemons) {
+    for (let pokemon of pokemons) {
 
-      if(!Helpers.compararStrings(Helpers.eNumero(filtro.valores.nome.charAt(0)) ? pokemon.numero : pokemon.nome, filtro.valores.nome))
+      if (!Helpers.compararStrings(Helpers.eNumero(filtro.valores.nome.charAt(0)) ? pokemon.numero : pokemon.nome, filtro.valores.nome))
         pokemon.visivel = false;
 
       else
@@ -95,15 +95,15 @@ export class PokedexInteractor {
 
     let autoComplete: string[] = [];
 
-    if(texto.length == 0 || Helpers.eNumero(texto.charAt(0)))
+    if (texto.length == 0 || Helpers.eNumero(texto.charAt(0)))
       return [];
 
-    for(let nome of pokemonsNomes) {
+    for (let nome of pokemonsNomes) {
 
-      if(Helpers.compararStrings(nome, texto))
+      if (Helpers.compararStrings(nome, texto))
         autoComplete.push(nome);
 
-      if(autoComplete.length == 3)
+      if (autoComplete.length == 3)
         break;
 
     }
@@ -153,25 +153,92 @@ export class PokedexInteractor {
 
   }
 
-  static filtroValoresIniciais() : PokedexProps.Filtro{
+  static filtroValoresIniciais(): PokedexProps.Filtro {
 
     return {
       filtro: {
         nomes: [],
         habilidades: [],
         tipos: [],
-        numeros: { minimo: -1, maximo: -1 }
+        numeros: {minimo: -1, maximo: -1}
       },
       valores: {
         nome: "",
-        habilidadesEscolhida: [],
+        habilidadeEscolhida: "",
         tiposEscolhidos: [],
         fraquezasEscolhidas: [],
-        alturas: [],
-        pesos: [],
-        numeros: { minimo: -1, maximo: -1 }
+        alturas: { pequeno: false, medio: false, grande: false },
+        pesos:  { leve: false, medio: false, pesado: false },
+        numeros: {minimo: -1, maximo: -1}
       }
     }
   }
+
+  static propsToForm(props: PokedexProps.Filtro): PokedexProps.FiltroForm {
+
+    /*
+     * Tipos
+     */
+
+    let tiposForm: {nome: string, tipo: boolean, fraqueza: boolean}[] = [];
+
+    for (let tipo of props.filtro.tipos) {
+
+      tiposForm.push({
+        nome: tipo,
+        tipo: props.valores.tiposEscolhidos.find(tipoPokemon => tipoPokemon == tipo) == "string",
+        fraqueza: props.valores.fraquezasEscolhidas.find(fraquezaPokemon => fraquezaPokemon == tipo) == "string",
+      });
+
+    }
+
+    /*
+     * Intervalo Numero
+     */
+
+    let intervaloNumerosForm = {
+      limites: props.filtro.numeros,
+      valores: props.valores.numeros,
+    };
+
+    /*
+     * Habilidades
+     */
+
+    let habilidadesForm =  {
+      todas: props.filtro.habilidades,
+      selecionada: props.valores.habilidadeEscolhida,
+    };
+
+    /*
+     * Altura
+     */
+
+    let alturaForm = props.valores.alturas;
+
+    /*
+     * Peso
+     */
+
+    let pesoForm = props.valores.pesos;
+
+    /*
+     * Fim
+     */
+
+    let form: PokedexProps.FiltroForm = {
+      tipos: tiposForm,
+      intervaloNumeros: intervaloNumerosForm,
+      habilidades: habilidadesForm,
+      altura: alturaForm,
+      peso: pesoForm
+    };
+
+    console.log(form);
+
+    return form;
+
+  }
+
 
 }

@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {FlatList, Text, View} from "react-native";
+import {FlatList, Text, TouchableHighlight, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
 import {PokedexProps} from "../../../service/PokedexProps";
 import {PokedexInteractor} from "../../../service/PokedexInteractor";
@@ -43,12 +43,12 @@ export class FiltroTipos extends Component<PokedexProps.Filtro> {
       <View style={css.rowTipos}>
         { this.pegarTipos(item) }
         <View style={css.fraquezaForca}>
-          <View style={css.fraquezaForcaBalao}>
+          <TouchableHighlight style={css.fraquezaForcaBalao}>
             <Text style={css.centralizar}>T</Text>
-          </View>
-          <View style={css.fraquezaForcaBalao}>
+          </TouchableHighlight>
+          <TouchableHighlight style={css.fraquezaForcaBalao}>
             <Text style={css.centralizar}>F</Text>
-          </View>
+          </TouchableHighlight>
         </View>
       </View>
     )

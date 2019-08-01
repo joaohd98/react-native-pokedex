@@ -60,7 +60,7 @@ export class FiltroCSS {
       justifyContent: "center",
     },
     fraquezaForcaBalao: {
-      backgroundColor: "red",
+      backgroundColor: "#F2F2F2",
       padding: 5,
       borderRadius: 100,
       height: 30,

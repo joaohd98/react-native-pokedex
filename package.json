@@ -8,6 +8,8 @@
     "test": "jest"
   },
   "dependencies": {
+    "acorn": "^6.2.1",
+    "eslint": "^5.0.0",
     "jetifier": "^1.6.1",
     "react": "16.8.6",
     "react-native": "0.60.0",
