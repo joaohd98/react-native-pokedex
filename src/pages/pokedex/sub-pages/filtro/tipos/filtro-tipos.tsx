@@ -4,11 +4,8 @@ import {FiltroCSS} from "../filtro-css";
 import {PokedexProps} from "../../../service/PokedexProps";
 import {PokedexInteractor} from "../../../service/PokedexInteractor";
 
-interface Props extends PokedexProps.FiltroForm{
-  setState: Function
-}
 
-export class FiltroTipos extends Component<Props> {
+export class FiltroTipos extends Component<PokedexProps.FiltroForm> {
 
   header() {
 
