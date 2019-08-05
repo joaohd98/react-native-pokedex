@@ -7,10 +7,11 @@ import {bindActionCreators} from "redux";
 import { connect } from 'react-redux';
 import {FiltroTipos} from "./tipos/filtro-tipos";
 import {PokedexInteractor} from "../../service/PokedexInteractor";
+import {FiltroHabilidades} from "./habilidades/filtro-habilidades";
 
 class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm> {
 
-  componentDidMount() {
+  componentWillMount(){
 
     this.setState(PokedexInteractor.propsToForm(this.props));
 
@@ -21,6 +22,7 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
     return (
       <ScrollView style={FiltroCSS.VIEW.scrollView}>
         <FiltroTipos {...this.state} />
+        <FiltroHabilidades {...this.state} />
       </ScrollView>
 
     )

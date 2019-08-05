@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {FlatList, Text, TouchableHighlight, TouchableWithoutFeedback, View} from "react-native";
+import {FlatList, Text, TouchableWithoutFeedback, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
 import {PokedexProps} from "../../../service/PokedexProps";
 import {PokedexInteractor} from "../../../service/PokedexInteractor";
@@ -9,7 +9,7 @@ export class FiltroTipos extends Component<PokedexProps.FiltroForm> {
 
   header() {
 
-    let css = FiltroCSS.TIPOS_FRAQUEZAS;
+    let css = FiltroCSS.HEADER;
 
     return (
       <View>

@@ -12,7 +12,7 @@ export class FiltroCSS {
     }
   });
 
-  static TIPOS_FRAQUEZAS = StyleSheet.create({
+  static HEADER = StyleSheet.create({
     title: {
       marginTop: 20,
       color: Colors.white,
@@ -30,6 +30,9 @@ export class FiltroCSS {
     strong: {
       fontWeight: "bold"
     },
+  });
+
+  static TIPOS_FRAQUEZAS = StyleSheet.create({
     rowTipos: {
       flexDirection: "row",
       flex: 1,
@@ -70,7 +73,44 @@ export class FiltroCSS {
     },
     centralizar: {
       textAlign: "center"
-    }
+    },
+    strong: {
+      fontWeight: "bold"
+    },
   });
 
+  static HABILIDADES = {
+
+    select: StyleSheet.create({
+      iconContainer: {
+        top: 12,
+        left: 3
+      },
+      inputIOS: {
+        marginTop: 10,
+        backgroundColor: "#313131",
+        borderRadius: 5,
+        fontSize: 16,
+        paddingVertical: 12,
+        paddingHorizontal: 10,
+        borderWidth: 1,
+        color: '#FFF',
+        fontWeight: "700",
+        paddingLeft: 45, // to ensure the text is never behind the icon
+      },
+      inputAndroid: {
+        marginTop: 10,
+        backgroundColor: "#313131",
+        borderRadius: 5,
+        fontSize: 16,
+        paddingVertical: 12,
+        paddingHorizontal: 10,
+        borderWidth: 1,
+        color: '#FFF',
+        fontWeight: "700",
+        paddingLeft: 45, // to ensure the text is never behind the icon
+      },
+    })
+
+  };
 }
