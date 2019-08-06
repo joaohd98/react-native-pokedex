@@ -1,18 +1,29 @@
 import * as React from "react";
-import {Picker, Modal, Text, View, TouchableHighlight, TextInput, Image, TouchableOpacity} from "react-native";
+import {
+  Picker,
+  Modal,
+  Text,
+  View,
+  TouchableHighlight,
+  TextInput,
+  Image,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+} from "react-native";
 import {PokedexProps} from "../../../service/PokedexProps";
 import {FiltroCSS} from "../filtro-css";
-import {Helpers} from "../../../../../helpers/helpers";
 import {images} from "../../../../../assets";
 
-interface teste {
-  modalVisible: boolean;
+interface State {
+  selecionado: string,
+  modalVisivel: boolean
 }
 
-export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, teste> {
+export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, State> {
 
   state = {
-    modalVisible: false,
+    selecionado: this.props.habilidades.selecionada,
+    modalVisivel: false,
   };
 
   header() {
@@ -27,41 +38,13 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
 
   }
 
-  gerarItens() {
-
-    let itens = [];
-
-    // let itens: Item[] = [];
-    //
-    // for (let habilidade of this.props.habilidades.todas) {
-    //
-    //   itens.push({
-    //     label: habilidade,
-    //     value: habilidade,
-    //     key: habilidade,
-    //   })
-    //
-    // }
-
-    return itens;
-
-  }
-
-  selecionarHabilidade(item) {
-
-    this.props.habilidades.selecionada = item;
-
-    // this.setState(this.props.habilidades);
-
-  }
-
   renderInput() {
 
-    const texto = this.props.habilidades.selecionada ? this.props.habilidades.selecionada : "Todos";
+    const texto = this.props.habilidades.selecionada ? this.props.habilidades.selecionada : "Todas";
 
     const css = FiltroCSS.HABILIDADES;
 
-    const abrirModal = () => this.setState({modalVisible: true});
+    const abrirModal = () => this.setState({modalVisivel: true});
 
     return (
       <TouchableHighlight onPress={abrirModal}>
@@ -86,35 +69,61 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
       itens.push(<Picker.Item key={habilidade} label={habilidade} value={habilidade} />);
 
     return (
-      <Modal visible={this.state.modalVisible} transparent={true}>
+      <Modal visible={this.state.modalVisivel} transparent={true}>
+        <TouchableWithoutFeedback onPress={this.cancelar.bind(this)}>
+          <View style={css.transparent}/>
+        </TouchableWithoutFeedback>
         <View style={css.modal}>
           <View style={css.selectView}>
-            <TouchableOpacity style={css.selectBotoes}>
+            <TouchableOpacity style={css.selectBotoes} onPress={this.cancelar.bind(this)}>
               <Text style={css.selectBotoesTexto}>Cancelar</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={css.selectBotoes}>
+            <TouchableOpacity style={css.selectBotoes} onPress={this.selecionarHabilidade.bind(this)}>
               <Text style={css.selectBotoesTexto}>Selecionar</Text>
             </TouchableOpacity>
           </View>
           <View>
-            <Picker>{ itens }</Picker>
+            <Picker onValueChange={item => this.rolarHabilidade(item)} selectedValue={this.state.selecionado}>{ itens }</Picker>
           </View>
         </View>
       </Modal>
     )
+
+  }
+
+  rolarHabilidade(item) {
+
+    this.setState({selecionado: item});
+
+  }
+
+  selecionarHabilidade() {
+
+    this.props.habilidades.selecionada = this.state.selecionado;
+
+    this.setState({
+      ...this.props,
+      modalVisivel: false,
+      selecionado: this.props.habilidades.selecionada
+    })
+
+  }
+
+  cancelar() {
+
+    this.setState({
+      modalVisivel: false,
+      selecionado: this.props.habilidades.selecionada
+    });
+
   }
 
   render() {
 
     const css = FiltroCSS.HABILIDADES;
 
-    const placeholder = {
-      label: 'Todas',
-      value: null,
-    };
-
     return (
-      <View>
+      <View style={css.view}>
         { this.header() }
         { this.renderInput() }
         { this.renderModal() }

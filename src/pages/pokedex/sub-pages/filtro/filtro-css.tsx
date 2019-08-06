@@ -1,7 +1,6 @@
-import {StyleSheet} from "react-native";
+import {Platform, StyleSheet} from "react-native";
 import {Colors} from "../../../../helpers/colors/colors";
 import {Helpers} from "../../../../helpers/helpers";
-import {Color} from "csstype";
 
 export class FiltroCSS {
 
@@ -9,7 +8,7 @@ export class FiltroCSS {
     scrollView: {
       backgroundColor: "#424242",
       flex: 1,
-      paddingHorizontal: Helpers.pegarPorcentagem(5, "width")
+      paddingHorizontal: Helpers.pegarPorcentagem(5, "width"),
     }
   });
 
@@ -81,12 +80,16 @@ export class FiltroCSS {
   });
 
   static HABILIDADES = StyleSheet.create({
+    view: {
+      marginVertical: 5
+    },
     inputView: {
       flex: 1,
       flexDirection: "row",
+      marginVertical: 5
     },
     icon: {
-      top: 19,
+      top: Platform.OS === "ios" ? 19 : 23,
       left: 8,
       width: 25,
       height: 25,
@@ -107,8 +110,12 @@ export class FiltroCSS {
       fontWeight: "700",
       textTransform: "capitalize",
     },
+    transparent: {
+      height: Helpers.pegarPorcentagem(Platform.OS === "ios" ? 70 : 80, "height"),
+      width: Helpers.pegarPorcentagem(100, "width"),
+    },
     modal: {
-      height: Helpers.pegarPorcentagem(30, "height"),
+      height: Helpers.pegarPorcentagem(Platform.OS === "ios" ? 30 : 20, "height"),
       width: Helpers.pegarPorcentagem(100, "width"),
       backgroundColor: "#FFF",
       position: "absolute",
@@ -116,9 +123,6 @@ export class FiltroCSS {
     },
     selectView: {
       flexDirection: "row"
-    },
-    select: {
-
     },
     selectBotoes: {
       flex: 0.5,
@@ -134,35 +138,5 @@ export class FiltroCSS {
     }
   })
 
-  // select: StyleSheet.create({
-  //   iconContainer: {
-  //     top: 17,
-  //     left: 5
-  //   },
-  //   inputIOS: {
-  //     marginTop: 10,
-  //     backgroundColor: "#313131",
-  //     borderRadius: 5,
-  //     fontSize: 16,
-  //     paddingVertical: 12,
-  //     paddingHorizontal: 10,
-  //     borderWidth: 1,
-  //     color: '#FFF',
-  //     fontWeight: "700",
-  //     paddingLeft: 40,
-  //   },
-  //   inputAndroid: {
-  //     marginTop: 10,
-  //     backgroundColor: "#313131",
-  //     borderRadius: 5,
-  //     fontSize: 16,
-  //     paddingVertical: 12,
-  //     paddingHorizontal: 10,
-  //     borderWidth: 1,
-  //     color: '#FFF',
-  //     fontWeight: "700",
-  //     paddingLeft: 0,
-  //   },
-  // })
 
 }
