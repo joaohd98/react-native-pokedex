@@ -42,7 +42,7 @@ export class PokedexCSS {
       justifyContent: "center",
       alignItems: "center",
       alignContent: "center",
-      width: Helpers.pegarPorcentagem(80)
+      width: Helpers.pegarPorcentagem(80, "width")
     }
   });
 
@@ -130,14 +130,14 @@ export class PokedexCSS {
 
   static InputAutoComplete = StyleSheet.create({
     view: {
-      width: Helpers.pegarPorcentagem(100),
+      width: Helpers.pegarPorcentagem(100, "width"),
       position: 'absolute',
       zIndex: 999,
       elevation: 999,
     },
     autoCompleteView: {
-      width: Helpers.pegarPorcentagem(100) - Helpers.pegarPorcentagem(6) * 2,
-      marginHorizontal:  Helpers.pegarPorcentagem(6),
+      width: Helpers.pegarPorcentagem(100, "width") - Helpers.pegarPorcentagem(6, "width") * 2,
+      marginHorizontal:  Helpers.pegarPorcentagem(6, "width"),
       marginVertical: 10,
       backgroundColor: "white",
     },

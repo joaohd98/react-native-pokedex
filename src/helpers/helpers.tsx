@@ -2,9 +2,11 @@ import {Dimensions} from "react-native";
 
 export class Helpers {
 
-  static pegarPorcentagem(porcentagem: number) {
+  static pegarPorcentagem(porcentagem: number, tipo: "width" | "height") {
 
-    return Dimensions.get("screen").width * (porcentagem / 100);
+    let tamanho = tipo == "width" ? Dimensions.get("screen").width : Dimensions.get("screen").height;
+
+    return tamanho * (porcentagem / 100);
 
   }
 
