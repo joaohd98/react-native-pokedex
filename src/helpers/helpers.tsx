@@ -50,4 +50,7 @@ export class Helpers {
     return Helpers.removerAcentosMinusculo(t1).includes(Helpers.removerAcentosMinusculo(t2))
   }
 
+  static ordenarArray(habilidades: string[]) {
+    return habilidades.sort();
+  }
 }

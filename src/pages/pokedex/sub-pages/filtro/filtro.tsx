@@ -8,6 +8,9 @@ import { connect } from 'react-redux';
 import {FiltroTipos} from "./tipos/filtro-tipos";
 import {PokedexInteractor} from "../../service/PokedexInteractor";
 import {FiltroHabilidades} from "./habilidades/filtro-habilidades";
+import {FiltroAlturas} from "./alturas/filtro-alturas";
+import {FiltroPesos} from "./pesos/filtro-pesos";
+import {FiltroIntervalo} from "./intervalo/filtro-intervalo";
 
 class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm> {
 
@@ -22,7 +25,10 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
     return (
       <ScrollView style={FiltroCSS.VIEW.scrollView}>
         <FiltroTipos {...this.state} />
+        <FiltroIntervalo {...this.state} />
         <FiltroHabilidades {...this.state} />
+        <FiltroAlturas {...this.state} />
+        <FiltroPesos {...this.state} />
       </ScrollView>
 
     )

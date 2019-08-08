@@ -68,6 +68,8 @@ export class PokedexInteractor {
 
     }
 
+    filtro.habilidades = Helpers.ordenarArray(filtro.habilidades);
+
     return {pokemons: pokemons, filtro: filtro};
 
   }
@@ -160,7 +162,7 @@ export class PokedexInteractor {
         nomes: [],
         habilidades: [],
         tipos: [],
-        numeros: {minimo: -1, maximo: -1}
+        numeros: { minimo: -1, maximo: -1 }
       },
       valores: {
         nome: "",
@@ -169,9 +171,10 @@ export class PokedexInteractor {
         fraquezasEscolhidas: [],
         alturas: { pequeno: false, medio: false, grande: false },
         pesos:  { leve: false, medio: false, pesado: false },
-        numeros: {minimo: -1, maximo: -1}
+        numeros: { minimo: -1, maximo: -1 }
       }
     }
+
   }
 
   static propsToForm(props: PokedexProps.Filtro): PokedexProps.FiltroForm {
@@ -180,7 +183,7 @@ export class PokedexInteractor {
      * Tipos
      */
 
-    let tiposForm: {nome: string, tipo: boolean, fraqueza: boolean}[] = [];
+    let tiposForm: { nome: string, tipo: boolean, fraqueza: boolean }[] = [];
 
     for (let tipo of props.filtro.tipos) {
 
@@ -195,15 +198,15 @@ export class PokedexInteractor {
     /*
      * Intervalo Numero
      */
-
     let intervaloNumerosForm = {
-      limites: props.filtro.numeros,
-      valores: props.valores.numeros,
+      limites: [ props.filtro.numeros.minimo, props.filtro.numeros.maximo],
+      valores: [ props.valores.numeros.minimo, props.valores.numeros.maximo]
     };
 
     /*
      * Habilidades
      */
+
 
     let habilidadesForm =  {
       todas: props.filtro.habilidades,

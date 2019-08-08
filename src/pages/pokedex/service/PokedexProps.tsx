@@ -47,8 +47,8 @@ export namespace PokedexProps {
       fraqueza: boolean
     }[],
     intervaloNumeros: {
-      limites: { minimo: number, maximo: number },
-      valores: { minimo: number, maximo: number },
+      limites: number[],
+      valores: number[],
     }
     habilidades: {
       todas: string[]
