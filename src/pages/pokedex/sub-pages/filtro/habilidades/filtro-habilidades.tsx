@@ -7,7 +7,7 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  FlatList,
+  FlatList, TouchableWithoutFeedback,
 } from "react-native";
 import {PokedexProps} from "../../../service/PokedexProps";
 import {FiltroCSS} from "../filtro-css";
@@ -23,7 +23,7 @@ interface State {
 export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, State> {
 
   state = {
-    selecionado: this.props.habilidades.selecionada || "Todas" ,
+    selecionado: this.props.habilidades.selecionada || "Todas",
     modalVisivel: false,
   };
 
@@ -69,26 +69,30 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
     const css = FiltroCSS.HABILIDADES;
 
     return (
-      <Modal visible={this.state.modalVisivel} transparent={true}>
-        <View style={css.modal}>
-          <View style={css.select}>
-            <View style={css.selectTitle}>
-              <Text style={css.selectTitleText}>Habilidades</Text>
-            </View>
-            <FlatList
-              data={this.props.habilidades.todas} keyExtractor={(item) => item}
-              ItemSeparatorComponent={() => this.renderSeperator()} renderItem={({item}) => this.renderItem(item)}
-            />
-            <View style={css.selectView}>
-              <TouchableOpacity style={css.selectButtons} onPress={this.cancelar.bind(this)}>
-                <Text style={css.selectButtonsText}>Cancelar</Text>
-              </TouchableOpacity>
-              <TouchableOpacity style={css.selectButtons} onPress={this.selecionarHabilidade.bind(this)}>
-                <Text style={css.selectButtonsText}>Selecionar</Text>
-              </TouchableOpacity>
-            </View>
+      <Modal visible={this.state.modalVisivel} transparent={true} animationType="fade">
+        <TouchableWithoutFeedback onPress={() => this.cancelar()}>
+          <View style={css.modal}>
+            <TouchableWithoutFeedback onPress={undefined}>
+              <View style={css.select}>
+                <View style={css.selectTitle}>
+                  <Text style={css.selectTitleText}>Habilidades</Text>
+                </View>
+                <FlatList
+                  data={this.props.habilidades.todas} keyExtractor={(item) => item}
+                  ItemSeparatorComponent={() => this.renderSeperator()} renderItem={({item}) => this.renderItem(item)}
+                />
+                <View style={css.selectView}>
+                  <TouchableOpacity style={css.selectButtons} onPress={this.cancelar.bind(this)}>
+                    <Text style={css.selectButtonsText}>Cancelar</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity style={css.selectButtons} onPress={this.selecionarHabilidade.bind(this)}>
+                    <Text style={css.selectButtonsText}>Selecionar</Text>
+                  </TouchableOpacity>
+                </View>
+              </View>
+            </TouchableWithoutFeedback>
           </View>
-        </View>
+        </TouchableWithoutFeedback>
       </Modal>
     )
 
@@ -107,7 +111,7 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
 
     const gerarIcone = (selecionado: boolean) => {
 
-      if(selecionado)
+      if (selecionado)
         return (
           <View style={css.selectItemIcon}>
             <Icon name="check" size={FonteTamanho} color={Colors.link}/>
@@ -121,7 +125,7 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
 
     return (
       <TouchableOpacity style={css.selecItemClick} onPress={() => clicarHabilidade(item)}>
-        { gerarIcone(item == this.state.selecionado) }
+        {gerarIcone(item == this.state.selecionado)}
         <View style={css.selectItem}>
           <Text style={{fontSize: FonteTamanho, letterSpacing: 1, fontWeight: "300"}}>
             {item}
@@ -133,7 +137,7 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
 
   renderSeperator() {
 
-    return (<View style={{borderColor: Colors.gray, borderBottomWidth: 1}} />)
+    return (<View style={{borderColor: Colors.gray, borderBottomWidth: 1}}/>)
   }
 
   selecionarHabilidade() {
