@@ -14,7 +14,7 @@ import {FiltroIntervalo} from "./intervalo/filtro-intervalo";
 
 class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm> {
 
-  componentWillMount(){
+  UNSAFE_componentWillMount(){
 
     this.setState(PokedexInteractor.propsToForm(this.props));
 
@@ -30,7 +30,6 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
         <FiltroAlturas {...this.state} />
         <FiltroPesos {...this.state} />
       </ScrollView>
-
     )
 
   }

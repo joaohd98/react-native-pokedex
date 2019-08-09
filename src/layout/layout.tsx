@@ -39,6 +39,7 @@ export class Layout extends Component {
 
   render(){
 
+
     const AppContainer = createAppContainer(this.stackNavigator);
 
     return (

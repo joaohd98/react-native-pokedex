@@ -1,12 +1,17 @@
 import React, {Component} from "react";
 import {PokedexProps} from "../../../service/PokedexProps";
-import {View, Text} from "react-native";
+import {View, Text, YellowBox} from "react-native";
 import  MultiSlider from "@ptomasroos/react-native-multi-slider";
 import {Helpers} from "../../../../../helpers/helpers";
 
 export class FiltroIntervalo extends Component<PokedexProps.FiltroForm> {
 
   render() {
+
+    YellowBox.ignoreWarnings([
+      'Warning: componentWillMount is deprecated',
+      'Warning: componentWillReceiveProps is deprecated',
+    ]);
 
     let limites = this.props.intervaloNumeros.limites;
     let valores = this.props.intervaloNumeros.valores;
