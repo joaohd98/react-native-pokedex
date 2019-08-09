@@ -111,29 +111,59 @@ export class FiltroCSS {
       textTransform: "capitalize",
     },
     modal: {
-      height: Helpers.pegarPorcentagem(50, "height"),
-      width: Helpers.pegarPorcentagem(50, "width"),
+      height: Helpers.pegarPorcentagem(100, "height"),
+      width: Helpers.pegarPorcentagem(100, "width"),
+      backgroundColor: "#25252595",
+    },
+    select: {
+      height: Helpers.pegarPorcentagem(40, "height"),
+      width: Helpers.pegarPorcentagem(60, "width"),
       backgroundColor: "#FFF",
+      borderRadius: 20,
       position: "absolute",
-      top: Helpers.pegarPorcentagem(25, "height"),
-      bottom: Helpers.pegarPorcentagem(25, "height"),
-      left: Helpers.pegarPorcentagem(25, "width"),
-      right: Helpers.pegarPorcentagem(25, "width"),
+      top: Helpers.pegarPorcentagem(30, "height"),
+      bottom: Helpers.pegarPorcentagem(30, "height"),
+      left: Helpers.pegarPorcentagem(20, "width"),
+      right: Helpers.pegarPorcentagem(20, "width"),
+    },
+    selectTitle: {
+      paddingVertical: 5,
+      borderWidth: 1,
+      borderColor: "#f5f5f5",
+      borderTopLeftRadius: 20,
+      borderTopRightRadius: 20
+    },
+    selectTitleText: {
+      textAlign: "center",
+      fontSize: 18,
+      fontWeight: "400",
+      letterSpacing: 1
+    },
+    selecItemClick: {
+      flexDirection: "row",
+      paddingVertical: 5
+    },
+    selectItem: {
+      height: 20,
+    },
+    selectItemIcon: {
+      paddingHorizontal: Helpers.pegarPorcentagem(2, "width"),
+      width: 30,
     },
     selectView: {
       flexDirection: "row"
     },
-    selectBotoes: {
+    selectButtons: {
       flex: 0.5,
-      borderWidth: 1,
-      borderLeftWidth: 0,
-      borderColor: Colors.gray
+      borderLeftWidth: 1,
+      borderTopWidth: 0.5,
+      borderColor: Colors.black
     },
-    selectBotoesTexto: {
+    selectButtonsText: {
       textAlign: "center",
-      padding: 20,
-      fontSize: 16,
-      color: "blue",
+      padding: 8,
+      fontSize: 15,
+      color: Colors.link,
     }
   })
 
