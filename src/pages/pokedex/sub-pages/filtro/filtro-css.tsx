@@ -110,16 +110,15 @@ export class FiltroCSS {
       fontWeight: "700",
       textTransform: "capitalize",
     },
-    transparent: {
-      height: Helpers.pegarPorcentagem(Platform.OS === "ios" ? 70 : 80, "height"),
-      width: Helpers.pegarPorcentagem(100, "width"),
-    },
     modal: {
-      height: Helpers.pegarPorcentagem(Platform.OS === "ios" ? 30 : 20, "height"),
-      width: Helpers.pegarPorcentagem(100, "width"),
+      height: Helpers.pegarPorcentagem(50, "height"),
+      width: Helpers.pegarPorcentagem(50, "width"),
       backgroundColor: "#FFF",
       position: "absolute",
-      bottom: 0
+      top: Helpers.pegarPorcentagem(25, "height"),
+      bottom: Helpers.pegarPorcentagem(25, "height"),
+      left: Helpers.pegarPorcentagem(25, "width"),
+      right: Helpers.pegarPorcentagem(25, "width"),
     },
     selectView: {
       flexDirection: "row"

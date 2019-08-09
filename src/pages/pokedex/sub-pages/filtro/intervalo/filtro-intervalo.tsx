@@ -17,7 +17,7 @@ export class FiltroIntervalo extends Component<PokedexProps.FiltroForm> {
           <MultiSlider
             trackStyle={{backgroundColor:'#5e5e5e'}}
             selectedStyle={{backgroundColor:"#bdc3c7"}}
-            values={[valores[0], valores[1]]}
+            values={valores}
             sliderLength={Helpers.pegarPorcentagem(90, "width")}
             min={limites[0]}
             max={limites[1]}

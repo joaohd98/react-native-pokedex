@@ -1,6 +1,5 @@
 import * as React from "react";
 import {
-  Picker,
   Modal,
   Text,
   View,
@@ -8,11 +7,12 @@ import {
   TextInput,
   Image,
   TouchableOpacity,
-  TouchableWithoutFeedback,
+  FlatList,
 } from "react-native";
 import {PokedexProps} from "../../../service/PokedexProps";
 import {FiltroCSS} from "../filtro-css";
 import {images} from "../../../../../assets";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 interface State {
   selecionado: string,
@@ -61,34 +61,45 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
 
     const css = FiltroCSS.HABILIDADES;
 
-    let itens: JSX.Element[] = [
-      <Picker.Item key={"Todas"} label={"Todas"} value={""}/>
-    ];
-
-    for (let habilidade of this.props.habilidades.todas)
-      itens.push(<Picker.Item key={habilidade} label={habilidade} value={habilidade} />);
-
     return (
       <Modal visible={this.state.modalVisivel} transparent={true}>
-        <TouchableWithoutFeedback onPress={this.cancelar.bind(this)}>
-          <View style={css.transparent}/>
-        </TouchableWithoutFeedback>
         <View style={css.modal}>
-          <View style={css.selectView}>
-            <TouchableOpacity style={css.selectBotoes} onPress={this.cancelar.bind(this)}>
-              <Text style={css.selectBotoesTexto}>Cancelar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={css.selectBotoes} onPress={this.selecionarHabilidade.bind(this)}>
-              <Text style={css.selectBotoesTexto}>Selecionar</Text>
-            </TouchableOpacity>
-          </View>
+          {/*<View style={css.selectView}>*/}
+          {/*  <TouchableOpacity style={css.selectBotoes} onPress={this.cancelar.bind(this)}>*/}
+          {/*    <Text style={css.selectBotoesTexto}>Cancelar</Text>*/}
+          {/*  </TouchableOpacity>*/}
+          {/*  <TouchableOpacity style={css.selectBotoes} onPress={this.selecionarHabilidade.bind(this)}>*/}
+          {/*    <Text style={css.selectBotoesTexto}>Selecionar</Text>*/}
+          {/*  </TouchableOpacity>*/}
+          {/*</View>*/}
           <View>
-            <Picker onValueChange={item => this.rolarHabilidade(item)} selectedValue={this.state.selecionado}>{ itens }</Picker>
+            <View>
+
+            </View>
+            <FlatList
+              data={this.props.habilidades.todas} keyExtractor={(item) => item} renderItem={({item}) => this.renderItem(item) } />
           </View>
         </View>
       </Modal>
     )
 
+  }
+
+  renderItem(item: string) {
+
+    return (
+      <TouchableOpacity style={{flexDirection: "row"}}>
+        <View style={{}}>
+          <Icon name="check" size={10} color="#000"/>
+        </View>
+        <View style={{}}>
+          <Text>
+            { item }
+          </Text>
+        </View>
+
+      </TouchableOpacity>
+    )
   }
 
   rolarHabilidade(item) {
