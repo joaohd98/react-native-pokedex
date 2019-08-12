@@ -15,6 +15,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from "../../../../../helpers/colors/colors";
 import {RefObject} from "react";
 import {Helpers} from "../../../../../helpers/helpers";
+import {FiltroHeader} from "../header/filtro-header";
 
 interface State {
   flatList: RefObject<FlatList<string>>
@@ -33,18 +34,6 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
   UNSAFE_componentWillMount() {
 
     this.props.habilidades.todas.unshift("");
-
-  }
-
-  header() {
-
-    let css = FiltroCSS.HEADER;
-
-    return (
-      <View>
-        <Text style={css.title}>Habilidade</Text>
-      </View>
-    )
 
   }
 
@@ -82,11 +71,9 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
 
   }
 
-
   renderModal() {
 
     const css = FiltroCSS.HABILIDADES;
-    const index = this.props.habilidades.todas.indexOf(this.props.habilidades.selecionada);
 
     const listaTamanho = (index: number) => ({
       length: FiltroCSS.LIST_ITEM_HEIGTH,
@@ -194,7 +181,7 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
 
     return (
       <View style={css.view}>
-        {this.header()}
+        <FiltroHeader titulo={"Habilidade"} />
         {this.renderInput()}
         {this.renderModal()}
       </View>

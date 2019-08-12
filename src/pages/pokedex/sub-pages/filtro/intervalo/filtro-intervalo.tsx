@@ -3,21 +3,12 @@ import {PokedexProps} from "../../../service/PokedexProps";
 import {View, Text, YellowBox} from "react-native";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import {Helpers} from "../../../../../helpers/helpers";
+import {FiltroHeader} from "../header/filtro-header";
 import {FiltroCSS} from "../filtro-css";
 
 export class FiltroIntervalo extends Component<PokedexProps.FiltroForm> {
 
-  header() {
-
-    let css = FiltroCSS.HEADER;
-
-    return (
-      <View>
-        <Text style={css.title}>Intervalo de números</Text>
-      </View>
-    )
-
-  }
+  private css = FiltroCSS.INTERVALO;
 
   render() {
 
@@ -39,7 +30,7 @@ export class FiltroIntervalo extends Component<PokedexProps.FiltroForm> {
 
     return (
       <View>
-        {this.header()}
+        <FiltroHeader titulo={"Intervalo de números"} />
         <View style={{flexDirection: "row"}}>
           <MultiSlider
             trackStyle={{backgroundColor: '#5e5e5e'}}

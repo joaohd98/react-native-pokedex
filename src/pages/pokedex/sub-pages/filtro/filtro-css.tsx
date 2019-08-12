@@ -10,14 +10,16 @@ export class FiltroCSS {
   static VIEW = StyleSheet.create({
     scrollView: {
       backgroundColor: "#424242",
-      flex: 1,
       paddingHorizontal: Helpers.pegarPorcentagem(5, "width"),
     }
   });
 
   static HEADER = StyleSheet.create({
+    view: {
+      marginTop: 15,
+      marginBottom: 5,
+    },
     title: {
-      marginTop: 20,
       color: Colors.white,
       fontSize: 25,
       letterSpacing: 3,
@@ -25,7 +27,6 @@ export class FiltroCSS {
     },
     subTitle: {
       marginTop: 10,
-      marginBottom: 20,
       fontSize: 18,
       color: Colors.white,
       fontWeight: '400'
@@ -82,14 +83,16 @@ export class FiltroCSS {
     },
   });
 
+  static INTERVALO = StyleSheet.create({
+
+  });
+
   static HABILIDADES = StyleSheet.create({
     view: {
-      marginVertical: 5
     },
     inputView: {
       flex: 1,
       flexDirection: "row",
-      marginVertical: 5
     },
     icon: {
       top: Platform.OS === "ios" ? 19 : 23,
@@ -174,7 +177,22 @@ export class FiltroCSS {
       fontSize: 15,
       color: Colors.link,
     }
-  })
+  });
 
+  static PESO_ALTURA = StyleSheet.create({
+    list: {
+      flex: 1,
+      flexDirection: "row"
+    },
+    listItens: {
+      flex: 0.3,
+      marginHorizontal: 20
+    },
+    listItensImage:{
+      height: Helpers.pegarPorcentagem(10, "height"),
+      width: Helpers.pegarPorcentagem(25, "width"),
+      borderRadius: 10
+    }
+  });
 
 }

@@ -3,10 +3,21 @@ import {PokedexProps} from "../../../service/PokedexProps";
 import {Image, Text, TouchableWithoutFeedback, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
 import {images} from "../../../../../assets";
-import {FiltroHeader} from "../header/filtro-header";
 
 
-export class FiltroAlturas extends Component<PokedexProps.FiltroForm> {
+export class FiltroBotoes extends Component<PokedexProps.FiltroForm> {
+
+  header() {
+
+    let css = FiltroCSS.HEADER;
+
+    return (
+      <View>
+        <Text style={css.title}>Altura</Text>
+      </View>
+    )
+
+  }
 
   mudarStatus(propiedade: "pequeno" | "medio" | "grande") {
 
@@ -22,7 +33,7 @@ export class FiltroAlturas extends Component<PokedexProps.FiltroForm> {
 
     return (
       <View>
-        <FiltroHeader titulo={"Altura"} />
+        { this.header() }
         <View style={css.list}>
           <TouchableWithoutFeedback onPress={() => this.mudarStatus('pequeno')}>
             <View style={css.listItens}>

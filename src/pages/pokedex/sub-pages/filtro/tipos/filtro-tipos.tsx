@@ -3,23 +3,10 @@ import {FlatList, Text, TouchableWithoutFeedback, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
 import {PokedexProps} from "../../../service/PokedexProps";
 import {PokedexInteractor} from "../../../service/PokedexInteractor";
+import {Header} from "react-navigation";
+import {FiltroHeader} from "../header/filtro-header";
 
 export class FiltroTipos extends Component<PokedexProps.FiltroForm> {
-
-  header() {
-
-    let css = FiltroCSS.HEADER;
-
-    return (
-      <View>
-        <Text style={css.title}>Tipo e Fraqueza</Text>
-        <Text style={css.subTitle}>
-          <Text style={css.strong}>T</Text> = Tipo <Text style={css.strong}>F</Text> = Fraqueza
-        </Text>
-      </View>
-    )
-
-  }
 
   private pegarTipos = (tipo) => {
 
@@ -70,13 +57,23 @@ export class FiltroTipos extends Component<PokedexProps.FiltroForm> {
 
   }
 
+  renderSubtitle() {
+
+    return (
+      <Text>
+        <Text style={{fontWeight: "bold"}}>T</Text> = Tipo <Text style={{fontWeight: "bold"}}>F</Text> = Fraqueza
+      </Text>
+    );
+
+  }
+
   render() {
 
     return (
 
       <View>
         <FlatList
-          ListHeaderComponent={this.header()}
+          ListHeaderComponent={<FiltroHeader titulo={"Tipo e Fraqueza"} subTitle={this.renderSubtitle()} />}
           keyExtractor={item => item.nome}
           data={this.props.tipos}
           numColumns={2}
@@ -86,6 +83,5 @@ export class FiltroTipos extends Component<PokedexProps.FiltroForm> {
     )
 
   }
-
 
 }
