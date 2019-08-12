@@ -3,19 +3,21 @@ import {
   Modal,
   Text,
   View,
-  TouchableHighlight,
   TextInput,
   Image,
   TouchableOpacity,
-  FlatList, TouchableWithoutFeedback,
+  FlatList, TouchableWithoutFeedback, Button,
 } from "react-native";
 import {PokedexProps} from "../../../service/PokedexProps";
 import {FiltroCSS} from "../filtro-css";
 import {images} from "../../../../../assets";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from "../../../../../helpers/colors/colors";
+import {RefObject} from "react";
+import {Helpers} from "../../../../../helpers/helpers";
 
 interface State {
+  flatList: RefObject<FlatList<string>>
   selecionado: string,
   modalVisivel: boolean
 }
@@ -23,13 +25,14 @@ interface State {
 export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, State> {
 
   state = {
-    selecionado: this.props.habilidades.selecionada || "Todas",
+    flatList: React.createRef<FlatList<string>>(),
+    selecionado: this.props.habilidades.selecionada,
     modalVisivel: false,
   };
 
   UNSAFE_componentWillMount() {
 
-    this.props.habilidades.todas.unshift("Todas");
+    this.props.habilidades.todas.unshift("");
 
   }
 
@@ -54,19 +57,42 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
     const abrirModal = () => this.setState({modalVisivel: true});
 
     return (
-      <TouchableHighlight onPress={abrirModal}>
+      <TouchableWithoutFeedback onPress={abrirModal}>
         <View style={css.inputView}>
           <Image style={css.icon} source={images.pokeballWhite}/>
           <TextInput value={texto} style={css.input} editable={false} onTouchStart={abrirModal}/>
         </View>
-      </TouchableHighlight>
+      </TouchableWithoutFeedback>
     )
 
   }
 
+  scrollToIndex() {
+
+    let current = this.state.flatList.current;
+
+    if(current) {
+
+      const index = this.props.habilidades.todas.indexOf(this.props.habilidades.selecionada);
+
+      current.scrollToIndex({animated: false, index: index});
+
+    }
+
+
+  }
+
+
   renderModal() {
 
     const css = FiltroCSS.HABILIDADES;
+    const index = this.props.habilidades.todas.indexOf(this.props.habilidades.selecionada);
+
+    const listaTamanho = (index: number) => ({
+      length: FiltroCSS.LIST_ITEM_HEIGTH,
+      offset: ( FiltroCSS.LIST_ITEM_HEIGTH * index + FiltroCSS.LIST_ITEM_BORDER_HEIGTH * index ) + 1,
+      index: index
+    });
 
     return (
       <Modal visible={this.state.modalVisivel} transparent={true} animationType="fade">
@@ -77,8 +103,10 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
                 <View style={css.selectTitle}>
                   <Text style={css.selectTitleText}>Habilidades</Text>
                 </View>
-                <FlatList
-                  data={this.props.habilidades.todas} keyExtractor={(item) => item}
+                <FlatList onLayout={this.scrollToIndex.bind(this)}
+                  ref={this.state.flatList} style={css.selectList}
+                  getItemLayout={(data, index) => listaTamanho(index) }
+                  data={this.props.habilidades.todas} keyExtractor={item => item}
                   ItemSeparatorComponent={() => this.renderSeperator()} renderItem={({item}) => this.renderItem(item)}
                 />
                 <View style={css.selectView}>
@@ -103,12 +131,6 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
     const css = FiltroCSS.HABILIDADES;
     const FonteTamanho = 15;
 
-    const clicarHabilidade = (item) => {
-
-      this.setState({selecionado: item});
-
-    };
-
     const gerarIcone = (selecionado: boolean) => {
 
       if (selecionado)
@@ -124,20 +146,24 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
     };
 
     return (
-      <TouchableOpacity style={css.selecItemClick} onPress={() => clicarHabilidade(item)}>
-        {gerarIcone(item == this.state.selecionado)}
-        <View style={css.selectItem}>
+      <TouchableOpacity style={css.selecItemClick} onPress={() => this.setState({selecionado: item})}>
+        { gerarIcone(item == this.state.selecionado)}
+        <View>
           <Text style={{fontSize: FonteTamanho, letterSpacing: 1, fontWeight: "300"}}>
-            {item}
+            { item || "Todas"}
           </Text>
         </View>
       </TouchableOpacity>
     )
+
   }
 
   renderSeperator() {
 
-    return (<View style={{borderColor: Colors.gray, borderBottomWidth: 1}}/>)
+    const css = FiltroCSS.HABILIDADES;
+
+    return (<View style={css.selectBorder}/>)
+
   }
 
   selecionarHabilidade() {
@@ -146,6 +172,7 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
 
     this.setState({
       ...this.props,
+      flatList: React.createRef<FlatList<string>>(),
       modalVisivel: false,
       selecionado: this.props.habilidades.selecionada
     })

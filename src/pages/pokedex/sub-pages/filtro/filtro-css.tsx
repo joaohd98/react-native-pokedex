@@ -4,6 +4,9 @@ import {Helpers} from "../../../../helpers/helpers";
 
 export class FiltroCSS {
 
+  static LIST_ITEM_HEIGTH = 30;
+  static LIST_ITEM_BORDER_HEIGTH = 2.5;
+
   static VIEW = StyleSheet.create({
     scrollView: {
       backgroundColor: "#424242",
@@ -129,7 +132,7 @@ export class FiltroCSS {
     selectTitle: {
       paddingVertical: 5,
       borderWidth: 1,
-      borderColor: "#f5f5f5",
+      borderColor: Colors.black,
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20
     },
@@ -140,24 +143,30 @@ export class FiltroCSS {
       letterSpacing: 1
     },
     selecItemClick: {
+      height: FiltroCSS.LIST_ITEM_HEIGTH,
       flexDirection: "row",
       paddingVertical: 5
-    },
-    selectItem: {
-      height: 20,
     },
     selectItemIcon: {
       paddingHorizontal: Helpers.pegarPorcentagem(2, "width"),
       width: 30,
     },
+    selectList: {
+      borderWidth: 1,
+      borderColor: Colors.black,
+    },
+    selectBorder: {
+      borderColor: Colors.gray,
+      height: FiltroCSS.LIST_ITEM_BORDER_HEIGTH,
+      borderBottomWidth: 1
+    },
     selectView: {
       flexDirection: "row"
     },
     selectButtons: {
+      borderWidth: 1,
+      borderColor: Colors.black,
       flex: 0.5,
-      borderLeftWidth: 1,
-      borderTopWidth: 0.5,
-      borderColor: Colors.black
     },
     selectButtonsText: {
       textAlign: "center",
