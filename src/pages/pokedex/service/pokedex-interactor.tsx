@@ -172,7 +172,9 @@ export class PokedexInteractor {
         alturas: { pequeno: false, medio: false, grande: false },
         pesos:  { leve: false, medio: false, pesado: false },
         numeros: { minimo: -1, maximo: -1 }
-      }
+      },
+      aplicarFiltros: (filtro) => {},
+      redefinirFiltros: () => {}
     }
 
   }
@@ -234,7 +236,7 @@ export class PokedexInteractor {
       intervaloNumeros: intervaloNumerosForm,
       habilidades: habilidadesForm,
       altura: alturaForm,
-      peso: pesoForm
+      peso: pesoForm,
     };
 
     console.log(form);
@@ -243,5 +245,7 @@ export class PokedexInteractor {
 
   }
 
+  static formToProps(props: PokedexProps.FiltroForm) {  //: PokedexProps.Filtro
 
+  }
 }

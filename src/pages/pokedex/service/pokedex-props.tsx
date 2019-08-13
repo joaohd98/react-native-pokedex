@@ -24,6 +24,9 @@ export namespace PokedexProps {
       pesos: { leve: boolean, medio: boolean, pesado: boolean }
     }
 
+    aplicarFiltros: (filtro) => void;
+    redefinirFiltros: () => void;
+
   }
 
   export interface Props extends GlobalProps {
@@ -55,7 +58,8 @@ export namespace PokedexProps {
       selecionada: string,
     },
     altura: { pequeno: boolean, medio: boolean, grande: boolean },
-    peso: { leve: boolean, medio: boolean, pesado: boolean }
+    peso: { leve: boolean, medio: boolean, pesado: boolean },
+
   }
 
 }

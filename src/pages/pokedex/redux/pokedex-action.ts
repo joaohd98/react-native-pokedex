@@ -13,6 +13,9 @@ export enum PokedexConst {
 
   FILTRAR_POKEMON,
 
+  REDEFINIR_FILTROS,
+  APLICAR_FILTROS
+
 }
 
 export class PokedexAction {
@@ -64,6 +67,34 @@ export class PokedexAction {
 
   };
 
+  static aplicarFiltros = (filtro) => {
 
+    return dispatch => {
+
+      dispatch({
+        type: PokedexConst.APLICAR_FILTROS,
+        payload: {
+          pesquisa: PokedexInteractor.formToProps(filtro),
+        }
+      })
+
+    }
+
+  };
+
+  static redefinirFiltros = () => {
+
+    return dispatch => {
+
+      dispatch({
+        type: PokedexConst.REDEFINIR_FILTROS,
+        payload: {
+          pesquisa: PokedexInteractor.filtroValoresIniciais(),
+        }
+      })
+
+    }
+
+  };
 
 }

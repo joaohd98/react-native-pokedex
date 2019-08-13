@@ -5,7 +5,6 @@ import {Helpers} from "../../../../helpers/helpers";
 export class FiltroCSS {
 
   static LIST_ITEM_HEIGTH = 30;
-  static LIST_ITEM_BORDER_HEIGTH = 2.5;
 
   static VIEW = StyleSheet.create({
     scrollView: {
@@ -63,7 +62,7 @@ export class FiltroCSS {
       right: 0
     },
     fraquezaForca: {
-      flex: 0.45,
+      flex: 0.50,
       flexDirection: "row",
       justifyContent: "center",
     },
