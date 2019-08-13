@@ -37,7 +37,7 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
         <FiltroHabilidades {...this.state} />
         <FiltroAlturas {...this.state} />
         <FiltroPesos {...this.state} />
-        <FiltroBotoes {...this.state} aplicarFiltros={this.props.aplicarFiltros.bind(this)} redefinirFiltros={this.props.redefinirFiltros.bind(this)} />
+        <FiltroBotoes {...this.state} sucesso={() => this.props.aplicarFiltros(this.state)} redefinir={() => this.props.redefinirFiltros(this.props.valores)} />
       </ScrollView>
     )
 
@@ -51,8 +51,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    aplicarFiltros: (filtro) => PokedexAction.aplicarFiltros(filtro),
-    redefinirFiltros: () => PokedexAction.redefinirFiltros(),
+    aplicarFiltros: (filtro: PokedexProps.FiltroForm) => PokedexAction.aplicarFiltros(filtro),
+    redefinirFiltros: (filtro: PokedexProps.FiltroPropsValues) => PokedexAction.redefinirFiltros(filtro)
   }, dispatch)
 );
 

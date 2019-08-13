@@ -2,10 +2,11 @@ import React, {Component} from "react";
 import {Text, TouchableOpacity, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {PokedexProps} from "../../../service/pokedex-props";
 
-interface Props {
-  aplicarFiltros: (filtro) => void;
-  redefinirFiltros: () => void;
+interface Props extends PokedexProps.FiltroForm{
+  sucesso: () => void;
+  redefinir: () => void;
 }
 
 export class FiltroBotoes extends Component<Props> {
@@ -16,7 +17,7 @@ export class FiltroBotoes extends Component<Props> {
 
     return (
       <View style={this.css.view}>
-        <TouchableOpacity onPress={() => this.props.aplicarFiltros(this.props)}>
+        <TouchableOpacity onPress={() => this.props.sucesso()}>
           <View style={[this.css.buttonPesquisa, this.css.button]}>
             <View style={this.css.buttonPesquisaContainer}>
               <Icon style={this.css.buttonIcon} name="search" size={20} />
@@ -24,7 +25,7 @@ export class FiltroBotoes extends Component<Props> {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.redefinirFiltros()}>
+        <TouchableOpacity onPress={() => this.props.redefinir()}>
           <View style={[this.css.buttonRedefinir, this.css.button]}>
             <Text style={this.css.buttonText}>Redefinir</Text>
           </View>

@@ -155,6 +155,7 @@ export class PokedexInteractor {
 
   }
 
+
   static filtroValoresIniciais(): PokedexProps.Filtro {
 
     return {
@@ -175,6 +176,20 @@ export class PokedexInteractor {
       },
       aplicarFiltros: (filtro) => {},
       redefinirFiltros: () => {}
+    }
+
+  }
+
+  static redifinirValoresFiltro(valores: PokedexProps.FiltroPropsValues): PokedexProps.FiltroPropsValues {
+
+    return {
+      nome: valores.nome,
+      habilidadeEscolhida: "Todas",
+      tiposEscolhidos: [],
+      fraquezasEscolhidas: [],
+      alturas: { pequeno: false, medio: false, grande: false },
+      pesos:  { leve: false, medio: false, pesado: false },
+      numeros: { minimo: valores.numeros.minimo, maximo: valores.numeros.maximo}
     }
 
   }
@@ -239,8 +254,6 @@ export class PokedexInteractor {
       peso: pesoForm,
     };
 
-    console.log(form);
-
     return form;
 
   }
@@ -248,4 +261,5 @@ export class PokedexInteractor {
   static formToProps(props: PokedexProps.FiltroForm) {  //: PokedexProps.Filtro
 
   }
+
 }

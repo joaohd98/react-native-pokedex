@@ -5,30 +5,6 @@ import {GlobalProps} from "../../../redux/props";
 
 export namespace PokedexProps {
 
-  export interface Filtro {
-
-    filtro: {
-      nomes: string[];
-      habilidades: string[];
-      tipos: string[];
-      numeros: { minimo: number, maximo: number },
-    };
-
-    valores: {
-      nome: string;
-      habilidadeEscolhida: string;
-      tiposEscolhidos: string[];
-      fraquezasEscolhidas: string[];
-      numeros: { minimo: number, maximo: number },
-      alturas: { pequeno: boolean, medio: boolean, grande: boolean },
-      pesos: { leve: boolean, medio: boolean, pesado: boolean }
-    }
-
-    aplicarFiltros: (filtro) => void;
-    redefinirFiltros: () => void;
-
-  }
-
   export interface Props extends GlobalProps {
 
     pokemons: PokedexModel.ViewModel[];
@@ -43,20 +19,52 @@ export namespace PokedexProps {
 
   }
 
+  export interface Filtro {
+
+    filtro: {
+      nomes: string[];
+      habilidades: string[];
+      tipos: string[];
+      numeros: { minimo: number, maximo: number },
+    };
+
+    valores: FiltroPropsValues
+
+    aplicarFiltros: (filtro: PokedexProps.FiltroForm) => void;
+    redefinirFiltros: (filtro: PokedexProps.FiltroPropsValues) => void;
+
+  }
+
+  export interface FiltroPropsValues {
+
+    nome: string;
+    habilidadeEscolhida: string;
+    tiposEscolhidos: string[];
+    fraquezasEscolhidas: string[];
+    numeros: { minimo: number, maximo: number },
+    alturas: { pequeno: boolean, medio: boolean, grande: boolean },
+    pesos: { leve: boolean, medio: boolean, pesado: boolean }
+
+  }
+
   export interface FiltroForm {
+
     tipos: {
       nome: string;
       tipo: boolean;
       fraqueza: boolean
-    }[],
+    }[]
+
     intervaloNumeros: {
       limites: number[],
       valores: number[],
     }
+
     habilidades: {
       todas: string[]
       selecionada: string,
-    },
+    }
+
     altura: { pequeno: boolean, medio: boolean, grande: boolean },
     peso: { leve: boolean, medio: boolean, pesado: boolean },
 

@@ -67,7 +67,7 @@ export class PokedexAction {
 
   };
 
-  static aplicarFiltros = (filtro) => {
+  static aplicarFiltros = (filtro: PokedexProps.FiltroForm) => {
 
     return dispatch => {
 
@@ -82,14 +82,14 @@ export class PokedexAction {
 
   };
 
-  static redefinirFiltros = () => {
+  static redefinirFiltros = (filtro: PokedexProps.FiltroPropsValues) => {
 
     return dispatch => {
 
       dispatch({
         type: PokedexConst.REDEFINIR_FILTROS,
         payload: {
-          pesquisa: PokedexInteractor.filtroValoresIniciais(),
+          pesquisa_valores: PokedexInteractor.redifinirValoresFiltro(filtro),
         }
       })
 

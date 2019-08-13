@@ -19,6 +19,8 @@ const INITIAL_STATE: PokedexProps.Props = {
 
 const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payload: any}) => {
 
+  console.log('payload', action.payload);
+
   switch (action.type) {
 
     case PokedexConst.CARREGANDO:
@@ -79,8 +81,8 @@ const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payl
     case PokedexConst.REDEFINIR_FILTROS: {
       return {
         ...state,
-        pesquisa: action.payload.filtro,
-        limite: JSON.stringify(action.payload.filtro.valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
+        pesquisa: {filtro: state.pesquisa.filtro, valores: action.payload.pesquisa_valores} ,
+        limite: JSON.stringify(action.payload.pesquisa_valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
       }
     }
 
