@@ -31,12 +31,12 @@ export class FiltroIntervalo extends Component<PokedexProps.FiltroForm> {
     return (
       <View>
         <FiltroHeader titulo={"Intervalo de números"} />
-        <View style={{flexDirection: "row"}}>
+        <View style={{flexDirection: "row", justifyContent: "center", alignContent: "center"}}>
           <MultiSlider
             trackStyle={{backgroundColor: '#5e5e5e'}}
             selectedStyle={{backgroundColor: "#bdc3c7"}}
             values={valores}
-            sliderLength={Helpers.pegarPorcentagem(90, "width")}
+            sliderLength={Helpers.pegarPorcentagem(85, "width")}
             min={limites[0]}
             max={limites[1]}
             allowOverlap={false}
