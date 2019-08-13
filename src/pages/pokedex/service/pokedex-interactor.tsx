@@ -68,9 +68,9 @@ export class PokedexInteractor {
 
     }
 
-    filtro.habilidades = Helpers.ordenarArray(filtro.habilidades);
+    filtro.habilidades = Helpers.ordenarArray(filtro.habilidades, ["Todas"]);
 
-    return {pokemons: pokemons, filtro: filtro};
+    return { pokemons: pokemons, filtro: filtro };
 
   }
 
@@ -160,13 +160,13 @@ export class PokedexInteractor {
     return {
       filtro: {
         nomes: [],
-        habilidades: [],
+        habilidades: ["Todas"],
         tipos: [],
         numeros: { minimo: -1, maximo: -1 }
       },
       valores: {
         nome: "",
-        habilidadeEscolhida: "",
+        habilidadeEscolhida: "Todas",
         tiposEscolhidos: [],
         fraquezasEscolhidas: [],
         alturas: { pequeno: false, medio: false, grande: false },

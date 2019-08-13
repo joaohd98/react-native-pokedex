@@ -185,6 +185,11 @@ export class FiltroCSS {
       paddingHorizontal: Helpers.pegarPorcentagem(2, "width"),
       width: 30,
     },
+    selectItemText: {
+      letterSpacing: 1,
+      textTransform: "capitalize",
+      fontWeight: "300"
+    },
     selectList: {
       borderWidth: 0.3,
       borderColor: Colors.black,

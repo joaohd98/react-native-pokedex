@@ -16,17 +16,13 @@ interface State {
 
 export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, State> {
 
+  private css = FiltroCSS.HABILIDADES;
+
   state = {
     flatList: React.createRef<FlatList<string>>(),
     selecionado: this.props.habilidades.selecionada,
     modalVisivel: false,
   };
-
-  UNSAFE_componentWillMount() {
-
-    this.props.habilidades.todas.unshift("");
-
-  }
 
   renderInput() {
 
@@ -129,8 +125,8 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
       <TouchableOpacity style={css.selecItemClick} onPress={() => this.setState({selecionado: item})}>
         { gerarIcone(selecionado)}
         <View>
-          <Text style={{fontSize: FonteTamanho, letterSpacing: 1, fontWeight: "300", color: selecionado ? Colors.link : Colors.black }}>
-            { item || "Todas"}
+          <Text style={{...this.css.selectItemText, fontSize: FonteTamanho, color: selecionado ? Colors.link : Colors.black }}>
+            { item }
           </Text>
         </View>
       </TouchableOpacity>

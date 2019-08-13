@@ -50,7 +50,23 @@ export class Helpers {
     return Helpers.removerAcentosMinusculo(t1).includes(Helpers.removerAcentosMinusculo(t2))
   }
 
-  static ordenarArray(habilidades: string[]) {
-    return habilidades.sort();
+  static ordenarArray(habilidades: string[], excessoes: string[]) {
+
+    return habilidades.sort((a, b) => {
+
+      if(excessoes.indexOf(a) > -1 || excessoes.indexOf(b) > -1)
+        return 1;
+
+      if (a < b)
+        return -1;
+
+      if (a > b)
+        return 1;
+
+      return 0;
+
+    });
+
   }
+
 }
