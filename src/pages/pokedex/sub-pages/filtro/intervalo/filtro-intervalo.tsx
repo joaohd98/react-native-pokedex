@@ -5,6 +5,7 @@ import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import {Helpers} from "../../../../../helpers/helpers";
 import {FiltroHeader} from "../header/filtro-header";
 import {FiltroCSS} from "../filtro-css";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class FiltroIntervalo extends Component<PokedexProps.FiltroForm> {
 
@@ -31,25 +32,35 @@ export class FiltroIntervalo extends Component<PokedexProps.FiltroForm> {
     return (
       <View>
         <FiltroHeader titulo={"Intervalo de números"} />
-        <View style={{flexDirection: "row", justifyContent: "center", alignContent: "center"}}>
+        <View style={this.css.view}>
           <MultiSlider
+            isMarkersSeparated={true}
             trackStyle={{backgroundColor: '#5e5e5e'}}
             selectedStyle={{backgroundColor: "#bdc3c7"}}
             values={valores}
-            sliderLength={Helpers.pegarPorcentagem(85, "width")}
+            sliderLength={Helpers.pegarPorcentagem(80, "width")}
             min={limites[0]}
             max={limites[1]}
-            allowOverlap={false}
             snapped={false}
+            customMarkerLeft={() =>
+              <View style={this.css.marker}>
+                <Icon name={"minus-circle"} size={35} color={"#000"} />
+              </View>
+            }
+            customMarkerRight={() =>
+              <View style={this.css.marker}>
+                <Icon name={"plus-circle"} size={35} color={"#000"}/>
+              </View>
+            }
             onValuesChangeFinish={novosValores => mudarValores(novosValores)}
           />
         </View>
-        <View style={{flexDirection: "row"}}>
-          <View style={{flex: 0.5}}>
-            <Text style={{textAlign: "left", fontSize: 16, fontWeight: "800", color: "#FFF"}}>{valores[0]}</Text>
+        <View style={this.css.valuesView}>
+          <View style={this.css.valueViewFlex}>
+            <Text style={[this.css.valueViewTextFirst, this.css.valueViewText]}>{valores[0]}</Text>
           </View>
-          <View style={{flex: 0.5}}>
-            <Text style={{textAlign: "right", fontSize: 16, fontWeight: "800", color: "#FFF"}}>{valores[1]}</Text>
+          <View style={this.css.valueViewFlex}>
+            <Text style={[this.css.valueViewTextSecond, this.css.valueViewText]}>{valores[1]}</Text>
           </View>
         </View>
       </View>

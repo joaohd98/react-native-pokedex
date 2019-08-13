@@ -85,7 +85,37 @@ export class FiltroCSS {
   });
 
   static INTERVALO = StyleSheet.create({
-
+    view: {
+      flexDirection: "row",
+      justifyContent: "center",
+      alignContent: "center",
+      marginBottom: 10
+    },
+    marker: {
+      backgroundColor: "#FFF",
+      height: 35,
+      width: 35,
+      borderRadius: 35,
+      justifyContent: "center",
+      alignItems: "center"
+    },
+    valuesView: {
+      flexDirection: "row"
+    },
+    valueViewFlex: {
+      flex: 0.5
+    },
+    valueViewText: {
+      fontSize: 16,
+      fontWeight: "800",
+      color: "#FFF"
+    },
+    valueViewTextFirst: {
+      textAlign: "left",
+    },
+    valueViewTextSecond: {
+      textAlign: "right",
+    }
   });
 
   static HABILIDADES = StyleSheet.create({
