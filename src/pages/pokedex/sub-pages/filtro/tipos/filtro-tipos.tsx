@@ -1,9 +1,8 @@
 import React, {Component} from "react";
 import {FlatList, Text, TouchableWithoutFeedback, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
-import {PokedexProps} from "../../../service/PokedexProps";
-import {PokedexInteractor} from "../../../service/PokedexInteractor";
-import {Header} from "react-navigation";
+import {PokedexProps} from "../../../service/pokedex-props";
+import {PokedexInteractor} from "../../../service/pokedex-interactor";
 import {FiltroHeader} from "../header/filtro-header";
 
 export class FiltroTipos extends Component<PokedexProps.FiltroForm> {

@@ -1,6 +1,6 @@
-import {PokedexModel} from "./PokedexModel";
+import {PokedexModel} from "./pokedex-model";
 import {Helpers} from "../../../helpers/helpers";
-import {PokedexProps} from "./PokedexProps";
+import {PokedexProps} from "./pokedex-props";
 
 export class PokedexInteractor {
 

@@ -1,11 +1,10 @@
 import React, {Component} from "react";
-import {TextInput, View, Text, TouchableHighlight, Keyboard, FlatList} from "react-native";
+import {Keyboard, Text, TextInput, TouchableHighlight, View} from "react-native";
 import {Colors} from "../../../../helpers/colors/colors";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {PokedexCSS} from "../../pokedex-css";
-import {PokedexProps} from "../../service/PokedexProps";
-import {PokedexModel} from "../../service/PokedexModel";
-import {PokedexInteractor} from "../../service/PokedexInteractor";
+import {PokedexProps} from "../../service/pokedex-props";
+import {PokedexInteractor} from "../../service/pokedex-interactor";
 
 interface States {
   color: string,

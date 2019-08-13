@@ -1,9 +1,9 @@
-import {PokedexConst} from "./pokedexAction";
-import {PokedexProps} from "../service/PokedexProps";
+import {PokedexConst} from "./pokedex-action";
+import {PokedexProps} from "../service/pokedex-props";
 import React from "react";
 import {FlatList} from "react-native";
-import {PokedexModel} from "../service/PokedexModel";
-import {PokedexInteractor} from "../service/PokedexInteractor";
+import {PokedexModel} from "../service/pokedex-model";
+import {PokedexInteractor} from "../service/pokedex-interactor";
 
 const INITIAL_STATE: PokedexProps.Props = {
   pokemons: [],

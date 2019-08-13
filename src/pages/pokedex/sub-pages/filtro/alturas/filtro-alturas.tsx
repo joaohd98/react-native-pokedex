@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {PokedexProps} from "../../../service/PokedexProps";
-import {Image, Text, TouchableWithoutFeedback, View} from "react-native";
+import {PokedexProps} from "../../../service/pokedex-props";
+import {Image, TouchableWithoutFeedback, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
 import {images} from "../../../../../assets";
 import {FiltroHeader} from "../header/filtro-header";

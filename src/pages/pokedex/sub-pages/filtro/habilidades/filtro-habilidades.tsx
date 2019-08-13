@@ -1,20 +1,11 @@
 import * as React from "react";
-import {
-  Modal,
-  Text,
-  View,
-  TextInput,
-  Image,
-  TouchableOpacity,
-  FlatList, TouchableWithoutFeedback, Button,
-} from "react-native";
-import {PokedexProps} from "../../../service/PokedexProps";
+import {RefObject} from "react";
+import {FlatList, Image, Modal, Text, TextInput, TouchableOpacity, TouchableWithoutFeedback, View,} from "react-native";
+import {PokedexProps} from "../../../service/pokedex-props";
 import {FiltroCSS} from "../filtro-css";
 import {images} from "../../../../../assets";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {Colors} from "../../../../../helpers/colors/colors";
-import {RefObject} from "react";
-import {Helpers} from "../../../../../helpers/helpers";
 import {FiltroHeader} from "../header/filtro-header";
 
 interface State {

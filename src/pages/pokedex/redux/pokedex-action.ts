@@ -1,7 +1,7 @@
 import {PokedexService} from "../../../services/pokedex/PokedexService";
-import {PokedexInteractor} from "../service/PokedexInteractor";
-import {PokedexModel} from "../service/PokedexModel";
-import {PokedexProps} from "../service/PokedexProps";
+import {PokedexInteractor} from "../service/pokedex-interactor";
+import {PokedexModel} from "../service/pokedex-model";
+import {PokedexProps} from "../service/pokedex-props";
 
 export enum PokedexConst {
 

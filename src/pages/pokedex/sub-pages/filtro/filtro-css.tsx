@@ -11,6 +11,7 @@ export class FiltroCSS {
     scrollView: {
       backgroundColor: "#424242",
       paddingHorizontal: Helpers.pegarPorcentagem(5, "width"),
+      paddingBottom: 100
     }
   });
 
@@ -194,5 +195,40 @@ export class FiltroCSS {
       borderRadius: 10
     }
   });
+
+  static BOTOES = StyleSheet.create({
+    view: {
+      flex: 1,
+      marginVertical: 25,
+    },
+    button: {
+      padding: 12,
+      borderRadius: 5,
+      marginVertical: 10
+    },
+    buttonPesquisa: {
+      backgroundColor: "#ee6b2f",
+    },
+    buttonPesquisaContainer: {
+      flexDirection: "row",
+      display: "flex",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    buttonRedefinir: {
+      backgroundColor: "#a4a4a4"
+    },
+    buttonIcon: {
+      color: "#FFF",
+      marginRight: 5
+    },
+    buttonText: {
+      fontSize: 20,
+      textAlign: "center",
+      color: "#FFF",
+      fontWeight: "600",
+      letterSpacing: 1
+    }
+  })
 
 }

@@ -1,4 +1,4 @@
-import {PokedexModel} from "./PokedexModel";
+import {PokedexModel} from "./pokedex-model";
 import {RefObject} from "react";
 import {FlatList} from "react-native";
 import {GlobalProps} from "../../../redux/props";

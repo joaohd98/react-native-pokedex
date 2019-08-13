@@ -1,59 +1,33 @@
 import React, {Component} from "react";
-import {PokedexProps} from "../../../service/PokedexProps";
-import {Image, Text, TouchableWithoutFeedback, View} from "react-native";
+import {PokedexProps} from "../../../service/pokedex-props";
+import {Text, TouchableOpacity, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
-import {images} from "../../../../../assets";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 
 export class FiltroBotoes extends Component<PokedexProps.FiltroForm> {
 
-  header() {
-
-    let css = FiltroCSS.HEADER;
-
-    return (
-      <View>
-        <Text style={css.title}>Altura</Text>
-      </View>
-    )
-
-  }
-
-  mudarStatus(propiedade: "pequeno" | "medio" | "grande") {
-
-    this.props.altura[propiedade] = !this.props.altura[propiedade];
-
-    this.setState(this.props);
-
-  }
+  private css = FiltroCSS.BOTOES;
 
   render() {
 
-    let css = FiltroCSS.PESO_ALTURA;
-
     return (
-      <View>
-        { this.header() }
-        <View style={css.list}>
-          <TouchableWithoutFeedback onPress={() => this.mudarStatus('pequeno')}>
-            <View style={css.listItens}>
-              <Image source={this.props.altura.pequeno ? images.altura.pequeno.selecionado : images.altura.pequeno.normal} style={css.listItensImage} />
+      <View style={this.css.view}>
+        <TouchableOpacity>
+          <View style={[this.css.buttonPesquisa, this.css.button]}>
+            <View style={this.css.buttonPesquisaContainer}>
+              <Icon style={this.css.buttonIcon} name="search" size={20} />
+              <Text style={this.css.buttonText}>Pesquisar</Text>
             </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={() => this.mudarStatus('medio')}>
-            <View style={css.listItens}>
-              <Image source={this.props.altura.medio ? images.altura.medio.selecionado : images.altura.medio.normal} style={css.listItensImage} />
-            </View>
-          </TouchableWithoutFeedback>
-          <TouchableWithoutFeedback onPress={() => this.mudarStatus('grande')}>
-            <View style={css.listItens}>
-              <Image source={this.props.altura.grande ? images.altura.grande.selecionado : images.altura.grande.normal} style={css.listItensImage} />
-            </View>
-          </TouchableWithoutFeedback>
-        </View>
+          </View>
+        </TouchableOpacity>
+        <TouchableOpacity>
+          <View style={[this.css.buttonRedefinir, this.css.button]}>
+            <Text style={this.css.buttonText}>Redefinir</Text>
+          </View>
+        </TouchableOpacity>
       </View>
     )
-
   }
 
 }

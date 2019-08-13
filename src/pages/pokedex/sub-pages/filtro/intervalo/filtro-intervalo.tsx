@@ -1,6 +1,6 @@
 import React, {Component} from "react";
-import {PokedexProps} from "../../../service/PokedexProps";
-import {View, Text, YellowBox} from "react-native";
+import {PokedexProps} from "../../../service/pokedex-props";
+import {Text, View, YellowBox} from "react-native";
 import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import {Helpers} from "../../../../../helpers/helpers";
 import {FiltroHeader} from "../header/filtro-header";

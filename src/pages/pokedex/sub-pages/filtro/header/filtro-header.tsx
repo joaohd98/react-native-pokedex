@@ -1,8 +1,6 @@
 import React, {Component} from "react";
-import {PokedexProps} from "../../../service/PokedexProps";
-import {Image, Text, TouchableWithoutFeedback, View} from "react-native";
+import {Text, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
-import {images} from "../../../../../assets";
 
 interface Props {
   titulo: string,

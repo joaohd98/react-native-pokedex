@@ -1,4 +1,4 @@
-import {PokedexModel} from "../../pages/pokedex/service/PokedexModel";
+import {PokedexModel} from "../../pages/pokedex/service/pokedex-model";
 import {ApiRetornos} from "../index";
 
 export class PokedexService {

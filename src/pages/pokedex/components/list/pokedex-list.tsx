@@ -1,11 +1,11 @@
 import React, {Component} from "react";
 import {PokedexCard} from "../card/pokedex-card";
 import {PokedexCSS} from "../../pokedex-css";
-import {PokedexInteractor} from "../../service/PokedexInteractor";
+import {PokedexInteractor} from "../../service/pokedex-interactor";
 import {Colors} from "../../../../helpers/colors/colors";
 import {images} from "../../../../assets";
-import {PokedexProps} from "../../service/PokedexProps";
-import {Animated, Easing, FlatList, ScrollView, StyleSheet, View, Text} from "react-native";
+import {PokedexProps} from "../../service/pokedex-props";
+import {Animated, Easing, FlatList, ScrollView, StyleSheet, Text, View} from "react-native";
 
 export class PokedexList extends Component<PokedexProps.Props>{
 

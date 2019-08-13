@@ -1,14 +1,13 @@
-import React from "react";
-import {Component} from "react";
+import React, {Component} from "react";
 import {Button, Text, View} from "react-native";
 import {PokedexInput} from "./components/input/pokedex-input";
-import { connect } from 'react-redux';
+import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
-import {PokedexAction} from "./redux/pokedexAction";
+import {PokedexAction} from "./redux/pokedex-action";
 import {PokedexHeader} from "./components/header/header";
 import {PokedexCSS} from "./pokedex-css";
 import {PokedexList} from "./components/list/pokedex-list";
-import {PokedexProps} from "./service/PokedexProps";
+import {PokedexProps} from "./service/pokedex-props";
 
 class PokedexPage extends Component<PokedexProps.Props> {
 
