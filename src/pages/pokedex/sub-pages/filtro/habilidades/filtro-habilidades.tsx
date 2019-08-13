@@ -68,7 +68,7 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
 
     const listaTamanho = (index: number) => ({
       length: FiltroCSS.LIST_ITEM_HEIGTH,
-      offset: ( FiltroCSS.LIST_ITEM_HEIGTH * index + FiltroCSS.LIST_ITEM_BORDER_HEIGTH * index ) + 1,
+      offset: ( FiltroCSS.LIST_ITEM_HEIGTH * index ) + 1,
       index: index
     });
 
@@ -85,7 +85,7 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
                   ref={this.state.flatList} style={css.selectList}
                   getItemLayout={(data, index) => listaTamanho(index) }
                   data={this.props.habilidades.todas} keyExtractor={item => item}
-                  ItemSeparatorComponent={() => this.renderSeperator()} renderItem={({item}) => this.renderItem(item)}
+                  renderItem={({item}) => this.renderItem(item)}
                 />
                 <View style={css.selectView}>
                   <TouchableOpacity style={css.selectButtons} onPress={this.cancelar.bind(this)}>
@@ -123,24 +123,18 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
 
     };
 
+    let selecionado = item == this.state.selecionado;
+
     return (
       <TouchableOpacity style={css.selecItemClick} onPress={() => this.setState({selecionado: item})}>
-        { gerarIcone(item == this.state.selecionado)}
+        { gerarIcone(selecionado)}
         <View>
-          <Text style={{fontSize: FonteTamanho, letterSpacing: 1, fontWeight: "300"}}>
+          <Text style={{fontSize: FonteTamanho, letterSpacing: 1, fontWeight: "300", color: selecionado ? Colors.link : Colors.black }}>
             { item || "Todas"}
           </Text>
         </View>
       </TouchableOpacity>
     )
-
-  }
-
-  renderSeperator() {
-
-    const css = FiltroCSS.HABILIDADES;
-
-    return (<View style={css.selectBorder}/>)
 
   }
 
@@ -173,8 +167,8 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
     return (
       <View style={css.view}>
         <FiltroHeader titulo={"Habilidade"} />
-        {this.renderInput()}
-        {this.renderModal()}
+        { this.renderInput() }
+        { this.renderModal() }
       </View>
     );
 

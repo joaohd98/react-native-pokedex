@@ -165,8 +165,8 @@ export class FiltroCSS {
     },
     selectTitle: {
       paddingVertical: 5,
-      borderWidth: 1,
-      borderColor: Colors.black,
+      borderWidth: 0.1,
+      borderColor: Colors.red,
       borderTopLeftRadius: 20,
       borderTopRightRadius: 20
     },
@@ -186,19 +186,14 @@ export class FiltroCSS {
       width: 30,
     },
     selectList: {
-      borderWidth: 1,
+      borderWidth: 0.3,
       borderColor: Colors.black,
-    },
-    selectBorder: {
-      borderColor: Colors.gray,
-      height: FiltroCSS.LIST_ITEM_BORDER_HEIGTH,
-      borderBottomWidth: 1
     },
     selectView: {
       flexDirection: "row"
     },
     selectButtons: {
-      borderWidth: 1,
+      borderLeftWidth: 0.3,
       borderColor: Colors.black,
       flex: 0.5,
     },
@@ -206,6 +201,7 @@ export class FiltroCSS {
       textAlign: "center",
       padding: 8,
       fontSize: 15,
+      fontWeight: "bold",
       color: Colors.link,
     }
   });
