@@ -114,29 +114,29 @@ export class PokedexInteractor {
 
   }
 
-  static pegarCorFundoHabilidade(tipo: string): { borderTopColor: string, borderBottomColor: string, color: string } {
+  static pegarCorFundoHabilidade(tipo: string): { backgroundColor: string, borderTopColor: string, borderBottomColor: string, color: string } {
 
     let [preto, branco] = ['#212121', '#fff'];
 
     let cores = {
-      grass: {borderTopColor: "#9bcc50", borderBottomColor: "#9bcc50", color: branco},
-      poison: {borderTopColor: "#b97fc9", borderBottomColor: "#b97fc9", color: branco},
-      fire: {borderTopColor: "#fd7d24", borderBottomColor: "#fd7d24", color: branco},
-      flying: {borderTopColor: "#3dc7ef", borderBottomColor: "#bdb9b8", color: preto},
-      water: {borderTopColor: "#4592c4", borderBottomColor: "#4592c4", color: branco},
-      bug: {borderTopColor: "#729f3f", borderBottomColor: "#729f3f", color: branco},
-      normal: {borderTopColor: "#a4acaf", borderBottomColor: "#a4acaf", color: branco},
-      electric: {borderTopColor: "#eed535", borderBottomColor: "#eed535", color: preto},
-      ground: {borderTopColor: "#f7de3f", borderBottomColor: "#ab9842", color: preto},
-      fairy: {borderTopColor: "#fdb9e9", borderBottomColor: "#fdb9e9", color: preto},
-      fighting: {borderTopColor: "#d56723", borderBottomColor: "#d56723", color: branco},
-      psychic: {borderTopColor: "#f366b9", borderBottomColor: "#f366b9", color: branco},
-      rock: {borderTopColor: "#a38c21", borderBottomColor: "#a38c21", color: branco},
-      ice: {borderTopColor: "#51c4e7", borderBottomColor: "#51c4e7", color: preto},
-      ghost: {borderTopColor: "#7b62a3", borderBottomColor: "#7b62a3", color: branco},
-      dragon: {borderTopColor: "#53a4cf", borderBottomColor: "#f16e57", color: branco},
-      dark: {borderTopColor: "#707070", borderBottomColor: "#707070", color: branco},
-      steel: {borderTopColor: "#9eb7b8", borderBottomColor: "#9eb7b8", color: preto},
+      grass: {backgroundColor: "#9bcc50", borderTopColor: "#9bcc50", borderBottomColor: "#9bcc50", color: branco},
+      poison: {backgroundColor: "#b97fc9", borderTopColor: "#b97fc9", borderBottomColor: "#b97fc9", color: branco},
+      fire: {backgroundColor: "#fd7d24", borderTopColor: "#fd7d24", borderBottomColor: "#fd7d24", color: branco},
+      flying: {backgroundColor: "#3dc7ef", borderTopColor: "#3dc7ef", borderBottomColor: "#bdb9b8", color: preto},
+      water: {backgroundColor: "#4592c4", borderTopColor: "#4592c4", borderBottomColor: "#4592c4", color: branco},
+      bug: {backgroundColor: "#729f3f", borderTopColor: "#729f3f", borderBottomColor: "#729f3f", color: branco},
+      normal: {backgroundColor: "#a4acaf", borderTopColor: "#a4acaf", borderBottomColor: "#a4acaf", color: branco},
+      electric: {backgroundColor: "#eed535", borderTopColor: "#eed535", borderBottomColor: "#eed535", color: preto},
+      ground: {backgroundColor: "#f7de3f", borderTopColor: "#f7de3f", borderBottomColor: "#ab9842", color: preto},
+      fairy: {backgroundColor: "#fdb9e9", borderTopColor: "#fdb9e9", borderBottomColor: "#fdb9e9", color: preto},
+      fighting: {backgroundColor: "#f366b9", borderTopColor: "#f366b9", borderBottomColor: "#d56723", color: branco},
+      psychic: {backgroundColor: "#f366b9", borderTopColor: "#f366b9", borderBottomColor: "#f366b9", color: branco},
+      rock: {backgroundColor: "#a38c21", borderTopColor: "#a38c21", borderBottomColor: "#a38c21", color: branco},
+      ice: {backgroundColor: "#51c4e7", borderTopColor: "#51c4e7", borderBottomColor: "#51c4e7", color: preto},
+      ghost: {backgroundColor: "#7b62a3", borderTopColor: "#7b62a3", borderBottomColor: "#7b62a3", color: branco},
+      dragon: {backgroundColor: "#53a4cf", borderTopColor: "#53a4cf", borderBottomColor: "#f16e57", color: branco},
+      dark: {backgroundColor: "#707070", borderTopColor: "#707070", borderBottomColor: "#707070", color: branco},
+      steel: {backgroundColor: "#9eb7b8", borderTopColor: "#9eb7b8", borderBottomColor: "#9eb7b8", color: preto},
     };
 
     return cores[tipo];

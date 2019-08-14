@@ -44,11 +44,10 @@ export class FiltroCSS {
     },
     tipo: {
       flex: 0.55,
+      justifyContent: "center",
       borderRadius: 5,
       height: 30,
-      borderTopWidth: 15,
       borderBottomWidth: 15,
-      justifyContent: "center"
     },
     tipoTexto: {
       fontSize: 12,
@@ -73,7 +72,8 @@ export class FiltroCSS {
       height: 30,
       width: 30,
       marginHorizontal: 2,
-      justifyContent: "center"
+      justifyContent: "center",
+
     },
     centralizar: {
       textAlign: "center"
@@ -125,7 +125,7 @@ export class FiltroCSS {
       flexDirection: "row",
     },
     icon: {
-      top: Platform.OS === "ios" ? 19 : 23,
+      top: Platform.OS === "ios" ? 19 : 21,
       left: 8,
       width: 25,
       height: 25,
@@ -142,6 +142,9 @@ export class FiltroCSS {
       paddingVertical: 12,
       paddingHorizontal: 10,
       borderWidth: 1,
+
+    },
+    inputText: {
       color: '#FFF',
       fontWeight: "700",
       textTransform: "capitalize",

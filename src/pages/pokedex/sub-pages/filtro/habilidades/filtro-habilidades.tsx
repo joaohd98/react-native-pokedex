@@ -42,7 +42,9 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
       <TouchableWithoutFeedback onPress={abrirModal}>
         <View style={css.inputView}>
           <Image style={css.icon} source={images.pokeballWhite}/>
-          <TextInput value={texto} style={css.input} editable={false} onTouchStart={abrirModal}/>
+          <View style={css.input}>
+            <Text style={css.inputText}>{ texto }</Text>
+          </View>
         </View>
       </TouchableWithoutFeedback>
     )

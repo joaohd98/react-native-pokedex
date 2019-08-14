@@ -87,9 +87,7 @@ export class PokedexCSS {
       width: 110,
       marginRight: 10,
       borderRadius: 3,
-      borderTopColor: "red",
       borderTopWidth: 8,
-      borderBottomColor: "green",
       borderBottomWidth: 8,
     },
     habilidadeText: {
