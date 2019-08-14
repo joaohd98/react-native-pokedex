@@ -1,6 +1,6 @@
 import {StyleSheet} from "react-native";
-import {Colors} from "../../helpers/colors/colors";
-import {Helpers} from "../../helpers/helpers";
+import {Colors} from "../../../../helpers/colors/colors";
+import {Helpers} from "../../../../helpers/helpers";
 
 export class PokedexCSS {
 

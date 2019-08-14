@@ -1,10 +1,11 @@
 import React from "react";
 import {Component} from "react";
-import {Pokedex} from "../pages/pokedex/pokedex";
 import {createAppContainer, createStackNavigator} from "react-navigation";
-import {Detalhes} from "../pages/pokedex/sub-pages/detalhes/detalhes";
+import {Detalhes} from "../pages/pokedex/views/detalhes/detalhes";
 import {Colors} from "../helpers/colors/colors";
-import {Filtro} from "../pages/pokedex/sub-pages/filtro/filtro";
+import {Pokedex} from "../pages/pokedex/views/pokedex/pokedex";
+import {Filtro} from "../pages/pokedex/views/filtro/filtro";
+
 
 export class Layout extends Component {
 

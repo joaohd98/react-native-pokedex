@@ -1,10 +1,10 @@
 import {Image, ImageSourcePropType, Text, View} from "react-native";
 import React, {Component} from "react";
-import {Icones} from "../../../../helpers/icones/icones";
-import {PokedexCSS} from "../../pokedex-css";
-import {PokedexModel} from "../../service/pokedex-model";
+import {Icones} from "../../../../../helpers/icones/icones";
+import {PokedexCSS} from "../pokedex-css";
+import {PokedexModel} from "../../../service/pokedex-model";
 import ShimmerPlaceHolder from 'react-native-shimmer-placeholder';
-import {PokedexInteractor} from "../../service/pokedex-interactor";
+import {PokedexInteractor} from "../../../service/pokedex-interactor";
 
 interface Props {
   pokemon?: PokedexModel.ViewModel,
