@@ -18,22 +18,24 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
 
   private scrollView = React.createRef<ScrollView>();
 
-  UNSAFE_componentWillMount(){
+  state = PokedexInteractor.propsToForm(this.props);
 
-    this.setState(PokedexInteractor.propsToForm(this.props));
+  componentWillReceiveProps(nextProps: Readonly<PokedexProps.Filtro>, nextContext: any): void {
+
+    this.setState(PokedexInteractor.propsToForm(nextProps));
 
   }
 
   sucesso() {
 
-    this.props.aplicarFiltros(this.state);
+    this.props.aplicarFiltros(this.props, this.state);
     this.props.navigation.goBack();
 
   }
 
   redefinir() {
 
-    this.props.redefinirFiltros(this.props.valores);
+    this.props.redefinirFiltros(this.props);
 
     this.scrollView.current!.scrollTo({ y: 0, animated: false });
 
@@ -62,8 +64,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-    aplicarFiltros: (filtro: PokedexProps.FiltroForm) => PokedexAction.aplicarFiltros(filtro),
-    redefinirFiltros: (filtro: PokedexProps.FiltroPropsValues) => PokedexAction.redefinirFiltros(filtro)
+    aplicarFiltros: (pesquisa: PokedexProps.Filtro, filtro: PokedexProps.FiltroForm) => PokedexAction.aplicarFiltros(pesquisa, filtro),
+    redefinirFiltros: (filtro: PokedexProps.Filtro) => PokedexAction.redefinirFiltros(filtro)
   }, dispatch)
 );
 

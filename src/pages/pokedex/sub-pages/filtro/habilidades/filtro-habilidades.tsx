@@ -24,6 +24,12 @@ export class FiltroHabilidades extends React.Component<PokedexProps.FiltroForm, 
     modalVisivel: false,
   };
 
+  componentWillReceiveProps(nextProps: Readonly<PokedexProps.FiltroForm>, nextContext: any): void {
+
+    this.setState({ selecionado: nextProps.habilidades.selecionada })
+
+  }
+
   renderInput() {
 
     const texto = this.props.habilidades.selecionada ? this.props.habilidades.selecionada : "Todas";

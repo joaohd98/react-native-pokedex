@@ -30,8 +30,8 @@ export namespace PokedexProps {
 
     valores: FiltroPropsValues
 
-    aplicarFiltros: (filtro: PokedexProps.FiltroForm) => void;
-    redefinirFiltros: (filtro: PokedexProps.FiltroPropsValues) => void;
+    aplicarFiltros: (pesquisa: PokedexProps.Filtro, filtro: PokedexProps.FiltroForm) => void;
+    redefinirFiltros: (filtro: PokedexProps.Filtro) => void;
 
   }
 

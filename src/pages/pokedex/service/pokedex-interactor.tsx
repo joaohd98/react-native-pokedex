@@ -155,7 +155,6 @@ export class PokedexInteractor {
 
   }
 
-
   static filtroValoresIniciais(): PokedexProps.Filtro {
 
     return {
@@ -180,16 +179,16 @@ export class PokedexInteractor {
 
   }
 
-  static redifinirValoresFiltro(valores: PokedexProps.FiltroPropsValues): PokedexProps.FiltroPropsValues {
+  static redifinirValoresFiltro(pesquisa: PokedexProps.Filtro): PokedexProps.FiltroPropsValues {
 
     return {
-      nome: "",
+      nome: pesquisa.valores.nome,
       habilidadeEscolhida: "Todas",
       tiposEscolhidos: [],
       fraquezasEscolhidas: [],
       alturas: { pequeno: false, medio: false, grande: false },
       pesos:  { leve: false, medio: false, pesado: false },
-      numeros: { minimo: valores.numeros.minimo, maximo: valores.numeros.maximo}
+      numeros: { minimo: pesquisa.filtro.numeros.minimo, maximo: pesquisa.filtro.numeros.maximo}
     }
 
   }
@@ -206,8 +205,8 @@ export class PokedexInteractor {
 
       tiposForm.push({
         nome: tipo,
-        tipo: props.valores.tiposEscolhidos.find(tipoPokemon => tipoPokemon == tipo) == "string",
-        fraqueza: props.valores.fraquezasEscolhidas.find(fraquezaPokemon => fraquezaPokemon == tipo) == "string",
+        tipo: props.valores.tiposEscolhidos.find(tipoPokemon => tipoPokemon == tipo) != undefined,
+        fraqueza: props.valores.fraquezasEscolhidas.find(fraquezaPokemon => fraquezaPokemon == tipo) != undefined,
       });
 
     }
@@ -215,6 +214,7 @@ export class PokedexInteractor {
     /*
      * Intervalo Numero
      */
+
     let intervaloNumerosForm = {
       limites: [ props.filtro.numeros.minimo, props.filtro.numeros.maximo],
       valores: [ props.valores.numeros.minimo, props.valores.numeros.maximo]
@@ -246,7 +246,7 @@ export class PokedexInteractor {
      * Fim
      */
 
-    let form: PokedexProps.FiltroForm = {
+    return {
       tipos: tiposForm,
       intervaloNumeros: intervaloNumerosForm,
       habilidades: habilidadesForm,
@@ -254,14 +254,13 @@ export class PokedexInteractor {
       peso: pesoForm,
     };
 
-    return form;
-
   }
 
-  static formToProps(props: PokedexProps.FiltroForm): PokedexProps.FiltroPropsValues {
+  static formToProps(pesquisa: PokedexProps.Filtro, props: PokedexProps.FiltroForm): PokedexProps.FiltroPropsValues {
 
     let fraquezas: string[] = [];
     let tipos: string[] = [];
+
 
     for(let item of props.tipos) {
 
@@ -274,13 +273,13 @@ export class PokedexInteractor {
     }
 
     return {
-      nome: "",
+      nome: pesquisa.valores.nome,
       habilidadeEscolhida: props.habilidades.selecionada,
       tiposEscolhidos: tipos,
       fraquezasEscolhidas: fraquezas,
       alturas: props.altura,
       pesos: props.peso,
-      numeros: {minimo: props.intervaloNumeros.valores[0], maximo: props.intervaloNumeros.valores[1]}
+      numeros: { minimo: props.intervaloNumeros.valores[0], maximo: props.intervaloNumeros.valores[1] }
     }
 
   }
