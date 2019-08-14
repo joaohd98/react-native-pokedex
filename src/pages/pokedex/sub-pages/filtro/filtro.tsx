@@ -1,6 +1,6 @@
 import React from "react";
 import {Component} from "react";
-import {FlatList, ScrollView} from "react-native";
+import {ScrollView} from "react-native";
 import {FiltroCSS} from "./filtro-css";
 import {PokedexProps} from "../../service/pokedex-props";
 import {bindActionCreators} from "redux";
@@ -20,7 +20,7 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
 
   state = PokedexInteractor.propsToForm(this.props);
 
-  componentWillReceiveProps(nextProps: Readonly<PokedexProps.Filtro>, nextContext: any): void {
+  componentWillReceiveProps(nextProps: Readonly<PokedexProps.Filtro>, nextContext: any) {
 
     this.setState(PokedexInteractor.propsToForm(nextProps));
 

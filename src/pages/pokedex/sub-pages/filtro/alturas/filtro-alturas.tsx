@@ -5,7 +5,6 @@ import {FiltroCSS} from "../filtro-css";
 import {images} from "../../../../../assets";
 import {FiltroHeader} from "../header/filtro-header";
 
-
 export class FiltroAlturas extends Component<PokedexProps.FiltroForm> {
 
   mudarStatus(propiedade: "pequeno" | "medio" | "grande") {

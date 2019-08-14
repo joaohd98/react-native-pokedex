@@ -40,6 +40,7 @@ class PokedexPage extends Component<PokedexProps.Props> {
     return (
       <View>
         { !props.carregando ? <PokedexInput {...props}/> : <View/> }
+        {/*<Button title={"teste props"} onPress={() => console.log(props)} />*/}
         <PokedexList {...props} />
       </View>
     )
@@ -48,11 +49,11 @@ class PokedexPage extends Component<PokedexProps.Props> {
 
   render() {
 
-    let props = this.props;
+    console.log(this.props);
 
     return (
       <View>
-        { props.erro ? this.mostrarErro() : this.mostrarPokemons() }
+        { this.props.erro ? this.mostrarErro() : this.mostrarPokemons() }
       </View>
     )
 

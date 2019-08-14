@@ -234,13 +234,17 @@ export class PokedexInteractor {
      * Altura
      */
 
-    let alturaForm = props.valores.alturas;
+    let alturaForm = {
+      ...props.valores.alturas
+    };
 
     /*
      * Peso
      */
 
-    let pesoForm = props.valores.pesos;
+    let pesoForm = {
+      ...props.valores.pesos
+    };
 
     /*
      * Fim
