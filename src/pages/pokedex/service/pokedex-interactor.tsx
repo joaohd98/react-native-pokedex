@@ -183,7 +183,7 @@ export class PokedexInteractor {
   static redifinirValoresFiltro(valores: PokedexProps.FiltroPropsValues): PokedexProps.FiltroPropsValues {
 
     return {
-      nome: valores.nome,
+      nome: "",
       habilidadeEscolhida: "Todas",
       tiposEscolhidos: [],
       fraquezasEscolhidas: [],
@@ -258,7 +258,30 @@ export class PokedexInteractor {
 
   }
 
-  static formToProps(props: PokedexProps.FiltroForm) {  //: PokedexProps.Filtro
+  static formToProps(props: PokedexProps.FiltroForm): PokedexProps.FiltroPropsValues {
+
+    let fraquezas: string[] = [];
+    let tipos: string[] = [];
+
+    for(let item of props.tipos) {
+
+      if(item.tipo)
+        tipos.push(item.nome);
+
+      if(item.fraqueza)
+        fraquezas.push(item.nome);
+
+    }
+
+    return {
+      nome: "",
+      habilidadeEscolhida: props.habilidades.selecionada,
+      tiposEscolhidos: tipos,
+      fraquezasEscolhidas: fraquezas,
+      alturas: props.altura,
+      pesos: props.peso,
+      numeros: {minimo: props.intervaloNumeros.valores[0], maximo: props.intervaloNumeros.valores[1]}
+    }
 
   }
 

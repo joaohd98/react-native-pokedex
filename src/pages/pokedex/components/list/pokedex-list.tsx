@@ -21,6 +21,7 @@ export class PokedexList extends Component<PokedexProps.Props>{
   /*
    * Skeleton
    */
+
   renderListSkeleton = () => {
 
     let cards: Element[] = [];
@@ -123,6 +124,7 @@ export class PokedexList extends Component<PokedexProps.Props>{
   /*
    * Render
    */
+
   render = () => {
 
     return this.props.carregando ? this.renderListSkeleton() : this.renderList();

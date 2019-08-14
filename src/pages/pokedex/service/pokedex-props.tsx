@@ -1,6 +1,6 @@
 import {PokedexModel} from "./pokedex-model";
 import {RefObject} from "react";
-import {FlatList} from "react-native";
+import {FlatList, ScrollView} from "react-native";
 import {GlobalProps} from "../../../redux/props";
 
 export namespace PokedexProps {
@@ -19,7 +19,7 @@ export namespace PokedexProps {
 
   }
 
-  export interface Filtro {
+  export interface Filtro extends GlobalProps{
 
     filtro: {
       nomes: string[];

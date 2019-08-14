@@ -72,8 +72,8 @@ const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payl
     case PokedexConst.APLICAR_FILTROS: {
       return {
         ...state,
-        pesquisa: action.payload.filtro,
-        limite: 10,
+        pesquisa: {filtro: state.pesquisa.filtro, valores: action.payload.pesquisa_valores} ,
+        limite: JSON.stringify(action.payload.pesquisa_valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
       }
     }
 

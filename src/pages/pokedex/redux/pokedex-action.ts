@@ -74,7 +74,7 @@ export class PokedexAction {
       dispatch({
         type: PokedexConst.APLICAR_FILTROS,
         payload: {
-          pesquisa: PokedexInteractor.formToProps(filtro),
+          pesquisa_valores: PokedexInteractor.formToProps(filtro),
         }
       })
 

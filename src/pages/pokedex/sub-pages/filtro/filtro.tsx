@@ -1,6 +1,6 @@
 import React from "react";
 import {Component} from "react";
-import {ScrollView} from "react-native";
+import {FlatList, ScrollView} from "react-native";
 import {FiltroCSS} from "./filtro-css";
 import {PokedexProps} from "../../service/pokedex-props";
 import {bindActionCreators} from "redux";
@@ -16,28 +16,39 @@ import {PokedexAction} from "../../redux/pokedex-action";
 
 class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm> {
 
+  private scrollView = React.createRef<ScrollView>();
+
   UNSAFE_componentWillMount(){
 
     this.setState(PokedexInteractor.propsToForm(this.props));
 
   }
 
-  componentWillReceiveProps(nextProps: Readonly<PokedexProps.Filtro>, nextContext: any): void {
+  sucesso() {
 
-    this.setState(PokedexInteractor.propsToForm(this.props));
+    this.props.aplicarFiltros(this.state);
+    this.props.navigation.goBack();
+
+  }
+
+  redefinir() {
+
+    this.props.redefinirFiltros(this.props.valores);
+
+    this.scrollView.current!.scrollTo({ y: 0, animated: false });
 
   }
 
   render() {
 
     return (
-      <ScrollView style={FiltroCSS.VIEW.scrollView}>
+      <ScrollView ref={this.scrollView} style={FiltroCSS.VIEW.scrollView}>
         <FiltroTipos {...this.state} />
         <FiltroIntervalo {...this.state} />
         <FiltroHabilidades {...this.state} />
         <FiltroAlturas {...this.state} />
         <FiltroPesos {...this.state} />
-        <FiltroBotoes {...this.state} sucesso={() => this.props.aplicarFiltros(this.state)} redefinir={() => this.props.redefinirFiltros(this.props.valores)} />
+        <FiltroBotoes {...this.state} sucesso={this.sucesso.bind(this)} redefinir={this.redefinir.bind(this)} />
       </ScrollView>
     )
 
