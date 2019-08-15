@@ -20,14 +20,15 @@ class PokedexPage extends Component<PokedexProps.Props> {
 
   }
 
-  componentWillReceiveProps(nextProps: Readonly<PokedexProps.Props>, nextContext: any): void {
 
+  componentDidUpdate(prevProps: Readonly<PokedexProps.Props>, prevState: Readonly<{}>, snapshot?: any): void {
+    
     let mostrarFiltro = this.props.navigation.getParam('mostrarFiltro');
 
-    if(!nextProps.carregando && !nextProps.erro && !mostrarFiltro)
+    if(!this.props.carregando && !this.props.erro && !mostrarFiltro)
       this.props.navigation.setParams({mostrarFiltro: true});
 
-    else if( (nextProps.carregando || nextProps.erro) && mostrarFiltro)
+    else if( (this.props.carregando || this.props.erro) && mostrarFiltro)
       this.props.navigation.setParams({mostrarFiltro: false});
 
   }

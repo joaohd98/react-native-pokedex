@@ -5,7 +5,7 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class PokedexHeader extends React.Component {
 
-  static Header = ({navigation}) => {
+  static Header = ({screenProps, navigation}) => {
 
     return ({
       headerTitle: 'Pokédex',
