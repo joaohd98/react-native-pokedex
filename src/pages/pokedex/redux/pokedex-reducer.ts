@@ -19,8 +19,6 @@ const INITIAL_STATE: PokedexProps.Props = {
 
 const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payload: any}) => {
 
-  console.log('payload', action.payload);
-
   switch (action.type) {
 
     case PokedexConst.CARREGANDO:

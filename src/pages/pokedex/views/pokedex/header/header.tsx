@@ -1,12 +1,9 @@
 import React from "react";
-import {TouchableOpacity} from "react-native";
+import {TouchableOpacity, View} from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
-interface Props {
-  navigation?: any;
-}
 
-export class PokedexHeader extends React.Component<Props> {
+export class PokedexHeader extends React.Component {
 
   static Header = ({navigation}) => {
 
@@ -14,13 +11,14 @@ export class PokedexHeader extends React.Component<Props> {
       headerTitle: 'Pokédex',
       headerTitleContainerStyle: {
         justifyContent: "flex-start",
-        left: 5,
-
+        left: 5
       },
       headerRight: (
-        <TouchableOpacity onPress={() => navigation.navigate('filtro')}>
-          <Icon name="bars" size={30} color="#000"/>
-        </TouchableOpacity>
+        navigation.getParam('mostrarFiltro') ?
+          <TouchableOpacity onPress={() => navigation.navigate('filtro')}>
+            <Icon name="bars" size={30} color="#000"/>
+          </TouchableOpacity> : <View/>
+
       )
     });
 
