@@ -64,24 +64,32 @@ const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payl
         pokemons: action.payload.pokemons,
         pesquisa: action.payload.filtro,
         limite: 10,
+        carregando: false,
       }
     }
 
     case PokedexConst.APLICAR_FILTROS: {
+
       return {
         ...state,
-        pesquisa: {filtro: state.pesquisa.filtro, valores: action.payload.pesquisa_valores} ,
-        limite: JSON.stringify(action.payload.pesquisa_valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
+        pokemons: action.payload.pokemons,
+        pesquisa: { ...state.pesquisa, valores: action.payload.filtro_valores },
+        limite: JSON.stringify(action.payload.filtro_valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
+        carregando: false,
       }
+
     }
 
-
     case PokedexConst.REDEFINIR_FILTROS: {
+
       return {
         ...state,
-        pesquisa: {filtro: state.pesquisa.filtro, valores: action.payload.pesquisa_valores} ,
-        limite: JSON.stringify(action.payload.pesquisa_valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
+        pokemons: action.payload.pokemons,
+        pesquisa: { ...state.pesquisa, valores: action.payload.filtro_valores },
+        limite: JSON.stringify(action.payload.filtro_valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
+        carregando: false,
       }
+
     }
 
     default:

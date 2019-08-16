@@ -40,9 +40,9 @@ export class PokedexInteractor {
 
       let pokemon = fetch.retorno[i];
 
-      if (i > 0) {
+      if (i < tamanho - 1) {
 
-        let pokemonAnterior = fetch.retorno[i - 1];
+        let pokemonAnterior = fetch.retorno[i + 1];
 
         if (pokemonAnterior.id == pokemon.id)
           continue;
@@ -69,6 +69,7 @@ export class PokedexInteractor {
     }
 
     filtro.habilidades = Helpers.ordenarArray(filtro.habilidades, ["Todas"]);
+    filtro.tipos = Helpers.ordenarArray(filtro.tipos);
 
     return { pokemons: pokemons, filtro: filtro };
 
@@ -76,18 +77,127 @@ export class PokedexInteractor {
 
   static filtrarPokemons(pokemons: PokedexModel.ViewModel[], filtro: PokedexProps.Filtro) {
 
-    /*
-     * Nome
-     */
-
     for (let pokemon of pokemons) {
 
-      if (!Helpers.compararStrings(Helpers.eNumero(filtro.valores.nome.charAt(0)) ? pokemon.numero : pokemon.nome, filtro.valores.nome))
-        pokemon.visivel = false;
+      /*
+       * Nome
+       */
 
-      else
-        pokemon.visivel = true;
+      let nome = filtro.valores.nome == "" || Helpers.compararStrings(Helpers.eNumero(filtro.valores.nome.charAt(0)) ? pokemon.numero : pokemon.nome, filtro.valores.nome);
+
+      /*
+       * Tipos
+       */
+
+      let tamanhoTipos = filtro.valores.tiposEscolhidos.length;
+
+      let tipo = pokemon.tipos.filter(tipo => filtro.valores.tiposEscolhidos.indexOf(tipo) > -1).length ==  tamanhoTipos || tamanhoTipos == 0;
+
+      /*
+       * Fraquezas
+       */
+
+      let tamanhoFraquezas = filtro.valores.fraquezasEscolhidas.length;
+
+      let fraqueza = pokemon.fraquezas.filter(fraqueza => filtro.valores.fraquezasEscolhidas.indexOf(fraqueza.toLowerCase()) > -1).length == tamanhoFraquezas || tamanhoFraquezas == 0;
+
+      /*
+       * Intervalo numeros
+       */
+
+      let numeros = parseInt(pokemon.numero) >= filtro.valores.numeros.minimo && parseInt(pokemon.numero) <= filtro.valores.numeros.maximo;
+
+      /*
+       * Habilidade
+       */
+
+      let habilidades = (pokemon.habilidades.indexOf(filtro.valores.habilidadeEscolhida) > -1 || filtro.valores.habilidadeEscolhida == "Todas");
+
+      /*
+       * Peso
+       */
+
+      let pesoLeve = (peso) => peso >= 0 && peso <= 45;
+      let pesoMedio = (peso) => peso > 45 && peso <= 226;
+      let pesoPesado = (peso) => peso > 226.3;
+
+      let peso = false;
+
+      if(!filtro.valores.pesos.leve && !filtro.valores.pesos.medio && !filtro.valores.pesos.leve)
+        peso = true;
+
+      else {
+
+        peso = false;
+
+        if(filtro.valores.pesos.leve && pesoLeve(pokemon.peso))
+          peso = true;
+
+        else if(filtro.valores.pesos.medio && pesoMedio(pokemon.peso))
+          peso = true;
+
+        else if(filtro.valores.pesos.pesado && pesoPesado(pokemon.peso))
+          peso = true;
+
+      }
+
+      /*
+       * Altura
+       */
+
+      let alturaPequena = (altura) => (altura >= 0 && altura <= 1.2);
+      let alturaMedia = (altura) => (altura > 1.2 && altura <= 2.1);
+      let alturaGrande = (altura) => (altura > 2.1);
+
+      let altura: boolean;
+
+      if(!filtro.valores.alturas.pequeno && !filtro.valores.alturas.medio && !filtro.valores.alturas.grande)
+        altura = true;
+
+      else {
+
+        altura = false;
+
+        if(filtro.valores.alturas.pequeno && alturaPequena(pokemon.altura))
+          altura = true;
+
+        else if(filtro.valores.alturas.medio && alturaMedia(pokemon.altura))
+          altura = true;
+
+        else if(filtro.valores.alturas.grande && alturaGrande(pokemon.altura))
+          altura = true;
+
+      }
+
+      //Visivel
+      pokemon.visivel = (nome && tipo && fraqueza && numeros && habilidades && peso && altura);
+
+      if(!nome)
+        console.log('nome', nome);
+
+      if(!tipo)
+        console.log('tipo', tipo);
+
+      if(!fraqueza)
+        console.log('fraqueza', fraqueza);
+
+      if(!numeros)
+        console.log('numeros', numeros);
+
+      if(!habilidades)
+        console.log('habilidades', habilidades);
+
+      if(!peso)
+        console.log('peso', peso);
+
+      if(!altura)
+        console.log('altura', altura);
+
+
+
     }
+
+    console.log(pokemons.filter(pokemon => pokemon.visivel));
 
     return pokemons;
 
@@ -158,6 +268,7 @@ export class PokedexInteractor {
   static filtroValoresIniciais(): PokedexProps.Filtro {
 
     return {
+      pokemons: [],
       filtro: {
         nomes: [],
         habilidades: ["Todas"],

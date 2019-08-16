@@ -55,8 +55,10 @@ export class PokedexAction {
 
     return dispatch => {
 
+      dispatch({ type: PokedexConst.CARREGANDO });
+
       dispatch({
-        type: PokedexConst.ADICIONAR_LIMITE,
+        type: PokedexConst.FILTRAR_POKEMON,
         payload: {
           pokemons: PokedexInteractor.filtrarPokemons(pokemons, filtro),
           pesquisa: filtro,
@@ -71,10 +73,15 @@ export class PokedexAction {
 
     return dispatch => {
 
+      dispatch({ type: PokedexConst.CARREGANDO });
+
+      let filtoValores = PokedexInteractor.formToProps(pesquisa, filtro);
+
       dispatch({
         type: PokedexConst.APLICAR_FILTROS,
         payload: {
-          pesquisa_valores: PokedexInteractor.formToProps(pesquisa, filtro),
+          pokemons: PokedexInteractor.filtrarPokemons(pesquisa.pokemons, {...pesquisa, valores: filtoValores}),
+          filtro_valores: filtoValores,
         }
       })
 
@@ -82,14 +89,17 @@ export class PokedexAction {
 
   };
 
-  static redefinirFiltros = (filtro: PokedexProps.Filtro) => {
+  static redefinirFiltros = (pesquisa: PokedexProps.Filtro) => {
 
     return dispatch => {
+
+      let filtoValores = PokedexInteractor.redifinirValoresFiltro(pesquisa);
 
       dispatch({
         type: PokedexConst.REDEFINIR_FILTROS,
         payload: {
-          pesquisa_valores: PokedexInteractor.redifinirValoresFiltro(filtro),
+          pokemons: PokedexInteractor.filtrarPokemons(pesquisa.pokemons, {...pesquisa, valores: filtoValores}),
+          filtro_valores: filtoValores,
         }
       })
 

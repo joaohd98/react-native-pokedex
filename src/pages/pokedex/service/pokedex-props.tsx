@@ -21,6 +21,8 @@ export namespace PokedexProps {
 
   export interface Filtro extends GlobalProps{
 
+    pokemons: PokedexModel.ViewModel[];
+
     filtro: {
       nomes: string[];
       habilidades: string[];

@@ -43,6 +43,8 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
 
   render() {
 
+    console.log(this.props);
+
     return (
       <ScrollView ref={this.scrollView} style={FiltroCSS.VIEW.scrollView}>
         <FiltroTipos {...this.state} />
@@ -59,13 +61,16 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
 }
 
 const mapStateToProps = (state) => {
-  return state.pokedexReducer.pesquisa
+  return {
+    ...state.pokedexReducer.pesquisa,
+    pokemons: state.pokedexReducer.pokemons,
+  }
 };
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
     aplicarFiltros: (pesquisa: PokedexProps.Filtro, filtro: PokedexProps.FiltroForm) => PokedexAction.aplicarFiltros(pesquisa, filtro),
-    redefinirFiltros: (filtro: PokedexProps.Filtro) => PokedexAction.redefinirFiltros(filtro)
+    redefinirFiltros: (pesquisa: PokedexProps.Filtro) => PokedexAction.redefinirFiltros(pesquisa)
   }, dispatch)
 );
 

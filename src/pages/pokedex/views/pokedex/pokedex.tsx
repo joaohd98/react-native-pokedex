@@ -17,18 +17,16 @@ class PokedexPage extends Component<PokedexProps.Props> {
 
     this.props.carregarPokemons();
 
-
   }
 
-
   componentDidUpdate(prevProps: Readonly<PokedexProps.Props>, prevState: Readonly<{}>, snapshot?: any): void {
-    
+
     let mostrarFiltro = this.props.navigation.getParam('mostrarFiltro');
 
     if(!this.props.carregando && !this.props.erro && !mostrarFiltro)
       this.props.navigation.setParams({mostrarFiltro: true});
 
-    else if( (this.props.carregando || this.props.erro) && mostrarFiltro)
+    else if((this.props.carregando || this.props.erro) && mostrarFiltro)
       this.props.navigation.setParams({mostrarFiltro: false});
 
   }
@@ -45,7 +43,6 @@ class PokedexPage extends Component<PokedexProps.Props> {
       </View>
     )
 
-
   };
 
   mostrarPokemons() {
@@ -55,7 +52,6 @@ class PokedexPage extends Component<PokedexProps.Props> {
     return (
       <View>
         { !props.carregando ? <PokedexInput {...props}/> : <View/> }
-        {/*<Button title={"teste props"} onPress={() => console.log(props)} />*/}
         <PokedexList {...props} />
       </View>
     )
