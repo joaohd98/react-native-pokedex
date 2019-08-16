@@ -54,7 +54,7 @@ class PokedexPage extends Component<PokedexProps.Props> {
 
     return (
       <View>
-        { !props.carregando ? <PokedexInput {...props}/> : <View/> }
+        <PokedexInput {...props}/>
         <PokedexList {...props} />
       </View>
     )

@@ -102,7 +102,10 @@ export class PokedexInput extends Component<PokedexProps.Props, States>{
 
   render = () => {
 
+    let mostrarInput = !this.props.carregando || !this.props.erro;
+
     return (
+      mostrarInput ? <View/> :
       <View style={this.css.view}>
         <View style={this.css.autoCompleteView}>
           { this.renderInput() }
