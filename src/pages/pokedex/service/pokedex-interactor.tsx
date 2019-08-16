@@ -114,34 +114,6 @@ export class PokedexInteractor {
       let habilidades = (pokemon.habilidades.indexOf(filtro.valores.habilidadeEscolhida) > -1 || filtro.valores.habilidadeEscolhida == "Todas");
 
       /*
-       * Peso
-       */
-
-      let pesoLeve = (peso) => peso >= 0 && peso <= 45;
-      let pesoMedio = (peso) => peso > 45 && peso <= 226;
-      let pesoPesado = (peso) => peso > 226.3;
-
-      let peso = false;
-
-      if(!filtro.valores.pesos.leve && !filtro.valores.pesos.medio && !filtro.valores.pesos.leve)
-        peso = true;
-
-      else {
-
-        peso = false;
-
-        if(filtro.valores.pesos.leve && pesoLeve(pokemon.peso))
-          peso = true;
-
-        else if(filtro.valores.pesos.medio && pesoMedio(pokemon.peso))
-          peso = true;
-
-        else if(filtro.valores.pesos.pesado && pesoPesado(pokemon.peso))
-          peso = true;
-
-      }
-
-      /*
        * Altura
        */
 
@@ -156,8 +128,6 @@ export class PokedexInteractor {
 
       else {
 
-        altura = false;
-
         if(filtro.valores.alturas.pequeno && alturaPequena(pokemon.altura))
           altura = true;
 
@@ -167,37 +137,44 @@ export class PokedexInteractor {
         else if(filtro.valores.alturas.grande && alturaGrande(pokemon.altura))
           altura = true;
 
+        else
+          altura = false;
+
+      }
+
+      /*
+       * Peso
+       */
+
+      let pesoLeve = (peso) => (peso >= 0 && peso <= 45);
+      let pesoMedio = (peso) => (peso > 45 && peso <= 226);
+      let pesoPesado = (peso) => (peso > 226.3);
+
+      let peso = false;
+
+      if(!filtro.valores.pesos.leve && !filtro.valores.pesos.medio && !filtro.valores.pesos.pesado)
+        peso = true;
+
+      else {
+
+        if(filtro.valores.pesos.leve && pesoLeve(pokemon.peso))
+          peso = true;
+
+        else if(filtro.valores.pesos.medio && pesoMedio(pokemon.peso))
+          peso = true;
+
+        else if(filtro.valores.pesos.pesado && pesoPesado(pokemon.peso))
+          peso = true;
+
+        else
+          peso = false
+
       }
 
       //Visivel
       pokemon.visivel = (nome && tipo && fraqueza && numeros && habilidades && peso && altura);
 
-      if(!nome)
-        console.log('nome', nome);
-
-      if(!tipo)
-        console.log('tipo', tipo);
-
-      if(!fraqueza)
-        console.log('fraqueza', fraqueza);
-
-      if(!numeros)
-        console.log('numeros', numeros);
-
-      if(!habilidades)
-        console.log('habilidades', habilidades);
-
-      if(!peso)
-        console.log('peso', peso);
-
-      if(!altura)
-        console.log('altura', altura);
-
-
-
     }
-
-    console.log(pokemons.filter(pokemon => pokemon.visivel));
 
     return pokemons;
 

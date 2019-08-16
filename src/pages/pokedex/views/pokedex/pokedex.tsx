@@ -29,6 +29,9 @@ class PokedexPage extends Component<PokedexProps.Props> {
     else if((this.props.carregando || this.props.erro) && mostrarFiltro)
       this.props.navigation.setParams({mostrarFiltro: false});
 
+    if(JSON.stringify(this.props.pesquisa.valores) !== JSON.stringify(prevProps.pesquisa.valores))
+      this.props.flatList.current!.scrollToOffset({ animated: false, offset: 0 });
+
   }
 
   mostrarErro() {
