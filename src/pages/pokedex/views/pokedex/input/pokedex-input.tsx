@@ -57,9 +57,6 @@ export class PokedexInput extends Component<PokedexProps.Props, States>{
 
     this.props.filtrarPokemons(this.props.pokemons, this.props.pesquisa);
 
-    if(this.props.flatList.current)
-      this.props.flatList.current.scrollToOffset({animated: false, offset: 0});
-
   };
 
   renderInput = () => {

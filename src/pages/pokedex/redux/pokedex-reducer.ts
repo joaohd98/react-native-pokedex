@@ -62,7 +62,7 @@ const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payl
       return {
         ...state,
         pokemons: action.payload.pokemons,
-        pesquisa: action.payload.filtro,
+        pesquisa: { ...state.pesquisa, valores: action.payload.pesquisa.valores },
         limite: 10,
         carregando: false,
       }
