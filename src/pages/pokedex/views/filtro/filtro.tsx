@@ -1,6 +1,6 @@
 import React from "react";
 import {Component} from "react";
-import {ScrollView} from "react-native";
+import {ScrollView, View} from "react-native";
 import {FiltroCSS} from "./filtro-css";
 import {PokedexProps} from "../../service/pokedex-props";
 import {bindActionCreators} from "redux";
@@ -44,14 +44,17 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
   render() {
 
     return (
-      <ScrollView ref={this.scrollView} style={FiltroCSS.VIEW.scrollView}>
-        <FiltroTipos {...this.state} />
-        <FiltroIntervalo {...this.state} />
-        <FiltroHabilidades {...this.state} />
-        <FiltroAlturas {...this.state} />
-        <FiltroPesos {...this.state} />
+      <View>
+        <ScrollView ref={this.scrollView} style={FiltroCSS.VIEW.scrollView}>
+          <FiltroTipos {...this.state} />
+          <FiltroIntervalo {...this.state} />
+          <FiltroHabilidades {...this.state} />
+          <FiltroAlturas {...this.state} />
+          <FiltroPesos {...this.state} />
+        </ScrollView>
         <FiltroBotoes {...this.state} sucesso={this.sucesso.bind(this)} redefinir={this.redefinir.bind(this)} />
-      </ScrollView>
+      </View>
+
     )
 
   }

@@ -15,7 +15,7 @@ export class Layout extends Component {
     filtro: Filtro,
     detalhes: Detalhes
   }, {
-    initialRouteName: 'pokedex',
+    initialRouteName: 'detalhes',
     headerLayoutPreset: "center",
     defaultNavigationOptions: {
       headerStyle: {

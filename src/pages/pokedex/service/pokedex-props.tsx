@@ -19,6 +19,7 @@ export namespace PokedexProps {
 
   }
 
+
   export interface Filtro extends GlobalProps{
 
     pokemons: PokedexModel.ViewModel[];
@@ -69,6 +70,15 @@ export namespace PokedexProps {
 
     altura: { pequeno: boolean, medio: boolean, grande: boolean },
     peso: { leve: boolean, medio: boolean, pesado: boolean },
+
+  }
+
+
+  export interface DetalhesProps {
+
+    pokemon: PokedexModel.ViewModel;
+    outrosPokemons: PokedexModel.ViewModel[];
+
 
   }
 
