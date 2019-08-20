@@ -62,5 +62,35 @@ export class DetalhesCSS {
     }
   });
 
+  static nomeImagem = StyleSheet.create({
+    view: {
+      alignItems: "center",
+      marginTop: -40
+    },
+    viewText: {
+      flexDirection: "row"
+    },
+    text: {
+      color: "#212121",
+      paddingRight: 5,
+      fontSize: 25,
+      fontWeight: "600"
+    },
+    number: {
+      color: "#616161",
+      paddingLeft: 5,
+      fontSize: 25,
+      fontWeight: "600"
+    },
+    viewImage: {
+      backgroundColor: "#F2F2F2",
+      borderRadius: 5,
+      marginTop: 10,
+    },
+    image: {
+      minHeight: 215,
+      minWidth: 215
+    }
+  });
 
 }
