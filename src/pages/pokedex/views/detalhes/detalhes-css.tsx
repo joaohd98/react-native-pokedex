@@ -103,6 +103,34 @@ export class DetalhesCSS {
       fontSize: 17,
       lineHeight: 25
     }
+  });
+
+  static informacoes = StyleSheet.create({
+    view: {
+      backgroundColor: "#30a7d7",
+      marginHorizontal: 50,
+      padding: 15,
+      borderRadius: 10
+    },
+    row: {
+      flexDirection: "row"
+    },
+    line: {
+      flex: 0.5,
+      alignItems: "flex-start"
+    },
+    word1: {
+      color: "#fff",
+      fontSize: 20,
+      paddingBottom: 2,
+      fontWeight: "400"
+    },
+    word2: {
+      color: "#212121",
+      fontSize: 15,
+      paddingTop: 2,
+      fontWeight: "400"
+    },
   })
 
 }
