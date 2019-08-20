@@ -131,6 +131,57 @@ export class DetalhesCSS {
       paddingTop: 2,
       fontWeight: "400"
     },
-  })
+    abilitiesView: {
+      backgroundColor: "red",
+      marginHorizontal: 50,
+      borderRadius: 20
+    },
+    abilitiesSubView: {
+      backgroundColor: "#313131",
+      borderRadius: 10
+    },
+    abilitiesTitle: {
+      flex: 0.7,
+      padding: 10
+    },
+    abilitiesTitleText: {
+      marginLeft: 10,
+      color: "#616161",
+      fontWeight: "600",
+      fontSize: 18
+    },
+    abilitiesCloseButton: {
+      flex: 0.3,
+      backgroundColor: "#000",
+      padding: 10,
+      borderTopRightRadius: 20,
+      borderBottomLeftRadius: 20,
+      alignItems: "center",
+      flexDirection: "row"
+    },
+    abilitiesCloseButtonText: {
+      marginLeft: 10,
+      color: "#FFF",
+      fontWeight: "600",
+      fontSize: 15
+    },
+    abilitiesNameTextContent: {
+      marginLeft: 10,
+      padding: 10
+    },
+    abilitiesName: {
+      color: "#FFF",
+      fontWeight: "600",
+      fontSize: 21,
+      letterSpacing: 1
+    },
+    abilitiesText: {
+      color: "#FFF",
+      fontWeight: "400",
+      fontSize: 16,
+      letterSpacing: 1
+    }
+
+  });
 
 }
