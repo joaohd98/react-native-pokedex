@@ -7,6 +7,9 @@ import {PokedexProps} from "../../service/pokedex-props";
 import {DetalhesHeader} from "./header/header";
 import {DetalhesNomeImagem} from "./nome-imagem/nome-imagem";
 import {DetalhesDescricao} from "./descricao/descricao";
+import {DetalhesInformacoes} from "./informacoes/informacoes";
+import {DetalhesEvolucoes} from "./evolucoes/evolucoes";
+import {DetalhesEstatisticas} from "./estatisticas/estatisticas";
 
 class DetalhesPage extends Component<PokedexProps.DetalhesProps> {
 
@@ -16,7 +19,10 @@ class DetalhesPage extends Component<PokedexProps.DetalhesProps> {
       <ScrollView>
         <DetalhesHeader/>
         <DetalhesNomeImagem />
+        <DetalhesEstatisticas />
         <DetalhesDescricao />
+        <DetalhesInformacoes />
+        <DetalhesEvolucoes />
       </ScrollView>
 
     )
