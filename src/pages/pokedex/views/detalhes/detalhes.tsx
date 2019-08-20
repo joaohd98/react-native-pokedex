@@ -6,6 +6,7 @@ import {connect} from 'react-redux';
 import {PokedexProps} from "../../service/pokedex-props";
 import {DetalhesHeader} from "./header/header";
 import {DetalhesNomeImagem} from "./nome-imagem/nome-imagem";
+import {DetalhesDescricao} from "./descricao/descricao";
 
 class DetalhesPage extends Component<PokedexProps.DetalhesProps> {
 
@@ -15,6 +16,7 @@ class DetalhesPage extends Component<PokedexProps.DetalhesProps> {
       <ScrollView>
         <DetalhesHeader/>
         <DetalhesNomeImagem />
+        <DetalhesDescricao />
       </ScrollView>
 
     )

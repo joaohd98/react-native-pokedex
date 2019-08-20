@@ -93,4 +93,16 @@ export class DetalhesCSS {
     }
   });
 
+  static descricao = StyleSheet.create({
+    view: {
+      marginVertical: 25,
+      marginHorizontal: 50
+    },
+    text: {
+      color: '#212121',
+      fontSize: 17,
+      lineHeight: 25
+    }
+  })
+
 }
