@@ -138,7 +138,13 @@ export class DetalhesCSS {
     },
     abilitiesSubView: {
       backgroundColor: "#313131",
-      borderRadius: 10
+      borderRadius: 10,
+      position: 'absolute',
+      zIndex: 100,
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0
     },
     abilitiesTitle: {
       flex: 0.7,
@@ -148,7 +154,7 @@ export class DetalhesCSS {
       marginLeft: 10,
       color: "#616161",
       fontWeight: "600",
-      fontSize: 18
+      fontSize: 16
     },
     abilitiesCloseButton: {
       flex: 0.3,
