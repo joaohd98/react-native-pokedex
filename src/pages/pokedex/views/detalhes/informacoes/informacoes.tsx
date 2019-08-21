@@ -1,18 +1,20 @@
 import React, {Component} from 'react'
-import {View, Text, TouchableOpacity} from "react-native";
+import {View, Text, TouchableOpacity, Animated} from "react-native";
 import {DetalhesCSS} from "../detalhes-css";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 interface States {
   mostrarHabilidade: boolean,
-  alturaCard: number
+  alturaCard: number,
+  cardfadeAnim: Animated.Value
 }
 
 export class DetalhesInformacoes extends Component<{}, States> {
 
   state = {
     mostrarHabilidade: false,
-    alturaCard: 0
+    alturaCard: 0,
+    cardfadeAnim: new Animated.Value(0)
   };
 
   private css = DetalhesCSS.informacoes;
@@ -20,13 +22,13 @@ export class DetalhesInformacoes extends Component<{}, States> {
   mostrarDescricao() {
 
     return (
-      <View style={this.css.abilitiesView}>
-        <View style={this.css.abilitiesSubView}>
+      <View style={{...this.css.abilitiesView, height: this.state.alturaCard}} >
+        <Animated.View style={{...this.css.abilitiesSubView, height: this.state.alturaCard - 20, opacity: this.state.cardfadeAnim}} >
           <View style={this.css.row}>
             <View style={this.css.abilitiesTitle}>
               <Text style={this.css.abilitiesTitleText}>Ability Info</Text>
             </View>
-            <TouchableOpacity style={this.css.abilitiesCloseButton} onPress={() => this.setState({mostrarHabilidade: false})}>
+            <TouchableOpacity style={this.css.abilitiesCloseButton} onPress={() => this.mudarCard(false)}>
               <Icon name={"close"} color={"#FFF"} size={25}/>
               <Text style={this.css.abilitiesCloseButtonText}>Close</Text>
             </TouchableOpacity>
@@ -41,7 +43,7 @@ export class DetalhesInformacoes extends Component<{}, States> {
               Powers up Grass-type moves when the Pokémon is in trouble.
             </Text>
           </View>
-        </View>
+        </Animated.View>
       </View>
     )
 
@@ -50,7 +52,7 @@ export class DetalhesInformacoes extends Component<{}, States> {
   mostrarCard() {
 
     return (
-      <View style={this.css.view}>
+      <View style={this.css.view} onLayout={event => this.setState({ alturaCard: event.nativeEvent.layout.height }) }>
         <View style={this.css.row}>
           <View style={this.css.line}>
             <Text style={this.css.word1}>Height</Text>
@@ -74,7 +76,7 @@ export class DetalhesInformacoes extends Component<{}, States> {
                   Overgrow
                 </Text>
               </View>
-              <TouchableOpacity style={{marginLeft: 10}} onPress={() => this.setState({mostrarHabilidade: true})}>
+              <TouchableOpacity style={{marginLeft: 10}} onPress={() => this.mudarCard(true)}>
                 <Icon name={"question-circle"} style={{fontSize: 20, color: "#FFF"}} />
               </TouchableOpacity>
             </View>
@@ -95,6 +97,24 @@ export class DetalhesInformacoes extends Component<{}, States> {
         </View>
       </View>
     )
+
+  }
+
+  mudarCard(mostrarHabilidade) {
+
+    let toValue = mostrarHabilidade ? 1 : 0;
+
+    let config = {
+      toValue: toValue,
+      duration: 500
+    };
+
+    Animated.timing(this.state.cardfadeAnim, config).start(() => {
+
+      this.setState({ mostrarHabilidade });
+
+    });
+
 
   }
 

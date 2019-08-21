@@ -132,9 +132,9 @@ export class DetalhesCSS {
       fontWeight: "400"
     },
     abilitiesView: {
-      backgroundColor: "red",
+      backgroundColor: "#30a7d7",
       marginHorizontal: 50,
-      borderRadius: 20
+      borderRadius: 10
     },
     abilitiesSubView: {
       backgroundColor: "#313131",
