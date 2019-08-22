@@ -190,4 +190,42 @@ export class DetalhesCSS {
 
   });
 
+  static tipoFraqueza = StyleSheet.create({
+    view: {
+      marginHorizontal: 50,
+      marginVertical: 25,
+    },
+    title: {
+      fontSize: 23,
+      fontWeight: "400",
+      color: "#212121"
+    },
+    typesWeakness: {
+      marginVertical: 15,
+      flexDirection: "row",
+      paddingBottom: 25
+    },
+    typesWeaknessContent: {
+      justifyContent: "center",
+      borderRadius: 5,
+      width: 90,
+      height: 30,
+      borderBottomWidth: 15,
+      marginLeft: 5,
+      paddingHorizontal:20,
+      paddingVertical: 5
+    },
+    typesWeaknessText: {
+      fontSize: 12,
+      lineHeight: 20,
+      letterSpacing: 2,
+      textTransform: "capitalize",
+      position: "absolute",
+      justifyContent: "center",
+      textAlign: "center",
+      left: 0,
+      right: 0
+    }
+  });
+
 }

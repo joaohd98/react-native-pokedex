@@ -10,6 +10,7 @@ import {DetalhesDescricao} from "./descricao/descricao";
 import {DetalhesInformacoes} from "./informacoes/informacoes";
 import {DetalhesEvolucoes} from "./evolucoes/evolucoes";
 import {DetalhesEstatisticas} from "./estatisticas/estatisticas";
+import {DetalhesTipoFraqueza} from "./tipo-fraqueza/tipo-fraqueza";
 
 class DetalhesPage extends Component<PokedexProps.DetalhesProps> {
 
@@ -22,6 +23,7 @@ class DetalhesPage extends Component<PokedexProps.DetalhesProps> {
         <DetalhesEstatisticas />
         <DetalhesDescricao />
         <DetalhesInformacoes />
+        <DetalhesTipoFraqueza />
         <DetalhesEvolucoes />
       </ScrollView>
 
