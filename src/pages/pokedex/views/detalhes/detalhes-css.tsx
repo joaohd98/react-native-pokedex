@@ -105,6 +105,32 @@ export class DetalhesCSS {
     }
   });
 
+  static estatistica = StyleSheet.create({
+    view: {
+      flexDirection: "row",
+      padding: 5,
+      marginHorizontal: 10,
+      backgroundColor: "#a4a4a4",
+      justifyContent: "center"
+    },
+    column: {
+      flex: 0.16,
+      marginHorizontal: 6
+    },
+    skill: {
+      borderWidth: 5,
+      marginVertical: 3,
+      height: 0
+    },
+    text: {
+      fontWeight: "bold",
+      fontSize: 10,
+      textAlign: "center",
+      marginVertical: 5,
+    }
+
+  });
+
   static informacoes = StyleSheet.create({
     view: {
       backgroundColor: "#30a7d7",
@@ -261,9 +287,6 @@ export class DetalhesCSS {
     },
     cardSize: {
       width: Helpers.pegarPorcentagem(80, "width"),
-    },
-    img: {
-
     },
     nameNumberLine: {
       flexDirection: "row",
