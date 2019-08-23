@@ -1,6 +1,6 @@
 import React from "react";
 import {Component} from "react";
-import {ScrollView} from "react-native";
+import {ScrollView, View} from "react-native";
 import {bindActionCreators} from "redux";
 import {connect} from 'react-redux';
 import {PokedexProps} from "../../service/pokedex-props";
@@ -11,20 +11,35 @@ import {DetalhesInformacoes} from "./informacoes/informacoes";
 import {DetalhesEvolucoes} from "./evolucoes/evolucoes";
 import {DetalhesEstatisticas} from "./estatisticas/estatisticas";
 import {DetalhesTipoFraqueza} from "./tipo-fraqueza/tipo-fraqueza";
+import {DetalhesCSS} from "./detalhes-css";
 
 class DetalhesPage extends Component<PokedexProps.DetalhesProps> {
+
+  css = DetalhesCSS.detalhes;
 
   render() {
 
     return (
       <ScrollView>
         <DetalhesHeader/>
-        <DetalhesNomeImagem />
-        <DetalhesEstatisticas />
-        <DetalhesDescricao />
-        <DetalhesInformacoes />
-        <DetalhesTipoFraqueza />
-        <DetalhesEvolucoes />
+        <View style={this.css.view}>
+          <DetalhesNomeImagem />
+        </View>
+        <View style={this.css.view}>
+          <DetalhesEstatisticas />
+        </View>
+        <View style={this.css.view}>
+          <DetalhesDescricao />
+        </View>
+        <View style={this.css.view}>
+          <DetalhesInformacoes />
+        </View>
+        <View style={this.css.view}>
+          <DetalhesTipoFraqueza />
+        </View>
+        <View style={this.css.view}>
+          <DetalhesEvolucoes />
+        </View>
       </ScrollView>
 
     )

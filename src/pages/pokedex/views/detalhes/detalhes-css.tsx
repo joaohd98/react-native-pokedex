@@ -6,6 +6,13 @@ const maiores = Helpers.pegarPorcentagem(50, "width");
 
 export class DetalhesCSS {
 
+  static detalhes = StyleSheet.create({
+    view: {
+      marginHorizontal: Helpers.pegarPorcentagem(10, "width"),
+      marginVertical: 10,
+    }
+  });
+
   static header = StyleSheet.create({
     view: {
       flexDirection: "row"
@@ -95,8 +102,7 @@ export class DetalhesCSS {
 
   static descricao = StyleSheet.create({
     view: {
-      marginVertical: 25,
-      marginHorizontal: 50
+
     },
     text: {
       color: '#212121',
@@ -109,7 +115,6 @@ export class DetalhesCSS {
     view: {
       flexDirection: "row",
       padding: 5,
-      marginHorizontal: 10,
       backgroundColor: "#a4a4a4",
       justifyContent: "center"
     },
@@ -134,7 +139,6 @@ export class DetalhesCSS {
   static informacoes = StyleSheet.create({
     view: {
       backgroundColor: "#30a7d7",
-      marginHorizontal: 50,
       padding: 15,
       borderRadius: 10
     },
@@ -218,8 +222,7 @@ export class DetalhesCSS {
 
   static tipoFraqueza = StyleSheet.create({
     view: {
-      marginHorizontal: 50,
-      marginVertical: 25,
+
     },
     title: {
       fontSize: 23,
@@ -229,7 +232,7 @@ export class DetalhesCSS {
     typesWeakness: {
       marginVertical: 15,
       flexDirection: "row",
-      paddingBottom: 25
+      paddingBottom: 10
     },
     typesWeaknessContent: {
       justifyContent: "center",
@@ -256,8 +259,6 @@ export class DetalhesCSS {
 
   static evolucoes = StyleSheet.create({
     view: {
-      marginHorizontal: Helpers.pegarPorcentagem(10, "width"),
-      marginVertical: 25,
       borderRadius: 15
     },
     title: {
@@ -330,4 +331,5 @@ export class DetalhesCSS {
       right: 0
     },
   });
+
 }
