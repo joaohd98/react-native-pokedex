@@ -295,7 +295,9 @@ export class DetalhesCSS {
       borderRadius: 200,
       borderColor: "#FFF",
       alignItems: "center",
-      justifyContent: "center"
+      justifyContent: "center",
+      shadowOpacity: 10,
+      shadowOffset: {width: 5, height: 5},
     },
     cardSize: {
       width: Helpers.pegarPorcentagem(80, "width"),
