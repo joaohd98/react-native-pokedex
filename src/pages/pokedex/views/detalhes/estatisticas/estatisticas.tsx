@@ -11,8 +11,6 @@ export class DetalhesEstatisticas extends Component {
     let skills: JSX.Element[] = [];
     let numAleatorio = Math.floor(Math.random() * 10);
 
-    console.log(numAleatorio);
-
     for(let i = 10; i >= 1; i--)
       skills.push(<Text key={i} style={{...this.css.skill, borderColor: numAleatorio >= i ? "#30a7d7" : "#FFF" }} />);
 
@@ -42,7 +40,10 @@ export class DetalhesEstatisticas extends Component {
 
     return (
       <View style={this.css.view}>
-        { elements }
+        <Text style={this.css.title}>Estatistica</Text>
+        <View style={this.css.subView}>
+          { elements }
+        </View>
       </View>
     )
 

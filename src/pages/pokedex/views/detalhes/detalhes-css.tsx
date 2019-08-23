@@ -113,10 +113,21 @@ export class DetalhesCSS {
 
   static estatistica = StyleSheet.create({
     view: {
-      flexDirection: "row",
       padding: 5,
       backgroundColor: "#a4a4a4",
+    },
+    subView: {
+      flexDirection: "row",
       justifyContent: "center"
+    },
+    title: {
+      fontSize: 15,
+      fontWeight: "600",
+      color: "#313131",
+      lineHeight: 20,
+      letterSpacing: 2,
+      paddingHorizontal: 10,
+      paddingVertical: 10
     },
     column: {
       flex: 0.16,
@@ -129,7 +140,7 @@ export class DetalhesCSS {
     },
     text: {
       fontWeight: "bold",
-      fontSize: 10,
+      fontSize: Helpers.pegarPorcentagem(80, "width") / 40,
       textAlign: "center",
       marginVertical: 5,
     }
