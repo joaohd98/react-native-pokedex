@@ -15,10 +15,10 @@ export namespace PokedexProps {
     erro: boolean;
     carregarPokemons: () => void;
     adicionarLimite: () => void;
-    filtrarPokemons: (pokemon, filtro) => void
+    filtrarPokemons: (pokemon, filtro) => void,
+    irParaDetalhes: (pokemon: PokedexModel.ViewModel) => void
 
   }
-
 
   export interface Filtro extends GlobalProps{
 

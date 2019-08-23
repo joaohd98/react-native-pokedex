@@ -51,6 +51,17 @@ export class PokedexAction {
 
   };
 
+  static irParaDetalhes = (pokemon: PokedexModel.ViewModel) => {
+
+
+    return dispatch => {
+
+      dispatch({type: ""});
+
+    }
+
+  };
+
   static filtrarPokemons = (pokemons: PokedexModel.ViewModel[], filtro: PokedexProps.Filtro) => {
 
     return dispatch => {

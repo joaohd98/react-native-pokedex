@@ -14,7 +14,8 @@ const INITIAL_STATE: PokedexProps.Props = {
   erro: false,
   carregarPokemons: () => {},
   adicionarLimite: () => {},
-  filtrarPokemons: (pokemons, filtro) => {}
+  filtrarPokemons: (pokemons, filtro) => {},
+  irParaDetalhes: (pokemon) => {}
 };
 
 const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payload: any}) => {

@@ -1,4 +1,12 @@
-import {Image, ImageSourcePropType, Text, View} from "react-native";
+import {
+  Image,
+  ImageSourcePropType,
+  Text,
+  TouchableHighlight,
+  TouchableOpacity,
+  TouchableWithoutFeedback,
+  View
+} from "react-native";
 import React, {Component} from "react";
 import {Icones} from "../../../../../helpers/icones/icones";
 import {PokedexCSS} from "../pokedex-css";
@@ -8,7 +16,8 @@ import {PokedexInteractor} from "../../../service/pokedex-interactor";
 
 interface Props {
   pokemon?: PokedexModel.ViewModel,
-  skeleton?: boolean
+  skeleton?: boolean,
+  irParaDetalhes?: () => void
 }
 
 export class PokedexCard extends Component<Props>{
@@ -71,9 +80,11 @@ export class PokedexCard extends Component<Props>{
 
     return (
       <View style={css.card}>
-        <View style={css.imagem}>
-          <Image source={imagem} />
-        </View>
+        <TouchableHighlight style={{borderRadius: 10}} onPress={() => this.props.irParaDetalhes ? this.props.irParaDetalhes() : {}}>
+          <View style={css.imagem}>
+            <Image source={imagem} />
+          </View>
+        </TouchableHighlight>
         <View style={css.cardContent}>
           <View>
             <Text style={css.numero}>N˚ {pokemon.numero}</Text>

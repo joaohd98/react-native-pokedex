@@ -82,6 +82,7 @@ const mapDispatchToProps = dispatch => (
     carregarPokemons: PokedexAction.carregarPokemons,
     adicionarLimite: PokedexAction.adicionarLimite,
     filtrarPokemons: (pokemons, filtro) => PokedexAction.filtrarPokemons(pokemons, filtro),
+    irParaDetalhes: (pokemons) => PokedexAction.irParaDetalhes(pokemons),
   }, dispatch)
 );
 
