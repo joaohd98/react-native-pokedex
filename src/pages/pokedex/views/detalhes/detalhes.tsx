@@ -18,12 +18,12 @@ class DetalhesPage extends Component<PokedexProps.DetalhesProps> {
 
     return (
       <ScrollView>
-        {/*<DetalhesHeader/>*/}
-        {/*<DetalhesNomeImagem />*/}
-        {/*<DetalhesEstatisticas />*/}
-        {/*<DetalhesDescricao />*/}
-        {/*<DetalhesInformacoes />*/}
-        {/*<DetalhesTipoFraqueza />*/}
+        <DetalhesHeader/>
+        <DetalhesNomeImagem />
+        <DetalhesEstatisticas />
+        <DetalhesDescricao />
+        <DetalhesInformacoes />
+        <DetalhesTipoFraqueza />
         <DetalhesEvolucoes />
       </ScrollView>
 

@@ -45,8 +45,6 @@ export class DetalhesEvolucoes extends Component {
     };
 
 
-    let largura = Helpers.pegarPorcentagem(90, "width");
-
     return (
 
       <View style={[this.css.cardView, this.css.cardSize]}>
