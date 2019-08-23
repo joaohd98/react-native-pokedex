@@ -3,11 +3,11 @@ import {Button, Text, View} from "react-native";
 import {PokedexInput} from "./input/pokedex-input";
 import {connect} from 'react-redux';
 import {bindActionCreators} from "redux";
-import {PokedexAction} from "../../redux/pokedex-action";
 import {PokedexHeader} from "./header/header";
 import {PokedexCSS} from "./pokedex-css";
 import {PokedexList} from "./list/pokedex-list";
 import {PokedexProps} from "../../service/pokedex-props";
+import {PokedexInitalState} from "../../redux/pokedex-reducer";
 
 class PokedexPage extends Component<PokedexProps.Props> {
 
@@ -15,7 +15,7 @@ class PokedexPage extends Component<PokedexProps.Props> {
 
   componentDidMount() {
 
-    this.props.carregarPokemons();
+    this.props.funcoes.carregarPokemons();
 
   }
 
@@ -42,7 +42,7 @@ class PokedexPage extends Component<PokedexProps.Props> {
       <View style={css.view}>
         <Text style={css.titulo}>Ooops!</Text>
         <Text style={css.subTitulo}>Não foi possível buscar Pokemons.</Text>
-        <Button onPress={this.props.carregarPokemons} title={"Tentar Novamente"} />
+        <Button onPress={this.props.funcoes.carregarPokemons} title={"Tentar Novamente"} />
       </View>
     )
 
@@ -77,13 +77,8 @@ const mapStateToProps = (state) => {
   return state.pokedexReducer
 };
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-    carregarPokemons: PokedexAction.carregarPokemons,
-    adicionarLimite: PokedexAction.adicionarLimite,
-    filtrarPokemons: (pokemons, filtro) => PokedexAction.filtrarPokemons(pokemons, filtro),
-    irParaDetalhes: (pokemons) => PokedexAction.irParaDetalhes(pokemons),
-  }, dispatch)
-);
+const mapDispatchToProps = dispatch => ({
+  funcoes: bindActionCreators(PokedexInitalState.funcoes, dispatch)
+});
 
 export const Pokedex = connect(mapStateToProps, mapDispatchToProps)(PokedexPage);

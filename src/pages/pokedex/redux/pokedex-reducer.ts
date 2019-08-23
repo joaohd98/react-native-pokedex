@@ -1,24 +1,27 @@
-import {PokedexConst} from "./pokedex-action";
+import {PokedexAction, PokedexConst} from "./pokedex-action";
 import {PokedexProps} from "../service/pokedex-props";
+import {PokedexInteractor} from "../service/pokedex-interactor";
 import React from "react";
 import {FlatList} from "react-native";
 import {PokedexModel} from "../service/pokedex-model";
-import {PokedexInteractor} from "../service/pokedex-interactor";
 
-const INITIAL_STATE: PokedexProps.Props = {
+export const PokedexInitalState: PokedexProps.Props = {
   pokemons: [],
   pesquisa: PokedexInteractor.filtroValoresIniciais(),
   flatList: React.createRef<FlatList<PokedexModel.ViewModel>>(),
   limite: 10,
   carregando: true,
   erro: false,
-  carregarPokemons: () => {},
-  adicionarLimite: () => {},
-  filtrarPokemons: (pokemons, filtro) => {},
-  irParaDetalhes: (pokemon) => {}
+  funcoes: {
+    carregarPokemons: () => PokedexAction.carregarPokemons(),
+    adicionarLimite: () => PokedexAction.adicionarLimite(),
+    filtrarPokemons: (pokemons, filtro) => PokedexAction.filtrarPokemons(pokemons, filtro),
+    irParaDetalhes: (pokemons) => PokedexAction.irParaDetalhes(pokemons),
+  }
 };
 
-const pokedexReducer = (state = INITIAL_STATE, action: {type: PokedexConst, payload: any}) => {
+
+const pokedexReducer = (state = PokedexInitalState, action: {type: PokedexConst, payload: any}) => {
 
   switch (action.type) {
 

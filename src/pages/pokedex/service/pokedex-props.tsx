@@ -1,7 +1,9 @@
 import {PokedexModel} from "./pokedex-model";
-import {RefObject} from "react";
+import React, {RefObject} from "react";
 import {FlatList, ScrollView} from "react-native";
 import {GlobalProps} from "../../../redux/props";
+import {PokedexInteractor} from "./pokedex-interactor";
+import {PokedexAction} from "../redux/pokedex-action";
 
 export namespace PokedexProps {
 
@@ -13,12 +15,15 @@ export namespace PokedexProps {
     pesquisa: Filtro;
     carregando: boolean;
     erro: boolean;
-    carregarPokemons: () => void;
-    adicionarLimite: () => void;
-    filtrarPokemons: (pokemon, filtro) => void,
-    irParaDetalhes: (pokemon: PokedexModel.ViewModel) => void
+    funcoes: {
+      carregarPokemons: () => void;
+      adicionarLimite: () => void;
+      filtrarPokemons: (pokemon, filtro) => void,
+      irParaDetalhes: (pokemon: PokedexModel.ViewModel) => void
+    }
 
   }
+
 
   export interface Filtro extends GlobalProps{
 
@@ -78,7 +83,6 @@ export namespace PokedexProps {
 
     pokemon: PokedexModel.ViewModel;
     outrosPokemons: PokedexModel.ViewModel[];
-
 
   }
 

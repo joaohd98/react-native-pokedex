@@ -53,7 +53,6 @@ export class PokedexAction {
 
   static irParaDetalhes = (pokemon: PokedexModel.ViewModel) => {
 
-
     return dispatch => {
 
       dispatch({type: ""});
