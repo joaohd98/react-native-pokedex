@@ -130,8 +130,8 @@ export class DetalhesCSS {
       paddingVertical: 10
     },
     column: {
-      flex: 0.16,
-      marginHorizontal: 6
+      flex: 0.17,
+      marginHorizontal: 3
     },
     skill: {
       borderWidth: 5,
