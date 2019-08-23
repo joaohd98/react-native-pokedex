@@ -1,6 +1,7 @@
 export const images = {
   pokeball: require('./images/pokeball.png'),
   pokeballWhite: require('./images/pokeball_white.png'),
+  body: require('./images/body_bg.png'),
   altura: {
     pequeno: {
       normal: require('./images/altura/pequeno.png'),

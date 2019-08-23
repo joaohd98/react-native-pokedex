@@ -228,4 +228,83 @@ export class DetalhesCSS {
     }
   });
 
+  static evolucoes = StyleSheet.create({
+    view: {
+      marginHorizontal: Helpers.pegarPorcentagem(10, "width"),
+      marginVertical: 25,
+      borderRadius: 15
+    },
+    title: {
+      fontSize: 20,
+      fontWeight: "400",
+      color: "#FFF",
+      lineHeight: 20,
+      letterSpacing: 2,
+      paddingHorizontal: 20,
+      paddingVertical: 20
+    },
+    cardView: {
+      justifyContent: "center",
+      alignItems: "center",
+      padding: 10,
+      width: 300
+    },
+    cardIMG: {
+      backgroundColor: "#616161",
+      width: 200,
+      height: 200,
+      borderWidth: 5,
+      borderRadius: 200,
+      borderColor: "#FFF",
+      alignItems: "center",
+      justifyContent: "center"
+    },
+    cardSize: {
+      width: Helpers.pegarPorcentagem(80, "width"),
+    },
+    img: {
+
+    },
+    nameNumberLine: {
+      flexDirection: "row",
+      marginVertical: 10
+    },
+    nameText: {
+      color: "#FFF",
+      marginRight: 2.5,
+      fontSize: 20,
+      fontWeight: "600"
+    },
+    numberText: {
+      color: "#a4acaf",
+      marginLeft: 2.5,
+      fontSize: 20,
+      fontWeight: "600"
+    },
+    typeLine: {
+      flexDirection: "row",
+      marginBottom: 10
+    },
+    typesContent: {
+      justifyContent: "center",
+      borderRadius: 5,
+      width: 90,
+      height: 30,
+      borderBottomWidth: 15,
+      marginLeft: 5,
+      paddingHorizontal:20,
+      paddingVertical: 5
+    },
+    typesText: {
+      fontSize: 12,
+      lineHeight: 20,
+      letterSpacing: 2,
+      textTransform: "capitalize",
+      position: "absolute",
+      justifyContent: "center",
+      textAlign: "center",
+      left: 0,
+      right: 0
+    },
+  });
 }
