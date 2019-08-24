@@ -12,10 +12,21 @@ import {DetalhesEvolucoes} from "./evolucoes/evolucoes";
 import {DetalhesEstatisticas} from "./estatisticas/estatisticas";
 import {DetalhesTipoFraqueza} from "./tipo-fraqueza/tipo-fraqueza";
 import {DetalhesCSS} from "./detalhes-css";
+import {PokedexAction} from "../../redux/pokedex-action";
+
+interface State {
+
+}
 
 class DetalhesPage extends Component<PokedexProps.DetalhesProps> {
 
   css = DetalhesCSS.detalhes;
+
+  componentDidMount() {
+
+    this.props.carregarDetalhes();
+
+  }
 
   render() {
 
@@ -49,16 +60,13 @@ class DetalhesPage extends Component<PokedexProps.DetalhesProps> {
 }
 
 const mapStateToProps = (state) => {
-  return {
-
-  }
+  return {}
 };
 
 const mapDispatchToProps = dispatch => (
   bindActionCreators({
-
+    carregarDetalhes: () => PokedexAction.carregarDetalhes(),
   }, dispatch)
 );
 
 export const Detalhes = connect(mapStateToProps, mapDispatchToProps)(DetalhesPage);
-

@@ -14,7 +14,7 @@ export enum PokedexConst {
   FILTRAR_POKEMON,
 
   REDEFINIR_FILTROS,
-  APLICAR_FILTROS
+  APLICAR_FILTROS,
 
 }
 
@@ -27,6 +27,8 @@ export class PokedexAction {
       dispatch({ type: PokedexConst.CARREGANDO });
 
       PokedexService.pegarTodosPokemons(request => {
+
+        console.log(request);
 
         dispatch({
           type: PokedexConst.CARREGADO_POKEMONS,
@@ -48,16 +50,6 @@ export class PokedexAction {
   static adicionarLimite = () => {
 
     return dispatch => dispatch({type: PokedexConst.ADICIONAR_LIMITE})
-
-  };
-
-  static irParaDetalhes = (pokemon: PokedexModel.ViewModel) => {
-
-    return dispatch => {
-
-      dispatch({type: ""});
-
-    }
 
   };
 
@@ -116,5 +108,40 @@ export class PokedexAction {
     }
 
   };
+
+  static irParaDetalhes = (pokemon: PokedexModel.ViewModel) => {
+    
+    return (dispatch, navigation) => {
+
+      dispatch({type: ""});
+
+      navigation.navigate('detalhes');
+
+    }
+
+  };
+
+  static carregarDetalhes = () => {
+
+    return dispatch => {
+
+      PokedexService.pegarDetalhesPokemons({nome: "bulbasaur"}, request => {
+
+        dispatch({
+          type: PokedexConst.CARREGADO_POKEMONS,
+          payload: PokedexInteractor.formatarDetalhesPokemon(request)
+        })
+
+      }, () => {
+
+        dispatch({
+          type: PokedexConst.ERRO_CARREGAR_POKEMONS,
+        })
+
+      });
+
+    }
+
+  }
 
 }

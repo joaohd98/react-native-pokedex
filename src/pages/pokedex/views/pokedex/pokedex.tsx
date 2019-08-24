@@ -77,7 +77,7 @@ const mapStateToProps = (state) => {
   return state.pokedexReducer
 };
 
-const mapDispatchToProps = dispatch => ({
+const mapDispatchToProps = (dispatch, ownProps) => ({
   funcoes: bindActionCreators(PokedexInitalState.funcoes, dispatch)
 });
 

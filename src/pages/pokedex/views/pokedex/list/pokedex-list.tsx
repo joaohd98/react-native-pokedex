@@ -53,7 +53,7 @@ export class PokedexList extends Component<PokedexProps.Props>{
         data={pokemons}
         style={PokedexCSS.PokedexCard.view}
         keyExtractor={item => item.numero}
-        renderItem={iterator  => <PokedexCard pokemon={iterator.item} irParaDetalhes={() => this.props.irParaDetalhes(iterator.item)} />}
+        renderItem={iterator  => <PokedexCard pokemon={iterator.item} irParaDetalhes={() => this.props.funcoes.irParaDetalhes(iterator.item)} />}
         onMomentumScrollBegin={() => { this.carrregarPokemons = true; }}
         onEndReached={this.carregarPokemons}
         onEndReachedThreshold={0.01}
@@ -117,7 +117,7 @@ export class PokedexList extends Component<PokedexProps.Props>{
     if(!this.carrregarPokemons)
       return;
 
-    setTimeout(() => {this.carrregarPokemons = false; this.props.adicionarLimite(); }, 500);
+    setTimeout(() => {this.carrregarPokemons = false; this.props.funcoes.adicionarLimite(); }, 500);
 
   };
 

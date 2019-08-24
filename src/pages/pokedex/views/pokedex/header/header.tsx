@@ -18,7 +18,6 @@ export class PokedexHeader extends React.Component {
           <TouchableOpacity onPress={() => navigation.navigate('filtro')}>
             <Icon name="bars" size={30} color="#000"/>
           </TouchableOpacity> : <View/>
-
       )
     });
 

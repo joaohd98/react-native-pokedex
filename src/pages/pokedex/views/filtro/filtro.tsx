@@ -54,7 +54,6 @@ class FiltroPage extends Component<PokedexProps.Filtro, PokedexProps.FiltroForm>
         </ScrollView>
         <FiltroBotoes {...this.state} sucesso={this.sucesso.bind(this)} redefinir={this.redefinir.bind(this)} />
       </View>
-
     )
 
   }

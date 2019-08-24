@@ -21,7 +21,6 @@ export namespace PokedexProps {
       filtrarPokemons: (pokemon, filtro) => void,
       irParaDetalhes: (pokemon: PokedexModel.ViewModel) => void
     }
-
   }
 
 
@@ -81,8 +80,10 @@ export namespace PokedexProps {
 
   export interface DetalhesProps {
 
-    pokemon: PokedexModel.ViewModel;
-    outrosPokemons: PokedexModel.ViewModel[];
+    pokemon: PokedexModel.Detalhes.ViewModel;
+    carregarDetalhes: () => void,
+    carregando: boolean;
+    erro: boolean;
 
   }
 

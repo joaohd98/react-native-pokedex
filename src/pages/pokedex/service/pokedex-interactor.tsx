@@ -376,4 +376,8 @@ export class PokedexInteractor {
 
   }
 
+  static formatarDetalhesPokemon(pokemon: PokedexModel.Detalhes.Response) {
+
+  }
+
 }
