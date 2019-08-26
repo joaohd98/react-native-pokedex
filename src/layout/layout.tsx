@@ -1,21 +1,19 @@
-import React from "react";
-import {Component} from "react";
+import React, {Component} from "react";
 import {createAppContainer, createStackNavigator} from "react-navigation";
-import {Detalhes} from "../pages/pokedex/views/detalhes/detalhes";
 import {Colors} from "../helpers/colors/colors";
-import {Pokedex} from "../pages/pokedex/views/pokedex/pokedex";
-import {Filtro} from "../pages/pokedex/views/filtro/filtro";
-
+import {ListaPokemons} from "../pages/lista-pokemons/view/page/lista-pokemons";
+import {Filtro} from "../pages/lista-pokemons/sub-views/filtro/page/filtro";
+import {Detalhes} from "../pages/lista-pokemons/sub-views/detalhes/page/detalhes";
 
 export class Layout extends Component {
 
   //PAGINAS
   private stackNavigator = createStackNavigator({
-    pokedex: Pokedex,
+    listaPokemons: ListaPokemons,
     filtro: Filtro,
     detalhes: Detalhes
   }, {
-    initialRouteName: 'pokedex',
+    initialRouteName: 'listaPokemons',
     headerLayoutPreset: "center",
     defaultNavigationOptions: {
       headerStyle: {
@@ -39,7 +37,6 @@ export class Layout extends Component {
   });
 
   render(){
-
 
     const AppContainer = createAppContainer(this.stackNavigator);
 

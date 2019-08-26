@@ -1,15 +1,16 @@
-import {PokedexModel} from "../../pages/pokedex/service/pokedex-model";
 import {ApiRetornos} from "../index";
+import {ListaPokemonsModel} from "../../pages/lista-pokemons/view/services/lista-pokemons-model";
+import {DetalhesModel} from "../../pages/lista-pokemons/sub-views/detalhes/services/detalhes-model";
 
 export class PokedexService {
 
-  static async pegarTodosPokemons(sucesso: (request: PokedexModel.Response) => void, falha: (request: PokedexModel.Response) => void) {
+  static async pegarTodosPokemons(sucesso: (request: ListaPokemonsModel.Response) => void, falha: (request: ListaPokemonsModel.Response) => void) {
 
     try {
 
       let response = await fetch('https://www.pokemon.com/br/api/pokedex/kalos');
 
-      let request: PokedexModel.Response = {
+      let request: ListaPokemonsModel.Response = {
         cod: ApiRetornos.sucesso,
         retorno: await response.json()
       };
@@ -22,7 +23,7 @@ export class PokedexService {
 
       let erro: ApiRetornos = (error.toString() === "TypeError: Network request failed") ? ApiRetornos.semInternet : ApiRetornos.erroInterno;
 
-      let request: PokedexModel.Response = {
+      let request: ListaPokemonsModel.Response = {
         cod: erro,
       };
 
@@ -32,13 +33,13 @@ export class PokedexService {
 
   }
 
-  static async pegarDetalhesPokemons(dados: PokedexModel.Detalhes.Request, sucesso: (request: PokedexModel.Detalhes.Response) => void, falha: (request: PokedexModel.Detalhes.Response) => void) {
+  static async pegarDetalhesPokemons(dados: DetalhesModel.Request, sucesso: (request: DetalhesModel.Response) => void, falha: (request: DetalhesModel.Response) => void) {
 
     try {
 
       let response = await fetch('https://pokeapi.co/api/v2/pokemon/' + dados.nome);
 
-      let request: PokedexModel.Detalhes.Response = {
+      let request: DetalhesModel.Response = {
         cod: ApiRetornos.sucesso,
         retorno: await response.json()
       };
@@ -51,7 +52,7 @@ export class PokedexService {
 
       let erro: ApiRetornos = (error.toString() === "TypeError: Network request failed") ? ApiRetornos.semInternet : ApiRetornos.erroInterno;
 
-      let request: PokedexModel.Detalhes.Response = {
+      let request: DetalhesModel.Response = {
         cod: erro,
       };
 
