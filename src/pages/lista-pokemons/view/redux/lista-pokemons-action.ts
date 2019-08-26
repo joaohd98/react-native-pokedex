@@ -2,6 +2,7 @@ import {PokedexService} from "../../../../services/pokedex/PokedexService";
 import {ListaPokemonsInteractor} from "../services/lista-pokemons-interactor";
 import {ListaPokemonsModel} from "../services/lista-pokemons-model";
 import {FiltroProps} from "../../sub-views/filtro/services/filtro-props";
+import {Navigation} from "../../../../helpers/navigation";
 
 export enum ListaPokemonsConst {
 
@@ -69,11 +70,9 @@ export class ListaPokemonsAction {
 
   static irParaDetalhes = (pokemon: ListaPokemonsModel.ViewModel) => {
 
-    return (dispatch, navigation) => {
-
-      dispatch({type: ""});
-
-      navigation.navigate('detalhes');
+    return (dispatch, getState) => {
+      
+      Navigation.navigate('detalhes');
 
     }
 
@@ -86,7 +85,7 @@ export class ListaPokemonsAction {
 
       dispatch({type: ""});
 
-      navigation.navigate('filtro');
+      Navigation.navigate('filtro');
 
     }
 

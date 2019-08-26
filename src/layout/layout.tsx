@@ -4,6 +4,7 @@ import {Colors} from "../helpers/colors/colors";
 import {ListaPokemons} from "../pages/lista-pokemons/view/page/lista-pokemons";
 import {Filtro} from "../pages/lista-pokemons/sub-views/filtro/page/filtro";
 import {Detalhes} from "../pages/lista-pokemons/sub-views/detalhes/page/detalhes";
+import {Navigation} from "../helpers/navigation";
 
 export class Layout extends Component {
 
@@ -45,7 +46,7 @@ export class Layout extends Component {
     const AppContainer = createAppContainer(this.stackNavigator);
 
     return (
-      <AppContainer/>
+      <AppContainer ref={navigatorRef => Navigation.setTopLevelNavigator(navigatorRef)}/>
     )
 
   }
