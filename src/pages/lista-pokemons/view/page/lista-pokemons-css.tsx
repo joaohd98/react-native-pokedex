@@ -22,6 +22,7 @@ export class ListaPokemonsCss {
       color: Colors.gray,
       fontWeight: 'bold',
       fontSize: 15,
+      marginBottom: 10
     },
     itemView: {
       flexDirection: "row",

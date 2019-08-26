@@ -59,7 +59,8 @@ export class ListaPokemonsList extends Component<ListaPokemonsProps.Props> {
         onEndReached={() => this.carregarPokemons()}
         onEndReachedThreshold={0.01}
         ListEmptyComponent={<ListaPokemonsCard/>}
-        ListFooterComponent={tamanho >= this.props.limite && tamanho > 0 ? this.infiniteScroll() : <View />}
+        ListFooterComponent={tamanho >= this.props.limite && tamanho > 0 ? this.infiniteScroll() :
+          <View style={{paddingBottom: 50}}/>}
       />
     )
 
