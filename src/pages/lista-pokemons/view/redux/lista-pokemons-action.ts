@@ -53,6 +53,8 @@ export class ListaPokemonsAction {
 
     return dispatch => {
 
+      dispatch({type: ListaPokemonsConst.LISTA_POKEMON_CARREGANDO});
+
       dispatch({
         type: ListaPokemonsConst.LISTA_POKEMON_PESQUISAR,
         payload: {

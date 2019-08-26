@@ -62,6 +62,7 @@ export const listaPokemonsReducer = (state = ListaPokemonsInitalState, action: {
     }
 
     case ListaPokemonsConst.LISTA_POKEMON_PESQUISAR: {
+
       return {
         ...state,
         pokemons: action.payload.pokemons,

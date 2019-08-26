@@ -57,6 +57,8 @@ export class ListaPokemonsInput extends Component<ListaPokemonsProps.Props, Stat
 
     this.props.funcoes.pesquisarPokemon(this.props.pokemons, this.props.pesquisa);
 
+    this.props.flatList.current!.scrollToOffset({animated: false, offset: 0});
+
   };
 
   renderInput = () => {
@@ -93,7 +95,7 @@ export class ListaPokemonsInput extends Component<ListaPokemonsProps.Props, Stat
 
     }
 
-    return <View style={this.css.list}>{ itens }</View>;
+    return itens.length > 0 ? <View style={this.css.list}>{itens}</View> : <View/>;
 
   };
 
