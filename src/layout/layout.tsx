@@ -23,12 +23,16 @@ export class Layout extends Component {
         borderBottomWidth: 0.19
       },
       headerTitleStyle: {
+        fontFamily: 'Pokemon Solid',
         fontWeight: "400",
-        fontSize: 20,
+        fontSize: 25,
         lineHeight: 50,
-        letterSpacing: 0.25,
+        color: "#ffcb05",
+        textShadowColor: "#2a75bb",
+        textShadowOffset: {width: 3, height: 2},
+        textShadowRadius: 1,
+        letterSpacing: 2.5,
         textTransform: "capitalize",
-        color: Colors.gray
       },
       headerRightContainerStyle: {
         right: 20

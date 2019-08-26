@@ -86,7 +86,7 @@ export class ListaPokemonsAction {
 
       dispatch({type: ""});
 
-      navigation.navigate('detalhes');
+      navigation.navigate('filtro');
 
     }
 
