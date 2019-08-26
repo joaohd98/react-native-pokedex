@@ -71,7 +71,7 @@ export class ListaPokemonsAction {
   static irParaDetalhes = (pokemon: ListaPokemonsModel.ViewModel) => {
 
     return (dispatch, getState) => {
-      
+
       Navigation.navigate('detalhes');
 
     }
@@ -79,11 +79,9 @@ export class ListaPokemonsAction {
   };
 
 
-  static irParaFiltro = (pokemon: ListaPokemonsModel.ViewModel) => {
+  static irParaFiltro = (pesquisa: FiltroProps.Props) => {
 
     return (dispatch, navigation) => {
-
-      dispatch({type: ""});
 
       Navigation.navigate('filtro');
 

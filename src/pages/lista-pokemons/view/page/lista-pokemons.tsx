@@ -19,6 +19,11 @@ class PokedexPage extends Component<ListaPokemonsProps.Props> {
 
     this.props.funcoes.carregarPokemons();
 
+    this.props.navigation.setParams({
+      mostrarFiltro: false,
+      irParaFiltro: () => this.props.funcoes.irParaFiltro(this.props.pesquisa),
+    });
+
   }
 
   componentDidUpdate(prevProps: Readonly<ListaPokemonsProps.Props>, prevState: Readonly<{}>, snapshot?: any): void {

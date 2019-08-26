@@ -15,7 +15,7 @@ export class ListaPokemonsHeader extends React.Component {
       },
       headerRight: (
         navigation.getParam('mostrarFiltro') ?
-          <TouchableOpacity onPress={() => navigation.navigate('filtro')}>
+          <TouchableOpacity onPress={() => navigation.getParam('irParaFiltro')()}>
             <Icon name="bars" size={30} color="#000"/>
           </TouchableOpacity> : <View/>
       )

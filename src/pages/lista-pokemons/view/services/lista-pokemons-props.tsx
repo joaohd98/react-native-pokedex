@@ -18,7 +18,8 @@ export namespace ListaPokemonsProps {
       carregarPokemons: () => void;
       adicionarQuantidade: () => void;
       pesquisarPokemon: (pokemons: ListaPokemonsModel.ViewModel[], pesquisa: FiltroProps.Props) => void,
-      irParaDetalhes: (pokemon: ListaPokemonsModel.ViewModel) => void
+      irParaDetalhes: (pokemon: ListaPokemonsModel.ViewModel) => void,
+      irParaFiltro: (pesquisa: FiltroProps.Props) => void,
     }
   }
 
