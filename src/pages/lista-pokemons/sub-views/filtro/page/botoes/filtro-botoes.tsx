@@ -17,7 +17,7 @@ export class FiltroBotoes extends Component<Props> {
 
     return (
       <View style={this.css.view}>
-        <TouchableOpacity onPress={() => this.props.sucesso()}>
+        <TouchableOpacity style={this.css.touchableView} onPress={() => this.props.sucesso()}>
           <View style={[this.css.buttonPesquisa, this.css.button]}>
             <View style={this.css.buttonPesquisaContainer}>
               <Icon style={this.css.buttonIcon} name="search" size={20} />
@@ -25,7 +25,7 @@ export class FiltroBotoes extends Component<Props> {
             </View>
           </View>
         </TouchableOpacity>
-        <TouchableOpacity onPress={() => this.props.redefinir()}>
+        <TouchableOpacity style={this.css.touchableView} onPress={() => this.props.redefinir()}>
           <View style={[this.css.buttonRedefinir, this.css.button]}>
             <Text style={this.css.buttonText}>Redefinir</Text>
           </View>

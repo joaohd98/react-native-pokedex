@@ -7,10 +7,14 @@ export class FiltroCSS {
   static LIST_ITEM_HEIGTH = 30;
 
   static VIEW = StyleSheet.create({
+    view: {
+      paddingBottom: 80,
+      backgroundColor: "#424242",
+    },
     scrollView: {
       backgroundColor: "#424242",
+      paddingBottom: 50,
       paddingHorizontal: Helpers.pegarPorcentagem(5, "width"),
-      paddingBottom: 100
     }
   });
 
@@ -231,25 +235,29 @@ export class FiltroCSS {
 
   static BOTOES = StyleSheet.create({
     view: {
-      flex: 1,
-      marginVertical: 25,
+      marginBottom: 20,
+      position: "absolute",
+      flexDirection: "row",
+      bottom: 0,
+    },
+    touchableView: {
+      flex: 0.5,
+      alignItems: "center",
     },
     button: {
       padding: 12,
       borderRadius: 5,
-      marginVertical: 10
+      width: Helpers.pegarPorcentagem(40, "width")
     },
     buttonPesquisa: {
       backgroundColor: "#ee6b2f",
     },
     buttonPesquisaContainer: {
       flexDirection: "row",
-      display: "flex",
-      alignItems: "center",
       justifyContent: "center"
     },
     buttonRedefinir: {
-      backgroundColor: "#a4a4a4"
+      backgroundColor: "#a4a4a4",
     },
     buttonIcon: {
       color: "#FFF",

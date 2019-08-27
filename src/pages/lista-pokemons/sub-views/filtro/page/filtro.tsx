@@ -1,4 +1,4 @@
-import React, {Component} from "react";
+import React, {Component, RefObject} from "react";
 import {ScrollView, View} from "react-native";
 import {FiltroCSS} from "./filtro-css";
 import {bindActionCreators} from "redux";
@@ -13,9 +13,17 @@ import {FiltroProps} from "../services/filtro-props";
 import {StatesReducers} from "../../../../../redux/reducer";
 import {FiltroInitalState} from "../redux/filtro-reducer";
 
-class FiltroPage extends Component<FiltroProps.Props> {
+interface States {
+  css: object
+  scrollView: RefObject<ScrollView>,
+}
 
-  private scrollView = React.createRef<ScrollView>();
+class FiltroPage extends Component<FiltroProps.Props, States> {
+
+  state = {
+    css: FiltroCSS.VIEW,
+    scrollView: React.createRef<ScrollView>()
+  };
 
   sucesso() {
 
@@ -28,15 +36,15 @@ class FiltroPage extends Component<FiltroProps.Props> {
 
     this.props.funcoes.redefinirFiltros();
 
-    this.scrollView.current!.scrollTo({ y: 0, animated: false });
+    this.state.scrollView.current!.scrollTo({y: 0, animated: false});
 
   }
 
   render() {
 
     return (
-      <View>
-        <ScrollView ref={this.scrollView} style={FiltroCSS.VIEW.scrollView}>
+      <View style={this.state.css.view}>
+        <ScrollView ref={this.state.scrollView} style={this.state.css.scrollView}>
           <FiltroTipos {...this.props.filtro} />
           <FiltroIntervalo {...this.props.filtro} />
           <FiltroHabilidades {...this.props.filtro} />
