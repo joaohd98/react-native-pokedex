@@ -8,106 +8,178 @@ export namespace DetalhesModel {
 
   export interface Response {
     cod: ApiRetornos
-    retorno?: [{
-      id: number;
-      abilities: {
-        ability: {
-          name: string;
-          url: string;
-        };
-        is_hidden: boolean;
-        slot: number;
-      }[];
-      base_experience: number;
-      forms: {
+    retorno?: {
+      pokemon: ResponsePokemon,
+      species: ResponseSpecie,
+      evolution: ResponseSpecie[],
+      abilities: ResponseAbilities[],
+    }
+  }
+
+  export interface ResponsePokemon {
+
+    id: number;
+    abilities: {
+      ability: {
         name: string;
         url: string;
-      }[];
-      game_indices: {
-        game_index: number;
-        version: {
-          name: string;
-          url: string;
-        };
-      }[];
-      height: number;
-      held_items: any[];
-      is_default: boolean;
-      location_area_encounters: string;
-      moves: {
-        move: {
-          name: string;
-          url: string;
-        };
-        version_group_details: {
-          level_learned_at: number;
-          move_learn_method: {
-            name: string;
-            url: string;
-          };
-          version_group: {
-            name: string;
-            url: string;
-          };
-        }[]
-      }[];
+      };
+      is_hidden: boolean;
+      slot: number;
+    }[];
+    base_experience: number;
+    forms: {
       name: string;
-      order: number;
-      species: {
+      url: string;
+    }[];
+    game_indices: {
+      game_index: number;
+      version: {
         name: string;
         url: string;
       };
-      sprites: {
-        back_default: string;
-        back_female?: any;
-        back_shiny: string;
-        back_shiny_female?: any;
-        front_default: string;
-        front_female?: any;
-        front_shiny: string;
-        front_shiny_female?: any;
+    }[];
+    height: number;
+    held_items: any[];
+    is_default: boolean;
+    location_area_encounters: string;
+    moves: {
+      move: {
+        name: string;
+        url: string;
       };
-      stats: {
-        base_stat: number;
-        effort: number;
-        stat: {
+      version_group_details: {
+        level_learned_at: number;
+        move_learn_method: {
           name: string;
           url: string;
         };
-      }[];
-      types: {
-        slot: number;
-        type: {
+        version_group: {
           name: string;
           url: string;
         };
       }[]
-      weight: number;
-    }]
+    }[];
+    name: string;
+    order: number;
+    species: {
+      name: string;
+      url: string;
+    };
+    sprites: {
+      back_default: string;
+      back_female?: any;
+      back_shiny: string;
+      back_shiny_female?: any;
+      front_default: string;
+      front_female?: any;
+      front_shiny: string;
+      front_shiny_female?: any;
+    };
+    stats: {
+      base_stat: number;
+      effort: number;
+      stat: {
+        name: string;
+        url: string;
+      };
+    }[];
+    types: {
+      slot: number;
+      type: {
+        name: string;
+        url: string;
+      };
+    }[]
+    weight: number;
+
+  }
+
+  export interface ResponseEvolution {
+
+    id: number;
+    baby_trigger_item?: any;
+    chain: {
+      is_baby: boolean;
+      species: {
+        name: string;
+        url: string;
+      };
+      evolves_to: ResponseEvolutionChain[];
+    }
+
+  }
+
+  interface ResponseEvolutionChain {
+    is_baby: boolean;
+    species: {
+      name: string;
+      url: string;
+    };
+    evolves_to: ResponseEvolutionChain[]
+  }
+
+  export interface ResponseAbilities {
+
+    "effect_entries": {
+      "effect": string,
+      "language": {
+        "name": string,
+        "url": string
+      },
+      "short_effect": string
+    }[],
+
+  }
+
+  export interface ResponseSpecie {
+
+    id: number;
+    gender_rate: number;
+    "evolves_from_species": {
+      "name": string,
+      "url": string
+    },
+    "evolution_chain": {
+      "url": string
+    },
+    flavor_text_entries: {
+      "flavor_text": string,
+      "language": {
+        "name": string,
+        "url": string
+      },
+      "version": {
+        "name": string,
+        "url": string
+      }
+    }[]
+
   }
 
   export interface ViewModel {
+
     foto: string, //
     nome: string, //
     numero: string, //
     numeroAdj: number, //
     numeroAnt: number, //
     atributos: {
-      hp: number,
-      attack: number,
-      defense: number,
-      specialAttack: number,
-      specialDefense: number,
-      speed: number
+      hp: number, //
+      attack: number, //
+      defense: number, //
+      specialAttack: number, //
+      specialDefense: number, //
+      speed: number //
     },
-    descricao: string,
+    descricao: string, //
     altura: number, //
     peso: number, //
-    genero: string,
-    categoria: string,
+    genero: string, //
+    categoria: string, //
     habilidades: [{
       nome: string, //
-      descricao: string
+      descricao: string //
     }],
     tipos: string[], //
     fraquezas: string[], //
@@ -117,6 +189,7 @@ export namespace DetalhesModel {
       numero: string, //
       tipos: string[], //
     }]
+
   }
 
 }

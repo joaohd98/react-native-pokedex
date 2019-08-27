@@ -26,7 +26,8 @@ class DetalhesPage extends Component<DetalhesProps.Props> {
 
   render() {
 
-    return (
+    let html = this.props.pokemonSelecionado ? (
+
       <ScrollView>
         <DetalhesHeader/>
         <View style={this.css.view}>
@@ -49,7 +50,13 @@ class DetalhesPage extends Component<DetalhesProps.Props> {
         </View>
       </ScrollView>
 
-    )
+    ) : (
+
+      <View/>
+
+    );
+
+    return html;
 
   }
 
