@@ -5,6 +5,7 @@ import {Navigation} from "../../../../helpers/navigation";
 import {FiltroConst} from "../../sub-views/filtro/redux/filtro-action";
 import {FiltroInteractor} from "../../sub-views/filtro/services/filtro-interactor";
 import {FiltroModel} from "../../sub-views/filtro/services/filtro-model";
+import {DetalhesConst} from "../../sub-views/detalhes/redux/detalhes-action";
 
 export enum ListaPokemonsConst {
 
@@ -69,6 +70,13 @@ export class ListaPokemonsAction {
   static irParaDetalhes = (pokemon: ListaPokemonsModel.ViewModel) => {
 
     return dispatch => {
+
+      dispatch({
+        type: DetalhesConst.DETALHES_ENTRAR_PAGINA,
+        payload: {
+          pokemonSelecionado: pokemon,
+        }
+      });
 
       Navigation.navigate('detalhes');
 

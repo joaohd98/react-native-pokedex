@@ -1,15 +1,19 @@
 import React from "react";
 import {GlobalProps} from "../../../../../redux/props";
 import {ListaPokemonsModel} from "../../../view/services/lista-pokemons-model";
+import {DetalhesModel} from "./detalhes-model";
 
 export namespace DetalhesProps {
 
   export interface Props extends GlobalProps {
 
-    pokemon: ListaPokemonsModel.ViewModel;
-    carregarDetalhes: () => void,
+    pokemonSelecionado?: ListaPokemonsModel.ViewModel;
+    pokemonDetalhes?: DetalhesModel.ViewModel;
     carregando: boolean;
     erro: boolean;
+    funcoes: {
+      carregarDetalhes: (pokemon: ListaPokemonsModel.ViewModel) => {}
+    }
 
   }
 

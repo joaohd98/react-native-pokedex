@@ -119,7 +119,6 @@ export namespace DetalhesModel {
     }]
   }
 
-
 }
 
 

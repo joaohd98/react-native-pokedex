@@ -11,6 +11,8 @@ import {DetalhesEstatisticas} from "./estatisticas/estatisticas";
 import {DetalhesTipoFraqueza} from "./tipo-fraqueza/tipo-fraqueza";
 import {DetalhesCSS} from "./detalhes-css";
 import {DetalhesProps} from "../services/detalhes-props";
+import {StatesReducers} from "../../../../../redux/reducer";
+import {DetalhesInitalState} from "../redux/detalhes-reducer";
 
 class DetalhesPage extends Component<DetalhesProps.Props> {
 
@@ -18,7 +20,7 @@ class DetalhesPage extends Component<DetalhesProps.Props> {
 
   componentDidMount() {
 
-    this.props.carregarDetalhes();
+    this.props.funcoes.carregarDetalhes(this.props.pokemonSelecionado!);
 
   }
 
@@ -53,13 +55,12 @@ class DetalhesPage extends Component<DetalhesProps.Props> {
 
 }
 
-const mapStateToProps = (state) => {
-  return {}
+const mapStateToProps = (state: StatesReducers) => {
+  return state.detalhesReducer
 };
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-  }, dispatch)
-);
+const mapDispatchToProps = dispatch => ({
+  funcoes: bindActionCreators(DetalhesInitalState.funcoes, dispatch)
+});
 
 export const Detalhes = connect(mapStateToProps, mapDispatchToProps)(DetalhesPage);
