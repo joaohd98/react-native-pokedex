@@ -27,14 +27,13 @@ class FiltroPage extends Component<FiltroProps.Props, States> {
 
   sucesso() {
 
-    this.props.funcoes.aplicarFiltros();
-    this.props.navigation.goBack();
+    this.props.funcoes.aplicarFiltros(this.props.pokemons, this.props.filtro);
 
   }
 
   redefinir() {
 
-    this.props.funcoes.redefinirFiltros();
+    this.props.funcoes.redefinirFiltros(this.props.filtro);
 
     this.state.scrollView.current!.scrollTo({y: 0, animated: false});
 

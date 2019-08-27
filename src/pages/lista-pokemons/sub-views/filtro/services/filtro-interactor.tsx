@@ -24,25 +24,43 @@ export class FiltroInteractor {
 
   }
 
-  static formValoresIniciais(): FiltroModel.FormModel {
+  static formValoresIniciais(filtro: FiltroModel.FormModel | null = null): FiltroModel.FormModel {
 
-    return {
-      tipos: [],
-      intervaloNumeros: {
-        limites: [],
-        valores: [],
-      },
-      habilidades: {
-        todas: [],
-        selecionada: ""
-      },
-      altura: {pequeno: false, medio: false, grande: false},
-      peso: {leve: false, medio: false, pesado: false},
+    if (!filtro) {
+
+      return {
+        tipos: [],
+        intervaloNumeros: {
+          limites: [],
+          valores: [],
+        },
+        habilidades: {
+          todas: [],
+          selecionada: ""
+        },
+        altura: {pequeno: false, medio: false, grande: false},
+        peso: {leve: false, medio: false, pesado: false},
+      }
+
     }
+
+    filtro.tipos.forEach(dados => {
+
+      dados.fraqueza = false;
+      dados.tipo = false;
+
+    });
+
+    filtro.intervaloNumeros.valores = filtro.intervaloNumeros.limites;
+    filtro.habilidades.selecionada = "Todas";
+    filtro.altura = {pequeno: false, medio: false, grande: false};
+    filtro.peso = {leve: false, medio: false, pesado: false};
+
+    return filtro
 
   }
 
-  static propsToForm(props: FiltroModel.FiltroValoresModel) {
+  static propsToForm(props: FiltroModel.FiltroValoresModel): FiltroModel.FormModel {
 
     /*
      * Tipos
@@ -109,7 +127,7 @@ export class FiltroInteractor {
 
   }
 
-  static formToProps(props: FiltroModel.FormModel) {
+  static formToProps(props: FiltroModel.FormModel): FiltroModel.ValoresModel {
 
     let fraquezas: string[] = [];
     let tipos: string[] = [];
@@ -136,6 +154,5 @@ export class FiltroInteractor {
     }
 
   }
-
 
 }

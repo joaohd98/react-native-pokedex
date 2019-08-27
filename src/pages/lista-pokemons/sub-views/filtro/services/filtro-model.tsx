@@ -9,16 +9,18 @@ export namespace FiltroModel {
       numeros: { minimo: number, maximo: number },
     };
 
-    valores: {
-      nome: string;
-      habilidadeEscolhida: string;
-      tiposEscolhidos: string[];
-      fraquezasEscolhidas: string[];
-      numeros: { minimo: number, maximo: number },
-      alturas: { pequeno: boolean, medio: boolean, grande: boolean },
-      pesos: { leve: boolean, medio: boolean, pesado: boolean }
-    }
+    valores: ValoresModel
 
+  }
+
+  export interface ValoresModel {
+    nome: string;
+    habilidadeEscolhida: string;
+    tiposEscolhidos: string[];
+    fraquezasEscolhidas: string[];
+    numeros: { minimo: number, maximo: number },
+    alturas: { pequeno: boolean, medio: boolean, grande: boolean },
+    pesos: { leve: boolean, medio: boolean, pesado: boolean }
   }
 
   export interface FormModel {

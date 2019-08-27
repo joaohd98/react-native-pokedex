@@ -18,7 +18,8 @@ export const ListaPokemonsInitalState: ListaPokemonsProps.Props = {
     pesquisarPokemon: (pokemons, pesquisa) => ListaPokemonsAction.pesquisarPokemon(pokemons, pesquisa),
     irParaDetalhes: (pokemons) => ListaPokemonsAction.irParaDetalhes(pokemons),
     irParaFiltro: (pokemons, pesquisa) => ListaPokemonsAction.irParaFiltro(pokemons, pesquisa),
-  }
+  },
+  atualizar: false,
 };
 
 export const listaPokemonsReducer = (state = ListaPokemonsInitalState, action: { type: ListaPokemonsConst, payload: any }) => {
@@ -29,7 +30,8 @@ export const listaPokemonsReducer = (state = ListaPokemonsInitalState, action: {
       return {
         ...state,
         carregando: true,
-        erro: false
+        erro: false,
+        atualizar: !state.atualizar,
       };
 
     case ListaPokemonsConst.LISTA_POKEMON_CARREGADO:
@@ -45,20 +47,23 @@ export const listaPokemonsReducer = (state = ListaPokemonsInitalState, action: {
         },
         ...action.payload,
         erro: false,
-        carregando: false
+        carregando: false,
+        atualizar: !state.atualizar,
       };
 
     case ListaPokemonsConst.LISTA_POKEMON_ERRO_CARREGAR:
       return {
         ...state,
         erro: true,
-        carregando: false
+        carregando: false,
+        atualizar: !state.atualizar,
       };
 
     case ListaPokemonsConst.LISTA_POKEMON_ADICIONAR_QUANTIDADE: {
       return {
         ...state,
         limite: state.limite + 10,
+        atualizar: !state.atualizar,
       }
     }
 
@@ -69,7 +74,19 @@ export const listaPokemonsReducer = (state = ListaPokemonsInitalState, action: {
         pokemons: action.payload.pokemons,
         pesquisa: action.payload.pesquisa,
         limite: JSON.stringify(action.payload.pesquisa.valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
-        carregando: false,
+        atualizar: !state.atualizar,
+      }
+    }
+
+
+    case ListaPokemonsConst.LISTA_POKEMON_FILTRAR: {
+
+      return {
+        ...state,
+        pokemons: action.payload.pokemons,
+        pesquisa: {filtro: state.pesquisa.filtro, valores: action.payload.filtro_valores},
+        limite: JSON.stringify(action.payload.pesquisa_valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
+        atualizar: !state.atualizar,
       }
     }
 

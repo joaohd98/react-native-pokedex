@@ -55,7 +55,7 @@ export class ListaPokemonsInteractor {
 
   }
 
-  static filtrarPokemons(pokemons: ListaPokemonsModel.ViewModel[], filtro: FiltroModel.FiltroValoresModel) {
+  static filtrarPokemons(pokemons: ListaPokemonsModel.ViewModel[], filtro: FiltroModel.ValoresModel) {
 
     for (let pokemon of pokemons) {
 
@@ -63,35 +63,35 @@ export class ListaPokemonsInteractor {
        * Nome
        */
 
-      let nome = filtro.valores.nome == "" || Helpers.compararStrings(Helpers.eNumero(filtro.valores.nome.charAt(0)) ? pokemon.numero : pokemon.nome, filtro.valores.nome);
+      let nome = filtro.nome == "" || Helpers.compararStrings(Helpers.eNumero(filtro.nome.charAt(0)) ? pokemon.numero : pokemon.nome, filtro.nome);
 
       /*
        * Tipos
        */
 
-      let tamanhoTipos = filtro.valores.tiposEscolhidos.length;
+      let tamanhoTipos = filtro.tiposEscolhidos.length;
 
-      let tipo = pokemon.tipos.filter(tipo => filtro.valores.tiposEscolhidos.indexOf(tipo) > -1).length == tamanhoTipos || tamanhoTipos == 0;
+      let tipo = pokemon.tipos.filter(tipo => filtro.tiposEscolhidos.indexOf(tipo) > -1).length == tamanhoTipos || tamanhoTipos == 0;
 
       /*
        * Fraquezas
        */
 
-      let tamanhoFraquezas = filtro.valores.fraquezasEscolhidas.length;
+      let tamanhoFraquezas = filtro.fraquezasEscolhidas.length;
 
-      let fraqueza = pokemon.fraquezas.filter(fraqueza => filtro.valores.fraquezasEscolhidas.indexOf(fraqueza.toLowerCase()) > -1).length == tamanhoFraquezas || tamanhoFraquezas == 0;
+      let fraqueza = pokemon.fraquezas.filter(fraqueza => filtro.fraquezasEscolhidas.indexOf(fraqueza.toLowerCase()) > -1).length == tamanhoFraquezas || tamanhoFraquezas == 0;
 
       /*
        * Intervalo numeros
        */
 
-      let numeros = parseInt(pokemon.numero) >= filtro.valores.numeros.minimo && parseInt(pokemon.numero) <= filtro.valores.numeros.maximo;
+      let numeros = parseInt(pokemon.numero) >= filtro.numeros.minimo && parseInt(pokemon.numero) <= filtro.numeros.maximo;
 
       /*
        * Habilidade
        */
 
-      let habilidades = (pokemon.habilidades.indexOf(filtro.valores.habilidadeEscolhida) > -1 || filtro.valores.habilidadeEscolhida == "Todas");
+      let habilidades = (pokemon.habilidades.indexOf(filtro.habilidadeEscolhida) > -1 || filtro.habilidadeEscolhida == "Todas");
 
       /*
        * Altura
@@ -103,18 +103,18 @@ export class ListaPokemonsInteractor {
 
       let altura: boolean;
 
-      if (!filtro.valores.alturas.pequeno && !filtro.valores.alturas.medio && !filtro.valores.alturas.grande)
+      if (!filtro.alturas.pequeno && !filtro.alturas.medio && !filtro.alturas.grande)
         altura = true;
 
       else {
 
-        if (filtro.valores.alturas.pequeno && alturaPequena(pokemon.altura))
+        if (filtro.alturas.pequeno && alturaPequena(pokemon.altura))
           altura = true;
 
-        else if (filtro.valores.alturas.medio && alturaMedia(pokemon.altura))
+        else if (filtro.alturas.medio && alturaMedia(pokemon.altura))
           altura = true;
 
-        else if (filtro.valores.alturas.grande && alturaGrande(pokemon.altura))
+        else if (filtro.alturas.grande && alturaGrande(pokemon.altura))
           altura = true;
 
         else
@@ -132,18 +132,18 @@ export class ListaPokemonsInteractor {
 
       let peso = false;
 
-      if (!filtro.valores.pesos.leve && !filtro.valores.pesos.medio && !filtro.valores.pesos.pesado)
+      if (!filtro.pesos.leve && !filtro.pesos.medio && !filtro.pesos.pesado)
         peso = true;
 
       else {
 
-        if (filtro.valores.pesos.leve && pesoLeve(pokemon.peso))
+        if (filtro.pesos.leve && pesoLeve(pokemon.peso))
           peso = true;
 
-        else if (filtro.valores.pesos.medio && pesoMedio(pokemon.peso))
+        else if (filtro.pesos.medio && pesoMedio(pokemon.peso))
           peso = true;
 
-        else if (filtro.valores.pesos.pesado && pesoPesado(pokemon.peso))
+        else if (filtro.pesos.pesado && pesoPesado(pokemon.peso))
           peso = true;
 
         else

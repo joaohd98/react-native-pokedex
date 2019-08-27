@@ -8,11 +8,12 @@ import {FiltroModel} from "../../sub-views/filtro/services/filtro-model";
 
 export enum ListaPokemonsConst {
 
-  LISTA_POKEMON_CARREGADO,
-  LISTA_POKEMON_CARREGANDO,
-  LISTA_POKEMON_ERRO_CARREGAR,
-  LISTA_POKEMON_ADICIONAR_QUANTIDADE,
-  LISTA_POKEMON_PESQUISAR,
+  LISTA_POKEMON_CARREGADO = "LISTA_POKEMON_CARREGADO",
+  LISTA_POKEMON_CARREGANDO = "LISTA_POKEMON_CARREGANDO",
+  LISTA_POKEMON_ERRO_CARREGAR = "LISTA_POKEMON_ERRO_CARREGAR",
+  LISTA_POKEMON_ADICIONAR_QUANTIDADE = "LISTA_POKEMON_ADICIONAR_QUANTIDADE",
+  LISTA_POKEMON_PESQUISAR = "LISTA_POKEMON_PESQUISAR",
+  LISTA_POKEMON_FILTRAR = "LISTA_POKEMON_FILTRAR"
 
 }
 
@@ -53,12 +54,10 @@ export class ListaPokemonsAction {
 
     return dispatch => {
 
-      dispatch({type: ListaPokemonsConst.LISTA_POKEMON_CARREGANDO});
-
       dispatch({
         type: ListaPokemonsConst.LISTA_POKEMON_PESQUISAR,
         payload: {
-          pokemons: ListaPokemonsInteractor.filtrarPokemons(pokemons, pesquisa),
+          pokemons: ListaPokemonsInteractor.filtrarPokemons(pokemons, pesquisa.valores),
           pesquisa: pesquisa,
         }
       })
@@ -69,7 +68,7 @@ export class ListaPokemonsAction {
 
   static irParaDetalhes = (pokemon: ListaPokemonsModel.ViewModel) => {
 
-    return (dispatch, getState) => {
+    return dispatch => {
 
       Navigation.navigate('detalhes');
 
@@ -81,8 +80,6 @@ export class ListaPokemonsAction {
   static irParaFiltro = (pokemons: ListaPokemonsModel.ViewModel[], pesquisa: FiltroModel.FiltroValoresModel) => {
 
     return dispatch => {
-
-      console.log(pesquisa);
 
       dispatch({
         type: FiltroConst.FILTRO_ENTRAR_PAGINA,

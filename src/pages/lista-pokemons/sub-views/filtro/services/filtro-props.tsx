@@ -10,9 +10,9 @@ export namespace FiltroProps {
     pokemons: ListaPokemonsModel.ViewModel[],
     filtro: FiltroModel.FormModel;
     funcoes: {
-      aplicarFiltros: () => void,
-      redefinirFiltros: () => void
-    }
+      aplicarFiltros: (pokemons: ListaPokemonsModel.ViewModel[], filtro: FiltroModel.FormModel) => void,
+      redefinirFiltros: (filtro: FiltroModel.FormModel) => void
+    },
   }
 
 }

@@ -6,9 +6,10 @@ export const FiltroInitalState: FiltroProps.Props = {
   pokemons: [],
   filtro: FiltroInteractor.formValoresIniciais(),
   funcoes: {
-    aplicarFiltros: () => FiltroAction.aplicarFiltros(),
-    redefinirFiltros: () => FiltroAction.redefinirFiltros()
-  }
+    aplicarFiltros: (pokemons, filtro) => FiltroAction.aplicarFiltros(pokemons, filtro),
+    redefinirFiltros: (filtro) => FiltroAction.redefinirFiltros(filtro)
+  },
+  atualizar: true
 };
 
 export const filtroReducer = (state = FiltroInitalState, action: { type: FiltroConst, payload: any }) => {
@@ -21,6 +22,18 @@ export const filtroReducer = (state = FiltroInitalState, action: { type: FiltroC
         ...state,
         pokemons: action.payload.pokemons,
         filtro: action.payload.filtro,
+        atualizar: !state.atualizar
+      }
+
+    }
+
+
+    case FiltroConst.FILTRO_REDEFINIR: {
+
+      return {
+        ...state,
+        filtro: action.payload.filtro,
+        atualizar: !state.atualizar
       }
 
     }
