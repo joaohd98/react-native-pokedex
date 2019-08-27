@@ -4,10 +4,10 @@ import MultiSlider from "@ptomasroos/react-native-multi-slider";
 import {FiltroHeader} from "../header/filtro-header";
 import {FiltroCSS} from "../filtro-css";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {FiltroProps} from "../../services/filtro-props";
 import {Helpers} from "../../../../../../helpers/helpers";
+import {FiltroModel} from "../../services/filtro-model";
 
-export class FiltroIntervalo extends Component<FiltroProps.States> {
+export class FiltroIntervalo extends Component<FiltroModel.FormModel> {
 
   private css = FiltroCSS.INTERVALO;
 

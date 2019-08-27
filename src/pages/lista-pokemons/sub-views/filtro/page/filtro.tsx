@@ -10,30 +10,23 @@ import {FiltroPesos} from "./pesos/filtro-pesos";
 import {FiltroIntervalo} from "./intervalo/filtro-intervalo";
 import {FiltroBotoes} from "./botoes/filtro-botoes";
 import {FiltroProps} from "../services/filtro-props";
-import {FiltroInteractor} from "../services/filtro-interactor";
+import {StatesReducers} from "../../../../../redux/reducer";
+import {FiltroInitalState} from "../redux/filtro-reducer";
 
-class FiltroPage extends Component<FiltroProps.Props, FiltroProps.States> {
+class FiltroPage extends Component<FiltroProps.Props> {
 
   private scrollView = React.createRef<ScrollView>();
 
-  state = FiltroInteractor.propsToForm(this.props);
-
-  componentWillReceiveProps(nextProps: Readonly<FiltroProps.Props>, nextContext: any) {
-
-    this.setState(FiltroInteractor.propsToForm(nextProps));
-
-  }
-
   sucesso() {
 
-    this.props.aplicarFiltros(this.props, this.state);
+    this.props.funcoes.aplicarFiltros();
     this.props.navigation.goBack();
 
   }
 
   redefinir() {
 
-    this.props.redefinirFiltros(this.props);
+    this.props.funcoes.redefinirFiltros();
 
     this.scrollView.current!.scrollTo({ y: 0, animated: false });
 
@@ -44,13 +37,13 @@ class FiltroPage extends Component<FiltroProps.Props, FiltroProps.States> {
     return (
       <View>
         <ScrollView ref={this.scrollView} style={FiltroCSS.VIEW.scrollView}>
-          <FiltroTipos {...this.state} />
-          <FiltroIntervalo {...this.state} />
-          <FiltroHabilidades {...this.state} />
-          <FiltroAlturas {...this.state} />
-          <FiltroPesos {...this.state} />
+          <FiltroTipos {...this.props.filtro} />
+          <FiltroIntervalo {...this.props.filtro} />
+          <FiltroHabilidades {...this.props.filtro} />
+          <FiltroAlturas {...this.props.filtro} />
+          <FiltroPesos {...this.props.filtro} />
         </ScrollView>
-        <FiltroBotoes {...this.state} sucesso={this.sucesso.bind(this)} redefinir={this.redefinir.bind(this)} />
+        <FiltroBotoes {...this.props.filtro} sucesso={this.sucesso.bind(this)} redefinir={this.redefinir.bind(this)}/>
       </View>
     )
 
@@ -58,14 +51,13 @@ class FiltroPage extends Component<FiltroProps.Props, FiltroProps.States> {
 
 }
 
-const mapStateToProps = (state) => {
-  return {}
+const mapStateToProps = (state: StatesReducers) => {
+  return state.filtroReducer
 };
 
-const mapDispatchToProps = dispatch => (
-  bindActionCreators({
-  }, dispatch)
-);
+const mapDispatchToProps = dispatch => ({
+  funcoes: bindActionCreators(FiltroInitalState.funcoes, dispatch)
+});
 
 
 export const Filtro = connect(mapStateToProps, mapDispatchToProps)(FiltroPage);

@@ -3,10 +3,10 @@ import {Image, TouchableWithoutFeedback, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
 import {FiltroHeader} from "../header/filtro-header";
 
-import {FiltroProps} from "../../services/filtro-props";
 import {images} from "../../../../../../assets";
+import {FiltroModel} from "../../services/filtro-model";
 
-export class FiltroAlturas extends Component<FiltroProps.States> {
+export class FiltroAlturas extends Component<FiltroModel.FormModel> {
 
   mudarStatus(propiedade: "pequeno" | "medio" | "grande") {
 

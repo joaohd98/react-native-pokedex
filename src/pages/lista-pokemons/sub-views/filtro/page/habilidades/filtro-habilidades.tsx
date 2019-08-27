@@ -4,9 +4,9 @@ import {FlatList, Image, Modal, Text, TouchableOpacity, TouchableWithoutFeedback
 import {FiltroCSS} from "../filtro-css";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {FiltroHeader} from "../header/filtro-header";
-import {FiltroProps} from "../../services/filtro-props";
 import {images} from "../../../../../../assets";
 import {Colors} from "../../../../../../helpers/colors/colors";
+import {FiltroModel} from "../../services/filtro-model";
 
 interface State {
   flatList: RefObject<FlatList<string>>
@@ -14,7 +14,7 @@ interface State {
   modalVisivel: boolean
 }
 
-export class FiltroHabilidades extends React.Component<FiltroProps.States, State> {
+export class FiltroHabilidades extends React.Component<FiltroModel.FormModel, State> {
 
   private css = FiltroCSS.HABILIDADES;
 
@@ -24,7 +24,7 @@ export class FiltroHabilidades extends React.Component<FiltroProps.States, State
     modalVisivel: false,
   };
 
-  componentWillReceiveProps(nextProps: Readonly<FiltroProps.States>, nextContext: any): void {
+  componentWillReceiveProps(nextProps: Readonly<FiltroModel.FormModel>, nextContext: any): void {
 
     this.setState({ selecionado: nextProps.habilidades.selecionada })
 

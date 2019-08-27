@@ -2,10 +2,10 @@ import React, {Component} from "react";
 import {FlatList, Text, TouchableWithoutFeedback, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
 import {FiltroHeader} from "../header/filtro-header";
-import {FiltroProps} from "../../services/filtro-props";
 import {ListaPokemonsInteractor} from "../../../../view/services/lista-pokemons-interactor";
+import {FiltroModel} from "../../services/filtro-model";
 
-export class FiltroTipos extends Component<FiltroProps.States> {
+export class FiltroTipos extends Component<FiltroModel.FormModel> {
 
   private pegarTipos = (tipo) => {
 

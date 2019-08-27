@@ -21,7 +21,7 @@ class PokedexPage extends Component<ListaPokemonsProps.Props> {
 
     this.props.navigation.setParams({
       mostrarFiltro: false,
-      irParaFiltro: () => this.props.funcoes.irParaFiltro(this.props.pesquisa),
+      irParaFiltro: () => this.props.funcoes.irParaFiltro(this.props.pokemons, this.props.pesquisa),
     });
 
   }

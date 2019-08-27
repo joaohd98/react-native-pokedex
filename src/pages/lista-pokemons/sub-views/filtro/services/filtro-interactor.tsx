@@ -1,12 +1,10 @@
-import {FiltroProps} from "./filtro-props";
 import {FiltroModel} from "./filtro-model";
 
 export class FiltroInteractor {
 
-  static filtroValoresIniciais(): FiltroProps.Props {
+  static filtroValoresIniciais(): FiltroModel.FiltroValoresModel {
 
     return {
-      pokemons: [],
       filtro: {
         nomes: [],
         habilidades: ["Todas"],
@@ -22,29 +20,29 @@ export class FiltroInteractor {
         pesos: {leve: false, medio: false, pesado: false},
         numeros: {minimo: -1, maximo: -1}
       },
-      aplicarFiltros: (filtro) => {
-      },
-      redefinirFiltros: () => {
-      }
     }
 
   }
 
-  static redifinirValoresFiltro(pesquisa: FiltroProps.Props): FiltroModel.Form {
+  static formValoresIniciais(): FiltroModel.FormModel {
 
     return {
-      nome: pesquisa.valores.nome,
-      habilidadeEscolhida: "Todas",
-      tiposEscolhidos: [],
-      fraquezasEscolhidas: [],
-      alturas: {pequeno: false, medio: false, grande: false},
-      pesos: {leve: false, medio: false, pesado: false},
-      numeros: {minimo: pesquisa.filtro.numeros.minimo, maximo: pesquisa.filtro.numeros.maximo}
+      tipos: [],
+      intervaloNumeros: {
+        limites: [],
+        valores: [],
+      },
+      habilidades: {
+        todas: [],
+        selecionada: ""
+      },
+      altura: {pequeno: false, medio: false, grande: false},
+      peso: {leve: false, medio: false, pesado: false},
     }
 
   }
 
-  static propsToForm(props: FiltroProps.Props): FiltroProps.States {
+  static propsToForm(props: FiltroModel.FiltroValoresModel) {
 
     /*
      * Tipos
@@ -111,7 +109,7 @@ export class FiltroInteractor {
 
   }
 
-  static formToProps(pesquisa: FiltroProps.Props, props: FiltroProps.States): FiltroModel.Form {
+  static formToProps(props: FiltroModel.FormModel) {
 
     let fraquezas: string[] = [];
     let tipos: string[] = [];
@@ -128,7 +126,7 @@ export class FiltroInteractor {
     }
 
     return {
-      nome: pesquisa.valores.nome,
+      nome: '',
       habilidadeEscolhida: props.habilidades.selecionada,
       tiposEscolhidos: tipos,
       fraquezasEscolhidas: fraquezas,

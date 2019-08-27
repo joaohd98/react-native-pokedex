@@ -2,9 +2,9 @@ import React, {Component} from "react";
 import {Text, TouchableOpacity, View} from "react-native";
 import {FiltroCSS} from "../filtro-css";
 import Icon from 'react-native-vector-icons/FontAwesome';
-import {FiltroProps} from "../../services/filtro-props";
+import {FiltroModel} from "../../services/filtro-model";
 
-interface Props extends FiltroProps.States {
+interface Props extends FiltroModel.FormModel {
   sucesso: () => void;
   redefinir: () => void;
 }

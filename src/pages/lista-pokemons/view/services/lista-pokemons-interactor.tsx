@@ -1,7 +1,7 @@
 import {Helpers} from "../../../../helpers/helpers";
-import {FiltroProps} from "../../sub-views/filtro/services/filtro-props";
 import {FiltroInteractor} from "../../sub-views/filtro/services/filtro-interactor";
 import {ListaPokemonsModel} from "./lista-pokemons-model";
+import {FiltroModel} from "../../sub-views/filtro/services/filtro-model";
 
 export class ListaPokemonsInteractor {
 
@@ -55,7 +55,7 @@ export class ListaPokemonsInteractor {
 
   }
 
-  static filtrarPokemons(pokemons: ListaPokemonsModel.ViewModel[], filtro: FiltroProps.Props) {
+  static filtrarPokemons(pokemons: ListaPokemonsModel.ViewModel[], filtro: FiltroModel.FiltroValoresModel) {
 
     for (let pokemon of pokemons) {
 
@@ -242,6 +242,5 @@ export class ListaPokemonsInteractor {
     filtro.habilidades = Helpers.removerDuplicados(filtro.habilidades);
 
   }
-
 
 }

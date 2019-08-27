@@ -1,8 +1,10 @@
 import {PokedexService} from "../../../../services/pokedex/PokedexService";
 import {ListaPokemonsInteractor} from "../services/lista-pokemons-interactor";
 import {ListaPokemonsModel} from "../services/lista-pokemons-model";
-import {FiltroProps} from "../../sub-views/filtro/services/filtro-props";
 import {Navigation} from "../../../../helpers/navigation";
+import {FiltroConst} from "../../sub-views/filtro/redux/filtro-action";
+import {FiltroInteractor} from "../../sub-views/filtro/services/filtro-interactor";
+import {FiltroModel} from "../../sub-views/filtro/services/filtro-model";
 
 export enum ListaPokemonsConst {
 
@@ -11,9 +13,6 @@ export enum ListaPokemonsConst {
   LISTA_POKEMON_ERRO_CARREGAR,
   LISTA_POKEMON_ADICIONAR_QUANTIDADE,
   LISTA_POKEMON_PESQUISAR,
-
-  LISTA_POKEMON_IR_PARA_DETALHES,
-  LISTA_POKEMON_IR_PARA_FILTRO,
 
 }
 
@@ -50,7 +49,7 @@ export class ListaPokemonsAction {
 
   };
 
-  static pesquisarPokemon = (pokemons: ListaPokemonsModel.ViewModel[], pesquisa: FiltroProps.Props) => {
+  static pesquisarPokemon = (pokemons: ListaPokemonsModel.ViewModel[], pesquisa: FiltroModel.FiltroValoresModel) => {
 
     return dispatch => {
 
@@ -79,9 +78,19 @@ export class ListaPokemonsAction {
   };
 
 
-  static irParaFiltro = (pesquisa: FiltroProps.Props) => {
+  static irParaFiltro = (pokemons: ListaPokemonsModel.ViewModel[], pesquisa: FiltroModel.FiltroValoresModel) => {
 
-    return (dispatch, navigation) => {
+    return dispatch => {
+
+      console.log(pesquisa);
+
+      dispatch({
+        type: FiltroConst.FILTRO_ENTRAR_PAGINA,
+        payload: {
+          pokemons: pokemons,
+          filtro: FiltroInteractor.propsToForm(pesquisa)
+        }
+      });
 
       Navigation.navigate('filtro');
 

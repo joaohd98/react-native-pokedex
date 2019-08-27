@@ -1,35 +1,30 @@
-import {FiltroConst} from "./filtro-action";
+import {FiltroAction, FiltroConst} from "./filtro-action";
+import {FiltroProps} from "../services/filtro-props";
+import {FiltroInteractor} from "../services/filtro-interactor";
 
-export const ListaPokemonsInitalState = {};
+export const FiltroInitalState: FiltroProps.Props = {
+  pokemons: [],
+  filtro: FiltroInteractor.formValoresIniciais(),
+  funcoes: {
+    aplicarFiltros: () => FiltroAction.aplicarFiltros(),
+    redefinirFiltros: () => FiltroAction.redefinirFiltros()
+  }
+};
 
-
-export const filtroReducer = (state = ListaPokemonsInitalState, action: { type: FiltroConst, payload: any }) => {
+export const filtroReducer = (state = FiltroInitalState, action: { type: FiltroConst, payload: any }) => {
 
   switch (action.type) {
 
-    // case ListaPokemonsConst.APLICAR_FILTROS: {
-    //
-    //   return {
-    //     ...state,
-    //     pokemons: action.payload.pokemons,
-    //     pesquisa: { ...state.pesquisa, valores: action.payload.filtro_valores },
-    //     limite: JSON.stringify(action.payload.filtro_valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
-    //     carregando: false,
-    //   }
-    //
-    // }
-    //
-    // case ListaPokemonsConst.REDEFINIR_FILTROS: {
-    //
-    //   return {
-    //     ...state,
-    //     pokemons: action.payload.pokemons,
-    //     pesquisa: { ...state.pesquisa, valores: action.payload.filtro_valores },
-    //     limite: JSON.stringify(action.payload.filtro_valores) == JSON.stringify(state.pesquisa.valores) ? state.limite : 10,
-    //     carregando: false,
-    //   }
-    //
-    // }
+    case FiltroConst.FILTRO_ENTRAR_PAGINA: {
+
+      return {
+        ...state,
+        pokemons: action.payload.pokemons,
+        filtro: action.payload.filtro,
+      }
+
+    }
+
 
     default:
       return state
