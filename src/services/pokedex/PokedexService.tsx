@@ -54,8 +54,6 @@ export class PokedexService {
         }
       };
 
-      console.log(request);
-
       sucesso(request);
 
     } catch (error) {

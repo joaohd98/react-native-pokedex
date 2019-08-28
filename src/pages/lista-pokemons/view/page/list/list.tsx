@@ -54,7 +54,7 @@ export class ListaPokemonsList extends Component<ListaPokemonsProps.Props> {
         style={ListaPokemonsCss.PokedexCard.view}
         keyExtractor={item => item.numero}
         renderItem={iterator => <ListaPokemonsCard pokemon={iterator.item}
-                                                   irParaDetalhes={() => this.props.funcoes.irParaDetalhes(iterator.item)}/>}
+                                                   irParaDetalhes={() => this.props.funcoes.irParaDetalhes(iterator.item, this.props.pokemons)}/>}
         onMomentumScrollBegin={() => { this.carrregarPokemons = true; }}
         onEndReached={() => this.carregarPokemons()}
         onEndReachedThreshold={0.01}

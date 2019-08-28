@@ -9,10 +9,11 @@ export namespace DetalhesProps {
 
     pokemonSelecionado?: ListaPokemonsModel.ViewModel;
     pokemonDetalhes?: DetalhesModel.ViewModel;
+    outrosPokemons: ListaPokemonsModel.ViewModel[];
     carregando: boolean;
     erro: boolean;
     funcoes: {
-      carregarDetalhes: (pokemon: ListaPokemonsModel.ViewModel) => {}
+      carregarDetalhes: (pokemon: ListaPokemonsModel.ViewModel, outrosPokemons: ListaPokemonsModel.ViewModel[]) => {}
     }
 
   }

@@ -2,11 +2,12 @@ import {DetalhesAction, DetalhesConst} from "./detalhes-action";
 import {DetalhesProps} from "../services/detalhes-props";
 
 export const DetalhesInitalState: DetalhesProps.Props = {
+  outrosPokemons: [],
   carregando: true,
   erro: false,
   atualizar: false,
   funcoes: {
-    carregarDetalhes: (pokemon) => DetalhesAction.carregarDetalhes(pokemon)
+    carregarDetalhes: (pokemon, outrosPokemons) => DetalhesAction.carregarDetalhes(pokemon, outrosPokemons)
   }
 };
 
@@ -19,6 +20,7 @@ export const detalhesReducer = (state = DetalhesInitalState, action: { type: Det
       return {
         ...state,
         pokemonSelecionado: action.payload.pokemonSelecionado,
+        outrosPokemons: action.payload.outrosPokemons,
         atualizar: !state.atualizar
       }
 

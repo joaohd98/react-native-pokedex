@@ -1,4 +1,6 @@
 import {ApiRetornos} from "../../../../../services";
+import {PokemonGender} from "./detalhes-interactor";
+import {ListaPokemonsModel} from "../../../view/services/lista-pokemons-model";
 
 export namespace DetalhesModel {
 
@@ -121,6 +123,7 @@ export namespace DetalhesModel {
 
   export interface ResponseAbilities {
 
+    "name": string;
     "effect_entries": {
       "effect": string,
       "language": {
@@ -135,6 +138,7 @@ export namespace DetalhesModel {
   export interface ResponseSpecie {
 
     id: number;
+    name: string;
     gender_rate: number;
     "evolves_from_species": {
       "name": string,
@@ -162,37 +166,30 @@ export namespace DetalhesModel {
     foto: string, //
     nome: string, //
     numero: string, //
-    numeroAdj: number, //
-    numeroAnt: number, //
+    numeroAdj: ListaPokemonsModel.ViewModel, //
+    numeroAnt: ListaPokemonsModel.ViewModel, //
     atributos: {
       hp: number, //
       attack: number, //
       defense: number, //
-      specialAttack: number, //
+      specialAttack: number, ///
       specialDefense: number, //
       speed: number //
     },
     descricao: string, //
     altura: number, //
     peso: number, //
-    genero: string, //
+    genero: PokemonGender, //
     categoria: string, //
-    habilidades: [{
+    habilidades: {
       nome: string, //
       descricao: string //
-    }],
+    }[],
     tipos: string[], //
     fraquezas: string[], //
-    evolucoes?: [{
-      foto: string, //
-      nome: string, //
-      numero: string, //
-      tipos: string[], //
-    }]
+    evolucoes: ListaPokemonsModel.ViewModel[]
 
   }
 
 }
-
-
 

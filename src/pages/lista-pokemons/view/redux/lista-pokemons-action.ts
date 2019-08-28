@@ -67,7 +67,7 @@ export class ListaPokemonsAction {
 
   };
 
-  static irParaDetalhes = (pokemon: ListaPokemonsModel.ViewModel) => {
+  static irParaDetalhes = (pokemon: ListaPokemonsModel.ViewModel, outrosPokemons: ListaPokemonsModel.ViewModel[]) => {
 
     return dispatch => {
 
@@ -75,6 +75,7 @@ export class ListaPokemonsAction {
         type: DetalhesConst.DETALHES_ENTRAR_PAGINA,
         payload: {
           pokemonSelecionado: pokemon,
+          outrosPokemons: outrosPokemons
         }
       });
 

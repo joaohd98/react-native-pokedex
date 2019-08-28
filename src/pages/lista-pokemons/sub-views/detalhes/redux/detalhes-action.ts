@@ -14,7 +14,7 @@ export enum DetalhesConst {
 
 export class DetalhesAction {
 
-  static carregarDetalhes = (pokemon: ListaPokemonsModel.ViewModel) => {
+  static carregarDetalhes = (pokemon: ListaPokemonsModel.ViewModel, outrosPokemons: ListaPokemonsModel.ViewModel[]) => {
 
     return dispatch => {
 
@@ -24,7 +24,7 @@ export class DetalhesAction {
 
         dispatch({
           type: DetalhesConst.DETALHES_CARREGADO,
-          payload: DetalhesInteractor.formatarDetalhesPokemon(request)
+          payload: DetalhesInteractor.formatarDetalhesPokemon(pokemon, outrosPokemons, request)
         })
 
       }, () => {

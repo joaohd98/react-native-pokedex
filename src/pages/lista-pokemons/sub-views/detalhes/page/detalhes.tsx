@@ -20,13 +20,13 @@ class DetalhesPage extends Component<DetalhesProps.Props> {
 
   componentDidMount() {
 
-    this.props.funcoes.carregarDetalhes(this.props.pokemonSelecionado!);
+    this.props.funcoes.carregarDetalhes(this.props.pokemonSelecionado!, this.props.outrosPokemons);
 
   }
 
   render() {
 
-    let html = this.props.pokemonSelecionado ? (
+    let html = !this.props.carregando ? (
 
       <ScrollView>
         <DetalhesHeader/>

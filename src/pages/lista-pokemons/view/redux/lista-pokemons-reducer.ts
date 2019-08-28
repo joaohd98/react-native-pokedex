@@ -16,7 +16,7 @@ export const ListaPokemonsInitalState: ListaPokemonsProps.Props = {
     carregarPokemons: () => ListaPokemonsAction.carregarPokemons(),
     adicionarQuantidade: () => ListaPokemonsAction.adicionarQuantidade(),
     pesquisarPokemon: (pokemons, pesquisa) => ListaPokemonsAction.pesquisarPokemon(pokemons, pesquisa),
-    irParaDetalhes: (pokemons) => ListaPokemonsAction.irParaDetalhes(pokemons),
+    irParaDetalhes: (pokemons, outrosPokemons) => ListaPokemonsAction.irParaDetalhes(pokemons, outrosPokemons),
     irParaFiltro: (pokemons, pesquisa) => ListaPokemonsAction.irParaFiltro(pokemons, pesquisa),
   },
   atualizar: false,
