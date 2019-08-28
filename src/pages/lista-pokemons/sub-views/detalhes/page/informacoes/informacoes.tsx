@@ -174,27 +174,25 @@ export class DetalhesInformacoes extends Component<DetalhesModel.ViewModel, Stat
     return (
       <View style={this.css.view} onLayout={event => this.setState({ alturaCard: event.nativeEvent.layout.height }) }>
         { this.mostrarDescricao() }
-        <View>
-          <View style={this.css.row}>
-            <View style={this.css.line}>
+        <View style={{flexDirection: "row"}}>
+          <View style={{flex: 0.5}}>
+            <View style={{...this.css.line}}>
               <Text style={this.css.word1}>Height</Text>
               <Text style={this.css.word2}>{this.props.altura} m</Text>
             </View>
-            <View style={this.css.line}>
-              <Text style={this.css.word1}>Abilities</Text>
-              {this.mostrarHabilidades()}
-            </View>
-          </View>
-          <View style={{...this.css.row, paddingTop: 15}}>
-            <View style={this.css.line}>
+            <View style={{...this.css.line, paddingTop: 15}}>
               <Text style={this.css.word1}>Weigth</Text>
               <Text style={this.css.word2}>{this.props.peso} kg</Text>
             </View>
-          </View>
-          <View style={{...this.css.row, paddingTop: 15}}>
-            <View style={this.css.line}>
+            <View style={{...this.css.line, paddingTop: 15}}>
               <Text style={this.css.word1}>Gender</Text>
               {this.mostrarGenero()}
+            </View>
+          </View>
+          <View style={{flex: 0.5}}>
+            <View style={this.css.line}>
+              <Text style={this.css.word1}>Abilities</Text>
+              {this.mostrarHabilidades()}
             </View>
           </View>
         </View>

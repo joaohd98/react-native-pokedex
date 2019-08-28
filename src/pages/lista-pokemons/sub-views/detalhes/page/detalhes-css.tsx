@@ -151,13 +151,12 @@ export class DetalhesCSS {
     view: {
       backgroundColor: "#30a7d7",
       padding: 15,
-      borderRadius: 10
+      borderRadius: 10,
     },
     row: {
       flexDirection: "row"
     },
     line: {
-      flex: 0.5,
       alignItems: "flex-start"
     },
     word1: {
@@ -215,19 +214,20 @@ export class DetalhesCSS {
     },
     abilitiesNameTextContent: {
       marginLeft: 10,
-      padding: 10
+      paddingHorizontal: 10,
+      paddingVertical: 5,
     },
     abilitiesName: {
       color: "#FFF",
       fontWeight: "600",
-      fontSize: 21,
+      fontSize: 17,
       letterSpacing: 1,
       textTransform: "capitalize"
     },
     abilitiesText: {
       color: "#FFF",
       fontWeight: "400",
-      fontSize: 16,
+      fontSize: 15,
       letterSpacing: 1
     }
 
