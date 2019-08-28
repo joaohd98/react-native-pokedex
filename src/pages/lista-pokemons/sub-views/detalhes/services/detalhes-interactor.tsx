@@ -16,7 +16,7 @@ export class DetalhesInteractor {
   static formatarDetalhesPokemon(pokemon: ListaPokemonsModel.ViewModel, outrosPokemons: ListaPokemonsModel.ViewModel[], detalhes: DetalhesModel.Response): DetalhesModel.ViewModel {
 
 
-    const pegarAtributos = (numero: number) => numero / 25;
+    const pegarAtributos = (numero: number) => numero / 20;
 
     const pegarGenero = (valor: number) => {
 
@@ -88,7 +88,7 @@ export class DetalhesInteractor {
 
       if (tipo == "ant") {
 
-        let numAnt = parseInt(pokemon.numero) - 1;
+        let numAnt = parseInt(pokemon.numero) - 2;
 
         if (numAnt < 1)
           return tamanhoMaximo - 1;
@@ -97,7 +97,7 @@ export class DetalhesInteractor {
 
       } else {
 
-        let numAdj = parseInt(pokemon.numero) + 1;
+        let numAdj = parseInt(pokemon.numero);
 
         if (numAdj >= tamanhoMaximo)
           return 0;
@@ -130,7 +130,6 @@ export class DetalhesInteractor {
       altura: pokemon.altura, //
       peso: pokemon.peso, //
       genero: pegarGenero(detalhesEspecie.gender_rate), //
-      categoria: '', //
       habilidades: pegarHabilidades(),
       tipos: pokemon.tipos, //
       fraquezas: pokemon.fraquezas, //

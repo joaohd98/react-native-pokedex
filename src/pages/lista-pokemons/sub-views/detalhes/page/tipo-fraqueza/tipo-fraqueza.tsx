@@ -2,8 +2,9 @@ import React, {Component} from 'react'
 import {ScrollView, Text, View} from "react-native";
 import {DetalhesCSS} from "../detalhes-css";
 import {ListaPokemonsInteractor} from "../../../../view/services/lista-pokemons-interactor";
+import {DetalhesModel} from "../../services/detalhes-model";
 
-export class DetalhesTipoFraqueza extends Component {
+export class DetalhesTipoFraqueza extends Component<DetalhesModel.ViewModel> {
 
   private css = DetalhesCSS.tipoFraqueza;
 

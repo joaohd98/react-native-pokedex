@@ -40,6 +40,8 @@ export const detalhesReducer = (state = DetalhesInitalState, action: { type: Det
 
     case DetalhesConst.DETALHES_CARREGADO: {
 
+      console.log('detalhes', action.payload.pokemonDetalhes);
+
       return {
         ...state,
         pokemonDetalhes: action.payload.pokemonDetalhes,

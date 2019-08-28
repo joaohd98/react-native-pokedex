@@ -180,7 +180,6 @@ export namespace DetalhesModel {
     altura: number, //
     peso: number, //
     genero: PokemonGender, //
-    categoria: string, //
     habilidades: {
       nome: string, //
       descricao: string //

@@ -29,24 +29,24 @@ class DetalhesPage extends Component<DetalhesProps.Props> {
     let html = !this.props.carregando ? (
 
       <ScrollView>
-        <DetalhesHeader/>
+        <DetalhesHeader {...this.props.pokemonDetalhes!}/>
         <View style={this.css.view}>
-          <DetalhesNomeImagem />
+          <DetalhesNomeImagem {...this.props.pokemonDetalhes!} />
         </View>
         <View style={this.css.view}>
-          <DetalhesEstatisticas />
+          <DetalhesEstatisticas {...this.props.pokemonDetalhes!} />
         </View>
         <View style={this.css.view}>
-          <DetalhesDescricao />
+          <DetalhesDescricao {...this.props.pokemonDetalhes!}  />
         </View>
         <View style={this.css.view}>
-          <DetalhesInformacoes />
+          <DetalhesInformacoes {...this.props.pokemonDetalhes!}  />
         </View>
         <View style={this.css.view}>
-          <DetalhesTipoFraqueza />
+          <DetalhesTipoFraqueza {...this.props.pokemonDetalhes!}  />
         </View>
         <View style={this.css.view}>
-          <DetalhesEvolucoes />
+          <DetalhesEvolucoes {...this.props.pokemonDetalhes!} />
         </View>
       </ScrollView>
 

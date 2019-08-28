@@ -167,6 +167,7 @@ export class DetalhesCSS {
       fontWeight: "400"
     },
     word2: {
+      textTransform: "capitalize",
       color: "#212121",
       fontSize: 15,
       paddingTop: 2,
@@ -220,7 +221,8 @@ export class DetalhesCSS {
       color: "#FFF",
       fontWeight: "600",
       fontSize: 21,
-      letterSpacing: 1
+      letterSpacing: 1,
+      textTransform: "capitalize"
     },
     abilitiesText: {
       color: "#FFF",

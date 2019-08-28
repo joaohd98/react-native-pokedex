@@ -1,8 +1,9 @@
 import React, {Component} from 'react';
 import {Text, View} from "react-native";
 import {DetalhesCSS} from "../detalhes-css";
+import {DetalhesModel} from "../../services/detalhes-model";
 
-export class DetalhesDescricao extends Component {
+export class DetalhesDescricao extends Component<DetalhesModel.ViewModel> {
 
   private css = DetalhesCSS.descricao;
 
@@ -11,10 +12,7 @@ export class DetalhesDescricao extends Component {
     return (
       <View style={this.css.view}>
         <Text style={this.css.text}>
-          There is a bud on this Pokémon's back. To support its weight,
-          Ivysaur's legs and trunk grow thick and strong.
-          If it starts spending more time lying in the sunlight,
-          it's a sign that the bud will bloom into a large flower soon.
+          {this.props.descricao}
         </Text>
       </View>
     )

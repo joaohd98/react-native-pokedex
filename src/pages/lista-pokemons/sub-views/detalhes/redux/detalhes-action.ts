@@ -24,7 +24,9 @@ export class DetalhesAction {
 
         dispatch({
           type: DetalhesConst.DETALHES_CARREGADO,
-          payload: DetalhesInteractor.formatarDetalhesPokemon(pokemon, outrosPokemons, request)
+          payload: {
+            pokemonDetalhes: DetalhesInteractor.formatarDetalhesPokemon(pokemon, outrosPokemons, request)
+          }
         })
 
       }, () => {

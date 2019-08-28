@@ -2,8 +2,9 @@ import React, {Component} from "react";
 import {Text, TouchableOpacity, View} from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {DetalhesCSS} from "../detalhes-css";
+import {DetalhesModel} from "../../services/detalhes-model";
 
-export class DetalhesHeader extends Component {
+export class DetalhesHeader extends Component<DetalhesModel.ViewModel> {
 
   private css = DetalhesCSS.header;
 
@@ -21,7 +22,7 @@ export class DetalhesHeader extends Component {
                 </Text>
               </View>
               <View style={{flex: 0.7}}>
-                <Text style={[this.css.text, this.css.textLeft]}>Nº 001</Text>
+                <Text style={[this.css.text, this.css.textLeft]}>Nº {this.props.numeroAnt.numero}</Text>
               </View>
             </View>
           </View>
@@ -30,7 +31,7 @@ export class DetalhesHeader extends Component {
           <View style={this.css.subView}>
             <View style={[this.css.content, this.css.contentRight]}>
               <View style={{flex: 0.7}}>
-                <Text style={[this.css.text, this.css.textRight]}>Nº 002</Text>
+                <Text style={[this.css.text, this.css.textRight]}>Nº {this.props.numeroAdj.numero}</Text>
               </View>
               <View style={{flex: 0.3}}>
                 <Text style={this.css.textRight}>

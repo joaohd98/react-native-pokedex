@@ -3,8 +3,9 @@ import {FlatList, Image, ImageBackground, ImageSourcePropType, Text, View} from 
 import {DetalhesCSS} from "../detalhes-css";
 import {ListaPokemonsInteractor} from "../../../../view/services/lista-pokemons-interactor";
 import {images} from "../../../../../../assets";
+import {DetalhesModel} from "../../services/detalhes-model";
 
-export class DetalhesEvolucoes extends Component {
+export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
 
   private css = DetalhesCSS.evolucoes;
 
