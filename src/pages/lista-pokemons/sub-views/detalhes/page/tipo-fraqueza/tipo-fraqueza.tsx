@@ -3,6 +3,7 @@ import {ScrollView, Text, View} from "react-native";
 import {DetalhesCSS} from "../detalhes-css";
 import {ListaPokemonsInteractor} from "../../../../view/services/lista-pokemons-interactor";
 import {DetalhesModel} from "../../services/detalhes-model";
+import {Helpers} from "../../../../../../helpers/helpers";
 
 export class DetalhesTipoFraqueza extends Component<DetalhesModel.ViewModel> {
 
@@ -10,7 +11,7 @@ export class DetalhesTipoFraqueza extends Component<DetalhesModel.ViewModel> {
 
   renderTypes() {
 
-    let tipos = ["grass", "poison"];
+    let tipos = this.props.tipos;
 
     let elementos: JSX.Element[] = [];
 
@@ -20,7 +21,7 @@ export class DetalhesTipoFraqueza extends Component<DetalhesModel.ViewModel> {
 
       let tipo = tipos[i];
 
-      let {backgroundColor, borderBottomColor, color} = ListaPokemonsInteractor.pegarCorFundoHabilidade(tipo);
+      let {backgroundColor, borderBottomColor, color} = ListaPokemonsInteractor.pegarCorFundoHabilidade(Helpers.removerAcentosMinusculo(tipo));
 
       elementos.push(
         <View style={{...this.css.typesWeaknessContent, backgroundColor, borderBottomColor}} key={i}>
@@ -35,7 +36,7 @@ export class DetalhesTipoFraqueza extends Component<DetalhesModel.ViewModel> {
 
   renderWeakness() {
 
-    let fraquezas = ["fire", "flying", "ice", "psychic"];
+    let fraquezas = this.props.fraquezas;
 
     let elementos: JSX.Element[] = [];
 
@@ -45,7 +46,7 @@ export class DetalhesTipoFraqueza extends Component<DetalhesModel.ViewModel> {
 
       let fraqueza = fraquezas[i];
 
-      let {backgroundColor, borderBottomColor, color} = ListaPokemonsInteractor.pegarCorFundoHabilidade(fraqueza);
+      let {backgroundColor, borderBottomColor, color} = ListaPokemonsInteractor.pegarCorFundoHabilidade(Helpers.removerAcentosMinusculo(fraqueza));
 
       elementos.push(
         <View style={{...this.css.typesWeaknessContent, backgroundColor, borderBottomColor}} key={i}>

@@ -4,14 +4,16 @@ import {DetalhesCSS} from "../detalhes-css";
 import {ListaPokemonsInteractor} from "../../../../view/services/lista-pokemons-interactor";
 import {images} from "../../../../../../assets";
 import {DetalhesModel} from "../../services/detalhes-model";
+import {ListaPokemonsModel} from "../../../../view/services/lista-pokemons-model";
+import {Helpers} from "../../../../../../helpers/helpers";
 
 export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
 
   private css = DetalhesCSS.evolucoes;
 
-  renderTypes() {
+  renderTypes(evolucao: ListaPokemonsModel.ViewModel) {
 
-    let tipos = ["grass", "poison"];
+    let tipos = evolucao.tipos;
 
     let elementos: JSX.Element[] = [];
 
@@ -21,7 +23,7 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
 
       let tipo = tipos[i];
 
-      let {backgroundColor, borderBottomColor, color} = ListaPokemonsInteractor.pegarCorFundoHabilidade(tipo);
+      let {backgroundColor, borderBottomColor, color} = ListaPokemonsInteractor.pegarCorFundoHabilidade(Helpers.removerAcentosMinusculo(tipo));
 
       elementos.push(
         <View style={{...this.css.typesContent, backgroundColor, borderBottomColor}} key={i}>
@@ -35,10 +37,10 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
 
   }
 
-  renderCard() {
+  renderCard(evolucao: ListaPokemonsModel.ViewModel) {
 
     let imagem: ImageSourcePropType = {
-      uri: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png",
+      uri: evolucao.foto,
       width: 150,
       height: 150,
     };
@@ -51,11 +53,11 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
           <Image source={imagem}/>
         </View>
         <View style={this.css.nameNumberLine}>
-          <Text style={this.css.nameText}>Bulbassaur</Text>
-          <Text style={this.css.numberText}>Nº 001</Text>
+          <Text style={this.css.nameText}>{evolucao.nome}</Text>
+          <Text style={this.css.numberText}>Nº {evolucao.numero}</Text>
         </View>
         <View style={this.css.typeLine}>
-          { this.renderTypes() }
+          {this.renderTypes(evolucao)}
         </View>
       </View>
 
@@ -63,13 +65,36 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
 
   }
 
+  renderTitle() {
+
+    if (this.props.evolucoes.length > 1) {
+
+      return (
+        <View>
+          <Text style={this.css.title}>Evoluções</Text>
+        </View>
+      )
+
+    } else {
+
+      return (
+        <View>
+          <Text style={{...this.css.title, paddingBottom: 10}}>Evoluções</Text>
+          <Text style={this.css.subTitle}>Este Pokémon não evolui.</Text>
+        </View>
+      )
+    }
+
+  }
+
   render() {
 
     return (
       <ImageBackground source={images.body} style={this.css.view} borderRadius={20}>
-        <Text style={this.css.title}>Evoluções</Text>
+        {this.renderTitle()}
         <FlatList horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false} style={this.css.cardSize}
-                  data={['1', '2', '3']}  keyExtractor={(teste) => teste} renderItem={() => this.renderCard()} />
+                  data={this.props.evolucoes} keyExtractor={(evolucao) => evolucao.numero}
+                  renderItem={({item}) => this.renderCard(item)}/>
       </ImageBackground>
     )
 

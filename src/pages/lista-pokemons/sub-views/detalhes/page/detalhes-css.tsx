@@ -281,7 +281,17 @@ export class DetalhesCSS {
       lineHeight: 20,
       letterSpacing: 2,
       paddingHorizontal: 20,
-      paddingVertical: 20
+      paddingVertical: 15
+    },
+    subTitle: {
+      fontSize: 15,
+      fontWeight: "400",
+      color: "#FFF",
+      lineHeight: 15,
+      letterSpacing: 2,
+      paddingBottom: 20,
+      paddingHorizontal: 20,
+
     },
     cardView: {
       justifyContent: "center",
