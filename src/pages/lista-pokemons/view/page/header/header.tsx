@@ -5,14 +5,10 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class ListaPokemonsHeader extends React.Component {
 
-  static Header = ({screenProps, navigation}) => {
+  static Header = ({navigation}) => {
 
     return ({
       headerTitle: 'Pokédex',
-      headerTitleContainerStyle: {
-        justifyContent: "flex-start",
-        left: 5
-      },
       headerRight: (
         navigation.getParam('mostrarFiltro') ?
           <TouchableOpacity onPress={() => navigation.getParam('irParaFiltro')()}>

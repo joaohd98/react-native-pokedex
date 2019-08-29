@@ -21,10 +21,11 @@ export class Layout extends Component {
         elevation: 0,
         shadowOpacity: 0,
         borderBottomColor: Colors.gray,
-        borderBottomWidth: 0.19
+        borderBottomWidth: 0.19,
       },
       headerTitleStyle: {
         fontFamily: 'Pokemon Solid',
+        textAlign: "center",
         fontWeight: "400",
         fontSize: 25,
         lineHeight: 50,
@@ -34,6 +35,7 @@ export class Layout extends Component {
         textShadowRadius: 1,
         letterSpacing: 2.5,
         textTransform: "capitalize",
+        alignSelf: "center"
       },
       headerRightContainerStyle: {
         right: 20

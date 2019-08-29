@@ -23,6 +23,7 @@ interface States {
 
 class DetalhesPage extends Component<DetalhesProps.Props, States> {
 
+
   css = DetalhesCSS.detalhes;
 
   state = {
