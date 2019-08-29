@@ -6,6 +6,7 @@ import {images} from "../../../../../../assets";
 import {DetalhesModel} from "../../services/detalhes-model";
 import {ListaPokemonsModel} from "../../../../view/services/lista-pokemons-model";
 import {Helpers} from "../../../../../../helpers/helpers";
+import Icon from 'react-native-vector-icons/FontAwesome';
 
 export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
 
@@ -41,26 +42,35 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
 
     let imagem: ImageSourcePropType = {
       uri: evolucao.foto,
-      width: 150,
-      height: 150,
+      width: 100,
+      height: 100,
     };
 
+    let indexPokemon = this.props.evolucoes.findIndex(evolucaoTodas => Helpers.compararStrings(evolucaoTodas.numero, evolucao.numero));
+    let tamanho = this.props.evolucoes.length;
+    let padding = Helpers.pegarPorcentagem(10, "width");
 
     return (
-
       <View style={[this.css.cardView, this.css.cardSize]}>
-        <View style={this.css.cardIMG}>
-          <Image source={imagem}/>
+        <View style={{...this.css.cardIconAngle, paddingRight: padding}}>
+          {indexPokemon > 0 ? <Icon name={"angle-left"} color={"#FFF"} size={50}/> : <View/>}
         </View>
-        <View style={this.css.nameNumberLine}>
-          <Text style={this.css.nameText}>{evolucao.nome}</Text>
-          <Text style={this.css.numberText}>Nº {evolucao.numero}</Text>
+        <View style={{flex: 0.7, justifyContent: "center", alignItems: "center"}}>
+          <View style={this.css.cardIMG}>
+            <Image source={imagem}/>
+          </View>
+          <View style={this.css.nameNumberLine}>
+            <Text style={this.css.nameText}>{evolucao.nome}</Text>
+            <Text style={this.css.numberText}>Nº {evolucao.numero}</Text>
+          </View>
+          <View style={this.css.typeLine}>
+            {this.renderTypes(evolucao)}
+          </View>
         </View>
-        <View style={this.css.typeLine}>
-          {this.renderTypes(evolucao)}
+        <View style={{...this.css.cardIconAngle, paddingLeft: padding}}>
+          {indexPokemon < (tamanho - 1) ? <Icon name={"angle-right"} color={"#FFF"} size={50}/> : <View/>}
         </View>
       </View>
-
     )
 
   }
@@ -83,17 +93,22 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
           <Text style={this.css.subTitle}>Este Pokémon não evolui.</Text>
         </View>
       )
+
     }
 
   }
 
   render() {
 
+    let indexPokemon = this.props.evolucoes.findIndex(evolucao => Helpers.compararStrings(evolucao.numero, this.props.numero));
+
     return (
       <ImageBackground source={images.body} style={this.css.view} borderRadius={20}>
         {this.renderTitle()}
-        <FlatList horizontal={true} pagingEnabled={true} showsHorizontalScrollIndicator={false} style={this.css.cardSize}
-                  data={this.props.evolucoes} keyExtractor={(evolucao) => evolucao.numero}
+        <FlatList horizontal={true} pagingEnabled={true} initialScrollIndex={indexPokemon} initialNumToRender={3}
+                  showsHorizontalScrollIndicator={false} style={this.css.cardSize}
+                  getItemLayout={(data, index) => ({length: 300, offset: 300 * index, index})}
+                  data={this.props.evolucoes} keyExtractor={evolucao => evolucao.numero}
                   renderItem={({item}) => this.renderCard(item)}/>
       </ImageBackground>
     )

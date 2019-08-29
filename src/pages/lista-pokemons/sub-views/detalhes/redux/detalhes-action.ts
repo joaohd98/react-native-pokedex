@@ -22,6 +22,8 @@ export class DetalhesAction {
 
       PokedexService.pegarDetalhesPokemons({nome: pokemon.nome}, request => {
 
+        console.log(request);
+
         dispatch({
           type: DetalhesConst.DETALHES_CARREGADO,
           payload: {

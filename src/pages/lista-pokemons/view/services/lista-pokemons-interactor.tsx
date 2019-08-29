@@ -5,6 +5,10 @@ import {FiltroModel} from "../../sub-views/filtro/services/filtro-model";
 
 export class ListaPokemonsInteractor {
 
+  static pokemonsExcluidos = [
+    'Meltan',
+    'Melmetal'
+  ];
   static pegarPokemons(fetch: ListaPokemonsModel.Response) {
 
     if (!fetch.retorno)
@@ -19,6 +23,9 @@ export class ListaPokemonsInteractor {
     for (let i = 0; i < tamanho; i++) {
 
       let pokemon = fetch.retorno[i];
+
+      if (ListaPokemonsInteractor.pokemonsExcluidos.find(pokemonExcluido => Helpers.compararStrings(pokemonExcluido, pokemon.name)) != undefined)
+        continue;
 
       if (i < tamanho - 1) {
 

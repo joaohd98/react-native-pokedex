@@ -293,16 +293,23 @@ export class DetalhesCSS {
       paddingHorizontal: 20,
 
     },
+    cardIconAngle: {
+      flex: 0.25,
+      justifyContent: "center",
+      alignItems: "center",
+      paddingBottom: Helpers.pegarPorcentagem(10, "height")
+    },
     cardView: {
       justifyContent: "center",
       alignItems: "center",
+      flexDirection: "row",
       padding: 10,
       width: 300
     },
     cardIMG: {
       backgroundColor: "#616161",
-      width: 200,
-      height: 200,
+      width: 150,
+      height: 150,
       borderWidth: 5,
       borderRadius: 200,
       borderColor: "#FFF",

@@ -99,7 +99,7 @@ export class DetalhesInteractor {
 
         let numAdj = parseInt(pokemon.numero);
 
-        if (numAdj >= tamanhoMaximo)
+        if (numAdj >= tamanhoMaximo - 1)
           return 0;
 
         return numAdj;
