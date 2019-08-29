@@ -13,6 +13,7 @@ import {ListaPokemonsHeader} from "./header/header";
 
 class PokedexPage extends Component<ListaPokemonsProps.Props> {
 
+
   static navigationOptions = ListaPokemonsHeader.Header;
 
   componentDidMount() {

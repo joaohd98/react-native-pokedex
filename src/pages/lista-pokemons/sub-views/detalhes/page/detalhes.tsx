@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {ScrollView, View} from "react-native";
+import {Animated, Easing, Image, ScrollView, Text, View} from "react-native";
 import {bindActionCreators} from "redux";
 import {connect} from 'react-redux';
 import {DetalhesHeader} from "./header/header";
@@ -13,21 +13,89 @@ import {DetalhesCSS} from "./detalhes-css";
 import {DetalhesProps} from "../services/detalhes-props";
 import {StatesReducers} from "../../../../../redux/reducer";
 import {DetalhesInitalState} from "../redux/detalhes-reducer";
+import {gifs} from "../../../../../assets";
+import {Helpers} from "../../../../../helpers/helpers";
 
-class DetalhesPage extends Component<DetalhesProps.Props> {
+interface States {
+  pikachuPositionValueHolder: Animated.Value;
+  textoCarregando: string
+}
+
+class DetalhesPage extends Component<DetalhesProps.Props, States> {
 
   css = DetalhesCSS.detalhes;
+
+  state = {
+    pikachuPositionValueHolder: new Animated.Value(0),
+    textoCarregando: "Carregando",
+  };
+
 
   componentDidMount() {
 
     this.props.funcoes.carregarDetalhes(this.props.pokemonSelecionado!, this.props.outrosPokemons);
+    this.startMoveImageFunction();
+    this.startChangeTextLoading();
 
   }
 
-  render() {
+  renderCarregando() {
 
-    let html = !this.props.carregando ? (
+    let css = DetalhesCSS.carregamento;
 
+    return (
+      <View style={css.view}>
+        <Animated.View style={{left: this.state.pikachuPositionValueHolder}}>
+          <Image source={gifs.pikachuRunning} width={200} height={200}/>
+        </Animated.View>
+        <View style={css.viewText}>
+          <View style={css.marginView}/>
+          <Text style={css.text}> {this.state.textoCarregando} </Text>
+          <View style={css.marginView}/>
+        </View>
+      </View>
+    )
+
+  }
+
+  startMoveImageFunction() {
+
+    let posicao = Helpers.pegarPorcentagem(50, "width") + 130;
+
+    this.state.pikachuPositionValueHolder.setValue(posicao * -1);
+
+    Animated.timing(this.state.pikachuPositionValueHolder, {
+      toValue: posicao,
+      duration: 1600,
+      easing: Easing.linear,
+    }).start(() => {
+      if (this.props.carregando)
+        this.startMoveImageFunction();
+    });
+
+  };
+
+  startChangeTextLoading() {
+
+    setTimeout(() => {
+
+      if (this.state.textoCarregando.length < 13)
+        this.setState({textoCarregando: this.state.textoCarregando + "."});
+
+      else
+        this.setState({textoCarregando: "Carregando"});
+
+      if (this.props.carregando)
+        this.startChangeTextLoading();
+
+    }, 400);
+
+  }
+
+
+  renderPokemon() {
+
+    return (
       <ScrollView>
         <DetalhesHeader {...this.props.pokemonDetalhes!}/>
         <View style={this.css.view}>
@@ -50,13 +118,13 @@ class DetalhesPage extends Component<DetalhesProps.Props> {
         </View>
       </ScrollView>
 
-    ) : (
+    )
 
-      <View/>
+  }
 
-    );
+  render() {
 
-    return html;
+    return this.props.carregando ? this.renderCarregando() : this.renderPokemon();
 
   }
 

@@ -1,5 +1,6 @@
 import {StyleSheet} from "react-native";
 import {Helpers} from "../../../../../helpers/helpers";
+import React from "react";
 
 const menores = Helpers.pegarPorcentagem(10, "width");
 const maiores = Helpers.pegarPorcentagem(50, "width");
@@ -10,6 +11,36 @@ export class DetalhesCSS {
     view: {
       marginHorizontal: Helpers.pegarPorcentagem(10, "width"),
       marginVertical: 10,
+    }
+  });
+
+  static carregamento = StyleSheet.create({
+    view: {
+      flex: 1,
+      justifyContent: 'center',
+      alignItems: 'center',
+      overflow: "hidden"
+    },
+    viewText: {
+      flexDirection: "row",
+      width: Helpers.pegarPorcentagem(100, "width"),
+    },
+    marginView: {
+      flex: 0.2,
+    },
+    text: {
+      flex: 0.6,
+      // OK
+      fontSize: Helpers.pegarPorcentagem(8, "width"),
+      fontFamily: 'Pokemon Solid',
+      paddingVertical: 20,
+      lineHeight: 100,
+      fontWeight: "400",
+      letterSpacing: 2,
+      color: "#ffcb05",
+      textShadowColor: "#2a75bb",
+      textShadowOffset: {width: 3, height: 2},
+      textShadowRadius: 1
     }
   });
 
