@@ -94,7 +94,7 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
 
   startMoveImageFunction() {
 
-    let posicao = Helpers.pegarPorcentagem(50, "width") + 130;
+    let posicao = Helpers.pegarPorcentagem(50, "width") + 100;
 
     this.state.pikachuPositionValueHolder.setValue(posicao * -1);
 

@@ -2,6 +2,7 @@ package com.pokedex;
 
 import android.app.Application;
 
+import com.facebook.drawee.backends.pipeline.Fresco;
 import com.facebook.react.PackageList;
 import com.facebook.react.ReactApplication;
 import com.BV.LinearGradient.LinearGradientPackage;
@@ -43,7 +44,10 @@ public class MainApplication extends Application implements ReactApplication {
 
   @Override
   public void onCreate() {
+
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
+    Fresco.initialize(this);
+
   }
 }
