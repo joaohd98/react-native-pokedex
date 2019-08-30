@@ -15,6 +15,7 @@ import {StatesReducers} from "../../../../../redux/reducer";
 import {DetalhesInitalState} from "../redux/detalhes-reducer";
 import {gifs} from "../../../../../assets";
 import {Helpers} from "../../../../../helpers/helpers";
+import {DetalhesNavBar} from "./nav-bar/nav-bar";
 
 interface States {
   pikachuPositionValueHolder: Animated.Value;
@@ -23,6 +24,7 @@ interface States {
 
 class DetalhesPage extends Component<DetalhesProps.Props, States> {
 
+  static navigationOptions = DetalhesNavBar.Header;
 
   css = DetalhesCSS.detalhes;
 
@@ -31,10 +33,14 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
     textoCarregando: "Carregando",
   };
 
-
   componentDidMount() {
 
+    this.props.navigation.setParams({
+      nomePokemon: this.props.pokemonSelecionado!.nome,
+    });
+
     this.props.funcoes.carregarDetalhes(this.props.pokemonSelecionado!, this.props.outrosPokemons);
+
     this.startMoveImageFunction();
     this.startChangeTextLoading();
 
@@ -118,7 +124,6 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
           <DetalhesEvolucoes {...this.props.pokemonDetalhes!} />
         </View>
       </ScrollView>
-
     )
 
   }

@@ -12,6 +12,7 @@ import {FiltroBotoes} from "./botoes/filtro-botoes";
 import {FiltroProps} from "../services/filtro-props";
 import {StatesReducers} from "../../../../../redux/reducer";
 import {FiltroInitalState} from "../redux/filtro-reducer";
+import {FiltroNavBar} from "./nav-bar/nav-bar";
 
 interface States {
   css: object
@@ -19,6 +20,8 @@ interface States {
 }
 
 class FiltroPage extends Component<FiltroProps.Props, States> {
+
+  static navigationOptions = FiltroNavBar.Header;
 
   state = {
     css: FiltroCSS.VIEW,

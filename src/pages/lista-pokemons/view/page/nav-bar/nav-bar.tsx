@@ -3,7 +3,7 @@ import {TouchableOpacity, View} from "react-native";
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 
-export class ListaPokemonsHeader extends React.Component {
+export class ListaPokemonsNavBar extends React.Component {
 
   static Header = ({navigation}) => {
 

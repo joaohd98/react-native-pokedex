@@ -8,13 +8,11 @@ import {ListaPokemonsProps} from "../services/lista-pokemons-props";
 import {ListaPokemonsCss} from "./lista-pokemons-css";
 import {ListaPokemonsInitalState} from "../redux/lista-pokemons-reducer";
 import {StatesReducers} from "../../../../redux/reducer";
-import {ListaPokemonsHeader} from "./header/header";
-
+import {ListaPokemonsNavBar} from "./nav-bar/nav-bar";
 
 class PokedexPage extends Component<ListaPokemonsProps.Props> {
 
-
-  static navigationOptions = ListaPokemonsHeader.Header;
+  static navigationOptions = ListaPokemonsNavBar.Header;
 
   componentDidMount() {
 
