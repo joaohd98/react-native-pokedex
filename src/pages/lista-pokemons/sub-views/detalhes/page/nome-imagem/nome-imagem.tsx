@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {Image, ImageSourcePropType, Text, View} from "react-native";
 import {DetalhesCSS} from "../detalhes-css";
-import {Helpers} from "../../../../../../helpers/helpers";
 import {DetalhesProps} from "../../services/detalhes-props";
 
 export class DetalhesNomeImagem extends Component<DetalhesProps.Props> {
@@ -14,8 +13,8 @@ export class DetalhesNomeImagem extends Component<DetalhesProps.Props> {
 
     let imagem: ImageSourcePropType = {
       uri: detalhes.foto,
-      width: Helpers.pegarPorcentagem(75, "width"),
-      height: Helpers.pegarPorcentagem(35, "height"),
+      width: 250,
+      height: 250,
     };
 
     return (

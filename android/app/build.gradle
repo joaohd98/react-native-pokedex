@@ -164,13 +164,15 @@ android {
 }
 
 dependencies {
+
     implementation project(':react-native-linear-gradient')
     implementation project(':react-native-vector-icons')
     implementation project(':react-native-gesture-handler')
-    implementation 'com.facebook.fresco:fresco:2.0.0'
-    implementation 'com.facebook.fresco:animated-gif:1.10.0'
+
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation "com.facebook.react:react-native:0.20.1"  // From node_modules
+
+    implementation 'com.facebook.fresco:animated-gif:1.0.1'
 
     // JSC from node_modules
     if (useIntlJsc) {

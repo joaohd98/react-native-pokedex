@@ -80,7 +80,7 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
     return (
       <View style={css.view}>
         <Animated.View style={{left: this.state.pikachuPositionValueHolder}}>
-          <Image source={gifs.pikachuRunning} width={200} height={200}/>
+          <Image source={gifs.pikachuRunning} width={100} height={100}/>
         </Animated.View>
         <View style={css.viewText}>
           <View style={css.marginView}/>
