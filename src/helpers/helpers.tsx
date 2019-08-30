@@ -10,6 +10,13 @@ export class Helpers {
 
   }
 
+  static substituirTodos(str: string, search: string, replace: string) {
+
+
+    return str.replace(new RegExp(search, 'g'), replace);
+
+  }
+
   static eNumero(texto: string) {
 
     return !isNaN(parseInt(texto));

@@ -49,7 +49,7 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
     }
 
     if (prevProps.pokemonSelecionado!.numero != this.props.pokemonSelecionado!.numero) {
-      
+
       this.props.navigation.setParams({
         nomePokemon: this.props.pokemonSelecionado!.nome,
       });

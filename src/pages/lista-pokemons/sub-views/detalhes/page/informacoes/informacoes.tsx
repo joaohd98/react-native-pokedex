@@ -154,7 +154,7 @@ export class DetalhesInformacoes extends Component<DetalhesProps.Props, States> 
 
       habilidades.push(
         <View style={this.css.row} key={habilidade.nome}>
-          <View style={{marginBottom: 10, width: 80}}>
+          <View style={{marginBottom: 10, width: 100}}>
             <Text style={this.css.word2}>
               {habilidade.nome}
             </Text>

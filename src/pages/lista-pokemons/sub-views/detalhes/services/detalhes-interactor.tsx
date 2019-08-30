@@ -15,6 +15,32 @@ export class DetalhesInteractor {
 
   static formatarDetalhesPokemon(pokemon: ListaPokemonsModel.ViewModel, outrosPokemons: ListaPokemonsModel.ViewModel[], detalhes: DetalhesModel.Response): DetalhesModel.ViewModel {
 
+    const pegarTextoFormatado = (str: string) => {
+
+      let novaString = "";
+
+      for (let i = 0; i < str.length; i++) {
+
+        if (str[i] === "\n") {
+
+          if (str[i - 1] !== ".") {
+            novaString += "";
+          } else {
+            novaString += "\n";
+          }
+
+        } else if (str[i] === "," && str[i + 1] !== " ")
+          novaString += ", ";
+
+        else
+          novaString += str[i];
+
+      }
+
+
+      return novaString;
+
+    };
 
     const pegarAtributos = (numero: number) => numero / 20;
 
@@ -53,7 +79,7 @@ export class DetalhesInteractor {
           if (effect.language.name == "en")
             habilidades.push({
               nome: habilidade.name,
-              descricao: effect.effect,
+              descricao: pegarTextoFormatado(effect.effect).split("\n")[0],
             })
 
         })
@@ -126,7 +152,7 @@ export class DetalhesInteractor {
         specialDefense: pegarAtributos(detalhesPokemons.stats[4].base_stat), //
         speed: pegarAtributos(detalhesPokemons.stats[5].base_stat) //
       },
-      descricao: detalhesEspecie.flavor_text_entries.find(dados => dados.language.name == "en")!.flavor_text, //
+      descricao: pegarTextoFormatado(detalhesEspecie.flavor_text_entries.find(dados => dados.language.name == "en")!.flavor_text), //
       altura: pokemon.altura, //
       peso: pokemon.peso, //
       genero: pegarGenero(detalhesEspecie.gender_rate), //
