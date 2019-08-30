@@ -113,7 +113,7 @@ export class DetalhesInteractor {
     let detalhesEspecie = detalhes.retorno!.species;
 
     return {
-      foto: pokemon.foto, //
+      foto: pokemon.fotoCheia, //
       nome: pokemon.nome, //
       numero: pokemon.numero, //
       numeroAdj: outrosPokemons[pegarNumeroAdjAnt('adj')], //

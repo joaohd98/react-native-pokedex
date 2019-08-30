@@ -1,30 +1,41 @@
-import {NavigationActions} from 'react-navigation';
+import {NavigationActions, StackActions} from 'react-navigation'
 
 let _navigator;
 
-function setTopLevelNavigator(navigatorRef) {
+const setTopLevelNavigator = (navigatorRef) => {
   _navigator = navigatorRef;
-}
+};
 
-function navigate(routeName, params = {}) {
+const navigate = (routeName, params = {}) => {
   _navigator.dispatch(
     NavigationActions.navigate({
       routeName,
       params,
     })
   );
-}
+};
 
-function back() {
+const back = () => {
   _navigator.dispatch(
     NavigationActions.back()
   );
-}
+};
+
+const replaceRoute = (oldRouteName, newRouteName, params = {}) => {
+
+  StackActions.replace({
+    key: oldRouteName,
+    routeName: newRouteName,
+    params: params
+  });
+
+};
 
 // add other navigation functions that you need and export them
 
 export const Navigation = {
-  navigate,
   setTopLevelNavigator,
-  back
+  navigate,
+  back,
+  replaceRoute
 };

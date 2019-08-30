@@ -4,14 +4,15 @@ import {DetalhesCSS} from "../detalhes-css";
 import {ListaPokemonsInteractor} from "../../../../view/services/lista-pokemons-interactor";
 import {DetalhesModel} from "../../services/detalhes-model";
 import {Helpers} from "../../../../../../helpers/helpers";
+import {DetalhesProps} from "../../services/detalhes-props";
 
-export class DetalhesTipoFraqueza extends Component<DetalhesModel.ViewModel> {
+export class DetalhesTipoFraqueza extends Component<DetalhesProps.Props> {
 
   private css = DetalhesCSS.tipoFraqueza;
 
-  renderTypes() {
+  renderTypes(detalhes: DetalhesModel.ViewModel) {
 
-    let tipos = this.props.tipos;
+    let tipos = detalhes.tipos;
 
     let elementos: JSX.Element[] = [];
 
@@ -34,9 +35,9 @@ export class DetalhesTipoFraqueza extends Component<DetalhesModel.ViewModel> {
 
   }
 
-  renderWeakness() {
+  renderWeakness(detalhes: DetalhesModel.ViewModel) {
 
-    let fraquezas = this.props.fraquezas;
+    let fraquezas = detalhes.fraquezas;
 
     let elementos: JSX.Element[] = [];
 
@@ -61,18 +62,20 @@ export class DetalhesTipoFraqueza extends Component<DetalhesModel.ViewModel> {
 
   render() {
 
+    let detalhes = this.props.pokemonDetalhes!;
+
     return (
       <View style={this.css.view}>
         <View>
           <Text style={this.css.title}>Type</Text>
           <ScrollView  style={this.css.typesWeakness} horizontal={true}>
-            { this.renderTypes() }
+            {this.renderTypes(detalhes)}
           </ScrollView>
         </View>
         <View>
           <Text style={this.css.title}>Weakness</Text>
           <ScrollView style={this.css.typesWeakness} horizontal={true} >
-            { this.renderWeakness() }
+            {this.renderWeakness(detalhes)}
           </ScrollView>
         </View>
       </View>

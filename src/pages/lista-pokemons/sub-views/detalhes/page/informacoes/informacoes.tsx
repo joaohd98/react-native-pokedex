@@ -4,6 +4,7 @@ import {DetalhesCSS} from "../detalhes-css";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import {DetalhesModel} from "../../services/detalhes-model";
 import {PokemonGender} from "../../services/detalhes-interactor";
+import {DetalhesProps} from "../../services/detalhes-props";
 
 interface States {
   alturaCard: number,
@@ -15,7 +16,7 @@ interface States {
   }
 }
 
-export class DetalhesInformacoes extends Component<DetalhesModel.ViewModel, States> {
+export class DetalhesInformacoes extends Component<DetalhesProps.Props, States> {
 
   private css = DetalhesCSS.informacoes;
 
@@ -92,9 +93,9 @@ export class DetalhesInformacoes extends Component<DetalhesModel.ViewModel, Stat
 
   }
 
-  mostrarGenero() {
+  mostrarGenero(detalhes: DetalhesModel.ViewModel) {
 
-    switch (this.props.genero) {
+    switch (detalhes.genero) {
 
       case PokemonGender.masculino:
         return (
@@ -137,11 +138,11 @@ export class DetalhesInformacoes extends Component<DetalhesModel.ViewModel, Stat
 
   }
 
-  mostrarHabilidades() {
+  mostrarHabilidades(detalhes: DetalhesModel.ViewModel) {
 
     let habilidades: JSX.Element[] = [];
 
-    this.props.habilidades.forEach(habilidade => {
+    detalhes.habilidades.forEach(habilidade => {
 
       const mudarCard = () => {
 
@@ -171,6 +172,8 @@ export class DetalhesInformacoes extends Component<DetalhesModel.ViewModel, Stat
 
   render() {
 
+    let detalhes = this.props.pokemonDetalhes!;
+
     return (
       <View style={this.css.view} onLayout={event => this.setState({ alturaCard: event.nativeEvent.layout.height }) }>
         { this.mostrarDescricao() }
@@ -178,21 +181,21 @@ export class DetalhesInformacoes extends Component<DetalhesModel.ViewModel, Stat
           <View style={{flex: 0.5}}>
             <View style={{...this.css.line}}>
               <Text style={this.css.word1}>Height</Text>
-              <Text style={this.css.word2}>{this.props.altura} m</Text>
+              <Text style={this.css.word2}>{detalhes.altura} m</Text>
             </View>
             <View style={{...this.css.line, paddingTop: 15}}>
               <Text style={this.css.word1}>Weigth</Text>
-              <Text style={this.css.word2}>{this.props.peso} kg</Text>
+              <Text style={this.css.word2}>{detalhes.peso} kg</Text>
             </View>
             <View style={{...this.css.line, paddingTop: 15}}>
               <Text style={this.css.word1}>Gender</Text>
-              {this.mostrarGenero()}
+              {this.mostrarGenero(detalhes)}
             </View>
           </View>
           <View style={{flex: 0.5}}>
             <View style={this.css.line}>
               <Text style={this.css.word1}>Abilities</Text>
-              {this.mostrarHabilidades()}
+              {this.mostrarHabilidades(detalhes)}
             </View>
           </View>
         </View>

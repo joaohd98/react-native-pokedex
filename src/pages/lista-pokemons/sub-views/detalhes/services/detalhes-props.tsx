@@ -13,7 +13,8 @@ export namespace DetalhesProps {
     carregando: boolean;
     erro: boolean;
     funcoes: {
-      carregarDetalhes: (pokemon: ListaPokemonsModel.ViewModel, outrosPokemons: ListaPokemonsModel.ViewModel[]) => {}
+      carregarDetalhes: (pokemon: ListaPokemonsModel.ViewModel, outrosPokemons: ListaPokemonsModel.ViewModel[]) => {},
+      irParaOutrosDetalhes: (pokemon: ListaPokemonsModel.ViewModel, outrosPokemons: ListaPokemonsModel.ViewModel[]) => {},
     }
 
   }

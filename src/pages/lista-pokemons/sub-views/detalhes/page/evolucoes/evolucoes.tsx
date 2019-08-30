@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import {FlatList, Image, ImageBackground, ImageSourcePropType, Text, View} from "react-native";
+import {FlatList, Image, ImageBackground, ImageSourcePropType, Text, TouchableOpacity, View} from "react-native";
 import {DetalhesCSS} from "../detalhes-css";
 import {ListaPokemonsInteractor} from "../../../../view/services/lista-pokemons-interactor";
 import {images} from "../../../../../../assets";
@@ -7,8 +7,9 @@ import {DetalhesModel} from "../../services/detalhes-model";
 import {ListaPokemonsModel} from "../../../../view/services/lista-pokemons-model";
 import {Helpers} from "../../../../../../helpers/helpers";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {DetalhesProps} from "../../services/detalhes-props";
 
-export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
+export class DetalhesEvolucoes extends Component<DetalhesProps.Props> {
 
   private css = DetalhesCSS.evolucoes;
 
@@ -38,7 +39,7 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
 
   }
 
-  renderCard(evolucao: ListaPokemonsModel.ViewModel) {
+  renderCard(evolucao: ListaPokemonsModel.ViewModel, detalhes: DetalhesModel.ViewModel) {
 
     let imagem: ImageSourcePropType = {
       uri: evolucao.foto,
@@ -46,8 +47,8 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
       height: 100,
     };
 
-    let indexPokemon = this.props.evolucoes.findIndex(evolucaoTodas => Helpers.compararStrings(evolucaoTodas.numero, evolucao.numero));
-    let tamanho = this.props.evolucoes.length;
+    let indexPokemon = detalhes.evolucoes.findIndex(evolucaoTodas => Helpers.compararStrings(evolucaoTodas.numero, evolucao.numero));
+    let tamanho = detalhes.evolucoes.length;
     let padding = Helpers.pegarPorcentagem(10, "width");
 
     return (
@@ -56,9 +57,12 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
           {indexPokemon > 0 ? <Icon name={"angle-left"} color={"#FFF"} size={50}/> : <View/>}
         </View>
         <View style={{flex: 0.7, justifyContent: "center", alignItems: "center"}}>
-          <View style={this.css.cardIMG}>
-            <Image source={imagem}/>
-          </View>
+          <TouchableOpacity
+            onPress={() => this.props.funcoes.irParaOutrosDetalhes(evolucao, this.props.outrosPokemons)}>
+            <View style={this.css.cardIMG}>
+              <Image source={imagem}/>
+            </View>
+          </TouchableOpacity>
           <View style={this.css.nameNumberLine}>
             <Text style={this.css.nameText}>{evolucao.nome}</Text>
             <Text style={this.css.numberText}>Nº {evolucao.numero}</Text>
@@ -75,9 +79,9 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
 
   }
 
-  renderTitle() {
+  renderTitle(detalhes: DetalhesModel.ViewModel) {
 
-    if (this.props.evolucoes.length > 1) {
+    if (detalhes.evolucoes.length > 1) {
 
       return (
         <View>
@@ -100,16 +104,18 @@ export class DetalhesEvolucoes extends Component<DetalhesModel.ViewModel> {
 
   render() {
 
-    let indexPokemon = this.props.evolucoes.findIndex(evolucao => Helpers.compararStrings(evolucao.numero, this.props.numero));
+    let detalhes = this.props.pokemonDetalhes!;
+
+    let indexPokemon = detalhes.evolucoes.findIndex(evolucao => Helpers.compararStrings(evolucao.numero, detalhes.numero));
 
     return (
       <ImageBackground source={images.body} style={this.css.view} borderRadius={20}>
-        {this.renderTitle()}
+        {this.renderTitle(detalhes)}
         <FlatList horizontal={true} pagingEnabled={true} initialScrollIndex={indexPokemon} initialNumToRender={3}
                   showsHorizontalScrollIndicator={false} style={this.css.cardSize}
                   getItemLayout={(data, index) => ({length: 300, offset: 300 * index, index})}
-                  data={this.props.evolucoes} keyExtractor={evolucao => evolucao.numero}
-                  renderItem={({item}) => this.renderCard(item)}/>
+                  data={detalhes.evolucoes} keyExtractor={evolucao => evolucao.numero}
+                  renderItem={({item}) => this.renderCard(item, detalhes)}/>
       </ImageBackground>
     )
 

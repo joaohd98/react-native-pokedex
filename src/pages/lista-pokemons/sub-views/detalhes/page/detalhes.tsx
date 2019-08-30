@@ -35,16 +35,43 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
 
   componentDidMount() {
 
+    this.inicializarPokemon();
+
+  }
+
+  componentDidUpdate(prevProps: Readonly<DetalhesProps.Props>, prevState: Readonly<States>, snapshot?: any): void {
+
+    if (prevProps.carregando != this.props.carregando && this.props.carregando) {
+
+      this.startMoveImageFunction();
+      this.startChangeTextLoading();
+
+    }
+
+    if (prevProps.pokemonSelecionado!.numero != this.props.pokemonSelecionado!.numero) {
+      
+      this.props.navigation.setParams({
+        nomePokemon: this.props.pokemonSelecionado!.nome,
+      });
+
+    }
+
+  }
+
+  inicializarPokemon() {
+
+
+    this.props.funcoes.carregarDetalhes(this.props.pokemonSelecionado!, this.props.outrosPokemons);
+
     this.props.navigation.setParams({
       nomePokemon: this.props.pokemonSelecionado!.nome,
     });
-
-    this.props.funcoes.carregarDetalhes(this.props.pokemonSelecionado!, this.props.outrosPokemons);
 
     this.startMoveImageFunction();
     this.startChangeTextLoading();
 
   }
+
 
   renderCarregando() {
 
@@ -104,24 +131,24 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
 
     return (
       <ScrollView>
-        <DetalhesHeader {...this.props.pokemonDetalhes!}/>
+        <DetalhesHeader {...this.props}/>
         <View style={this.css.view}>
-          <DetalhesNomeImagem {...this.props.pokemonDetalhes!} />
+          <DetalhesNomeImagem {...this.props} />
         </View>
         <View style={this.css.view}>
-          <DetalhesEstatisticas {...this.props.pokemonDetalhes!} />
+          <DetalhesEstatisticas {...this.props} />
         </View>
         <View style={this.css.view}>
-          <DetalhesDescricao {...this.props.pokemonDetalhes!}  />
+          <DetalhesDescricao {...this.props}  />
         </View>
         <View style={this.css.view}>
-          <DetalhesInformacoes {...this.props.pokemonDetalhes!}  />
+          <DetalhesInformacoes {...this.props}  />
         </View>
         <View style={this.css.view}>
-          <DetalhesTipoFraqueza {...this.props.pokemonDetalhes!}  />
+          <DetalhesTipoFraqueza {...this.props}  />
         </View>
         <View style={this.css.view}>
-          <DetalhesEvolucoes {...this.props.pokemonDetalhes!} />
+          <DetalhesEvolucoes {...this.props} />
         </View>
       </ScrollView>
     )

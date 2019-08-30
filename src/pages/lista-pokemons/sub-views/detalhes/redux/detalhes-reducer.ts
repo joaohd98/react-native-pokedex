@@ -7,7 +7,8 @@ export const DetalhesInitalState: DetalhesProps.Props = {
   erro: false,
   atualizar: false,
   funcoes: {
-    carregarDetalhes: (pokemon, outrosPokemons) => DetalhesAction.carregarDetalhes(pokemon, outrosPokemons)
+    carregarDetalhes: (pokemon, outrosPokemons) => DetalhesAction.carregarDetalhes(pokemon, outrosPokemons),
+    irParaOutrosDetalhes: (pokemon, outrosPokemons) => DetalhesAction.irParaOutrosDetalhes(pokemon, outrosPokemons),
   }
 };
 
@@ -40,11 +41,23 @@ export const detalhesReducer = (state = DetalhesInitalState, action: { type: Det
 
     case DetalhesConst.DETALHES_CARREGADO: {
 
-      console.log('detalhes', action.payload.pokemonDetalhes);
+      return {
+        ...state,
+        pokemonDetalhes: action.payload.pokemonDetalhes,
+        carregando: false,
+        erro: false,
+        atualizar: !state.atualizar
+      }
+
+    }
+
+
+    case DetalhesConst.DETALHES_MUDADO_POKEMON: {
 
       return {
         ...state,
         pokemonDetalhes: action.payload.pokemonDetalhes,
+        pokemonSelecionado: action.payload.pokemonSelecionado,
         carregando: false,
         erro: false,
         atualizar: !state.atualizar

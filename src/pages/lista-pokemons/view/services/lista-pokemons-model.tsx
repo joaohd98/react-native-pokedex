@@ -27,6 +27,7 @@ export namespace ListaPokemonsModel {
 
   export interface ViewModel {
     foto: string,
+    fotoCheia: string,
     numero: string,
     nome: string,
     peso: number,

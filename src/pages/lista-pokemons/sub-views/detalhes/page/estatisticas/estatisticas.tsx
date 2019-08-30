@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Text, View} from "react-native";
 import {DetalhesCSS} from "../detalhes-css";
-import {DetalhesModel} from "../../services/detalhes-model";
+import {DetalhesProps} from "../../services/detalhes-props";
 
-export class DetalhesEstatisticas extends Component<DetalhesModel.ViewModel> {
+export class DetalhesEstatisticas extends Component<DetalhesProps.Props> {
 
   private css = DetalhesCSS.estatistica;
 
@@ -25,13 +25,15 @@ export class DetalhesEstatisticas extends Component<DetalhesModel.ViewModel> {
 
   render() {
 
+    let detalhes = this.props.pokemonDetalhes!;
+
     let atributos = [
-      {nome: "HP", valor: this.props.atributos.hp},
-      {nome: "Attack", valor: this.props.atributos.attack},
-      {nome: "Defense", valor: this.props.atributos.defense},
-      {nome: "Special Attack", valor: this.props.atributos.specialAttack},
-      {nome: "Special Defense", valor: this.props.atributos.specialDefense},
-      {nome: "Speed", valor: this.props.atributos.speed}
+      {nome: "HP", valor: detalhes.atributos.hp},
+      {nome: "Attack", valor: detalhes.atributos.attack},
+      {nome: "Defense", valor: detalhes.atributos.defense},
+      {nome: "Special Attack", valor: detalhes.atributos.specialAttack},
+      {nome: "Special Defense", valor: detalhes.atributos.specialDefense},
+      {nome: "Speed", valor: detalhes.atributos.speed}
     ];
 
     let elements: JSX.Element[] = [];

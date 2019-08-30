@@ -38,6 +38,7 @@ export class ListaPokemonsInteractor {
 
       let view: ListaPokemonsModel.ViewModel = {
         foto: pokemon.ThumbnailImage,
+        fotoCheia: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/" + pokemon.number + ".png",
         numero: pokemon.number,
         nome: pokemon.name,
         altura: pokemon.height,

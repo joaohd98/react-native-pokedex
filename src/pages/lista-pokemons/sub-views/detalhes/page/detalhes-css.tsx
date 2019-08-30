@@ -106,7 +106,7 @@ export class DetalhesCSS {
       marginTop: -40
     },
     viewText: {
-      flexDirection: "row"
+      flexDirection: "row",
     },
     text: {
       color: "#212121",
@@ -124,6 +124,10 @@ export class DetalhesCSS {
       backgroundColor: "#F2F2F2",
       borderRadius: 5,
       marginTop: 10,
+      width: Helpers.pegarPorcentagem(80, "width"),
+      height: Helpers.pegarPorcentagem(40, "height"),
+      justifyContent: "center",
+      alignItems: "center"
     },
     image: {
       minHeight: 215,
