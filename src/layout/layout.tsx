@@ -10,9 +10,9 @@ export class Layout extends Component {
 
   //PAGINAS
   private stackNavigator = createStackNavigator({
-    listaPokemons: ListaPokemons,
-    filtro: Filtro,
-    detalhes: Detalhes
+    listaPokemons: {screen: ListaPokemons, navigationOptions: {headerBackTitle: null}},
+    filtro: {screen: Filtro, navigationOptions: {headerBackTitle: null}},
+    detalhes: {screen: Detalhes, navigationOptions: {headerBackTitle: null}},
   }, {
     initialRouteName: 'listaPokemons',
     headerLayoutPreset: "center",
