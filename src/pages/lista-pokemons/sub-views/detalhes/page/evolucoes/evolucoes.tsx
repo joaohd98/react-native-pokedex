@@ -108,12 +108,14 @@ export class DetalhesEvolucoes extends Component<DetalhesProps.Props> {
 
     let indexPokemon = detalhes.evolucoes.findIndex(evolucao => Helpers.compararStrings(evolucao.numero, detalhes.numero));
 
+    let largura = Helpers.pegarPorcentagem(80, "width");
+    
     return (
       <ImageBackground source={images.body} style={this.css.view} borderRadius={20}>
         {this.renderTitle(detalhes)}
-        <FlatList horizontal={true} pagingEnabled={true} initialScrollIndex={indexPokemon} initialNumToRender={3}
+        <FlatList horizontal={true} pagingEnabled={true} initialScrollIndex={indexPokemon}
                   showsHorizontalScrollIndicator={false} style={this.css.cardSize}
-                  getItemLayout={(data, index) => ({length: 300, offset: 300 * index, index})}
+                  getItemLayout={(data, index) => ({length: largura, offset: largura * index, index})}
                   data={detalhes.evolucoes} keyExtractor={evolucao => evolucao.numero}
                   renderItem={({item}) => this.renderCard(item, detalhes)}/>
       </ImageBackground>
