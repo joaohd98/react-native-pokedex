@@ -17,7 +17,6 @@ export class DetalhesHeader extends Component<DetalhesProps.Props> {
         <TouchableOpacity
           onPress={() => this.props.funcoes.irParaOutrosDetalhes(detalhes.numeroAnt, this.props.outrosPokemons)}>
           <View style={this.css.subView}>
-            <View style={[this.css.border, this.css.borderLeft ]} />
             <View style={[this.css.content, this.css.contentLeft]} >
               <View style={{flex: 0.3}}>
                 <Text style={this.css.textLeft}>
@@ -43,7 +42,6 @@ export class DetalhesHeader extends Component<DetalhesProps.Props> {
                 </Text>
               </View>
             </View>
-            <View style={[this.css.border, this.css.borderRight ]}/>
           </View>
         </TouchableOpacity>
       </View>

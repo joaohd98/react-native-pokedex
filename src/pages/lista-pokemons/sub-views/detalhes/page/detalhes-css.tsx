@@ -50,18 +50,7 @@ export class DetalhesCSS {
     },
     subView: {
       flex: 0.5,
-      flexDirection: "row"
-    },
-    border: {
-      width: menores,
-      height: 100,
-      backgroundColor: "#a4a4a4"
-    },
-    borderLeft: {
-      transform: [{rotate: '60deg'}]
-    },
-    borderRight: {
-      transform: [{rotate: '120deg'}]
+      flexDirection: "row",
     },
     content: {
       width: maiores,
@@ -70,16 +59,12 @@ export class DetalhesCSS {
       flexDirection: "row",
       paddingTop: 15,
       paddingHorizontal: 15,
-      zIndex: 100,
-      elevation: 100,
     },
     contentLeft: {
-      marginLeft: menores * -1,
       borderRightWidth: 0.5,
       borderRightColor: "#FFF"
     },
     contentRight: {
-      marginRight: menores * -1,
       borderLeftWidth: 0.5,
       borderLeftColor: "#FFF"
     },
@@ -103,7 +88,6 @@ export class DetalhesCSS {
   static nomeImagem = StyleSheet.create({
     view: {
       alignItems: "center",
-      marginTop: -40
     },
     viewText: {
       flexDirection: "row",
