@@ -180,7 +180,7 @@ export class DetalhesCSS {
     },
     word1: {
       color: "#fff",
-      fontSize: 20,
+      fontSize: 18,
       paddingBottom: 2,
       fontWeight: "400"
     },

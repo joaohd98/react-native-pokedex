@@ -79,7 +79,7 @@ export class DetalhesInteractor {
           if (effect.language.name == "en")
             habilidades.push({
               nome: habilidade.name,
-              descricao: pegarTextoFormatado(effect.effect).split("\n")[0],
+              descricao: pegarTextoFormatado(effect.effect).split(".")[0] + ".",
             })
 
         })

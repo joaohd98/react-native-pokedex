@@ -76,12 +76,12 @@ export class DetalhesInformacoes extends Component<DetalhesProps.Props, States> 
             <Text style={this.css.abilitiesCloseButtonText}>Close</Text>
           </TouchableOpacity>
         </View>
-        <View style={this.css.abilitiesNameTextContent}>
+        <View style={{...this.css.abilitiesNameTextContent, marginTop: -15}}>
           <Text style={this.css.abilitiesName}>
             {this.state.categoriaSelecionada.nome}
           </Text>
         </View>
-        <View style={this.css.abilitiesNameTextContent}>
+        <View style={{...this.css.abilitiesNameTextContent, marginTop: -5}}>
           <Text style={this.css.abilitiesText}>
             {this.state.categoriaSelecionada.descricao}
           </Text>
@@ -188,7 +188,7 @@ export class DetalhesInformacoes extends Component<DetalhesProps.Props, States> 
               <Text style={this.css.word2}>{detalhes.peso} kg</Text>
             </View>
             <View style={{...this.css.line, paddingTop: 15}}>
-              <Text style={this.css.word1}>Gender</Text>
+              <Text style={{...this.css.word1, paddingBottom: 5}}>Gender</Text>
               {this.mostrarGenero(detalhes)}
             </View>
           </View>
