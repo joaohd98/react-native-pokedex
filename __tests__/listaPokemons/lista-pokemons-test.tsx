@@ -1,39 +1,20 @@
-// import React from 'react';
-// import { shallow } from 'enzyme';
-// import configureStore from 'redux-mock-store';
-// import thunk from "redux-thunk";
-//
-// import {ListaPokemons} from "../../src/pages/lista-pokemons/view/page/lista-pokemons";
-// import {ListaPokemonsInitalState} from "../../src/pages/lista-pokemons/view/redux/lista-pokemons-reducer";
-//
-// const mockStore = configureStore([thunk]);
-// const initialState = ListaPokemonsInitalState;
-//
-// describe('Testing Lista Pokemons', () => {
-//
-//   it('Render loading', () => {
-//
-//     const wrapper = shallow(
-//       <ListaPokemons />,
-//       { context: { store: mockStore(initialState) } },
-//     );
-//
-//     expect(wrapper.dive()).toMatchSnapshot();
-//
-//   });
-//
-//
-// });
-
-import 'react-native';
 import React from 'react';
-import renderer from 'react-test-renderer';
+import {ListaPokemonsInitalState} from "../../src/pages/lista-pokemons/view/redux/lista-pokemons-reducer";
+import {ListaPokemons} from "../../src/pages/lista-pokemons/view/page/lista-pokemons";
+import {generateStore, renderShallow} from "../../src/jest/setup";
 
-import {MeuTeste} from "../../src/layout/meu-teste";
+describe('Testing ListaPokemons', () => {
 
-it('renders correctly', () => {
-  const tree = renderer.create(
-    <MeuTeste/>
-  ).toJSON();
-  expect(tree).toMatchSnapshot();
+  it('Render InitialState', () => {
+
+    let values = ListaPokemonsInitalState;
+
+    values.carregando = false;
+
+    const wrapper = renderShallow(<ListaPokemons/>, generateStore(values));
+
+    expect(wrapper.dive()).toMatchSnapshot();
+
+  });
+
 });

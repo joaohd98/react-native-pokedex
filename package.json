@@ -39,13 +39,14 @@
     "react-dom": "^16.9.0",
     "react-native-typescript-transformer": "^1.2.12",
     "react-test-renderer": "^16.8.6",
+    "redux-mock-store": "^1.5.3",
     "ts-jest": "^24.0.2",
     "typescript": "^3.5.2"
   },
   "jest": {
     "preset": "react-native",
     "setupFilesAfterEnv": [
-      "<rootDir>src/jest/setup.ts"
+      "<rootDir>src/jest/setup.tsx"
     ],
     "moduleFileExtensions": [
       "ts",
