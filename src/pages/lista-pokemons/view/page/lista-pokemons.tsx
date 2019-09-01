@@ -10,7 +10,7 @@ import {ListaPokemonsInitalState} from "../redux/lista-pokemons-reducer";
 import {StatesReducers} from "../../../../redux/reducer";
 import {ListaPokemonsNavBar} from "./nav-bar/nav-bar";
 
-class PokedexPage extends Component<ListaPokemonsProps.Props> {
+class ListaPokemonsPage extends Component<ListaPokemonsProps.Props> {
 
   static navigationOptions = ListaPokemonsNavBar.Header;
 
@@ -88,4 +88,4 @@ const mapDispatchToProps = dispatch => ({
   funcoes: bindActionCreators(ListaPokemonsInitalState.funcoes, dispatch)
 });
 
-export const ListaPokemons = connect(mapStateToProps, mapDispatchToProps)(PokedexPage);
+export const ListaPokemons = connect(mapStateToProps, mapDispatchToProps)(ListaPokemonsPage);
