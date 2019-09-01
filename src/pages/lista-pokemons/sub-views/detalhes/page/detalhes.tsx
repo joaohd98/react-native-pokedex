@@ -60,6 +60,7 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
 
   inicializarPokemon() {
 
+
     this.props.funcoes.carregarDetalhes(this.props.pokemonSelecionado!, this.props.outrosPokemons);
 
     this.props.navigation.setParams({
