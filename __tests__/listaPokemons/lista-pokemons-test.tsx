@@ -24,3 +24,13 @@
 //
 //
 // });
+
+import 'react-native';
+import React from 'react';
+
+// it('renders correctly', () => {
+//   const tree = renderer.create(
+//
+//   ).toJSON();
+//   expect(tree).toMatchSnapshot();
+// });
