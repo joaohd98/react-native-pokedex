@@ -1,6 +1,7 @@
 import {StyleSheet} from "react-native";
 import {Helpers} from "../../../../../helpers/helpers";
 import React from "react";
+import {Colors} from "../../../../../helpers/colors/colors";
 
 const menores = Helpers.pegarPorcentagem(10, "width");
 const maiores = Helpers.pegarPorcentagem(50, "width");
@@ -9,8 +10,8 @@ export class DetalhesCSS {
 
   static detalhes = StyleSheet.create({
     view: {
-      marginHorizontal: Helpers.pegarPorcentagem(10, "width"),
       marginVertical: 10,
+      marginHorizontal: Helpers.pegarPorcentagem(10, "width"),
     }
   });
 
@@ -43,6 +44,53 @@ export class DetalhesCSS {
       textShadowRadius: 1
     }
   });
+
+  static erro = StyleSheet.create({
+    view: {
+      marginHorizontal: Helpers.pegarPorcentagem(10, "width"),
+      justifyContent: "center",
+      flex: 1,
+    },
+    imageContainer: {
+      alignItems: "center",
+    },
+    image: {
+      width: 200,
+      height: 200,
+    },
+    titulo: {
+      color: Colors.red,
+      marginBottom: 10,
+      fontWeight: '500',
+      fontSize: 16,
+      textAlign: "left"
+    },
+    subTitulo: {
+      color: Colors.gray,
+      fontWeight: 'bold',
+      fontSize: 15,
+      marginBottom: 10
+    },
+    itemView: {
+      flexDirection: "row",
+      marginBottom: 10
+    },
+    item: {
+      color: Colors.gray,
+      fontWeight: '500',
+      fontSize: 14,
+      paddingLeft: 10
+    },
+    ponto: {
+      color: Colors.gray,
+      fontSize: 15,
+      marginRight: 10
+    },
+    button: {
+      width: Helpers.pegarPorcentagem(80, "width")
+    }
+  });
+
 
   static header = StyleSheet.create({
     view: {

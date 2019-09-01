@@ -33,6 +33,6 @@ export const images = {
 };
 
 export const gifs = {
-  pikachuRunning: require("./gifs/pikachu-running.gif")
-
+  pikachuRunning: require("./gifs/pikachu-running.gif"),
+  mewThinking: require("./gifs/mew-thinking.gif"),
 };

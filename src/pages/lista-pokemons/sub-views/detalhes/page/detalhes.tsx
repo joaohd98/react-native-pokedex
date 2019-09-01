@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Animated, Easing, Image, ScrollView, Text, View} from "react-native";
+import {Animated, Button, Easing, Image, ScrollView, Text, View} from "react-native";
 import {bindActionCreators} from "redux";
 import {connect} from 'react-redux';
 import {DetalhesHeader} from "./header/header";
@@ -60,7 +60,6 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
 
   inicializarPokemon() {
 
-
     this.props.funcoes.carregarDetalhes(this.props.pokemonSelecionado!, this.props.outrosPokemons);
 
     this.props.navigation.setParams({
@@ -71,7 +70,6 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
     this.startChangeTextLoading();
 
   }
-
 
   renderCarregando() {
 
@@ -87,6 +85,23 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
           <Text style={css.text}> {this.state.textoCarregando} </Text>
           <View style={css.marginView}/>
         </View>
+      </View>
+    )
+
+  }
+
+  renderErro() {
+
+    let css = DetalhesCSS.erro;
+
+    return (
+      <View style={css.view}>
+        <View style={css.imageContainer}>
+          <Image style={css.image} source={gifs.mewThinking}/>
+        </View>
+        <Text style={css.titulo}>Oops!</Text>
+        <Text style={css.subTitulo}>Não foi possível buscar detalhes do Pokemon.</Text>
+        <Button title={"Tentar Novamente"} onPress={() => this.inicializarPokemon()}/>
       </View>
     )
 
@@ -157,7 +172,7 @@ class DetalhesPage extends Component<DetalhesProps.Props, States> {
 
   render() {
 
-    return this.props.carregando ? this.renderCarregando() : this.renderPokemon();
+    return this.props.erro ? this.renderErro() : this.props.carregando ? this.renderCarregando() : this.renderPokemon();
 
   }
 
