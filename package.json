@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@ptomasroos/react-native-multi-slider": "^1.0.0",
-    "acorn": "^6.2.1",
+    "acorn": "^6.4.1",
     "eslint": "^5.0.0",
     "jetifier": "^1.6.1",
     "react": "^16.8.6",
